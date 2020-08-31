@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO Fish</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="main-part">
+        <div id="toolBox">
+            <div id="toolBox-child">
+                <button id="pencil" class="toolBox-buttons">pencil</button>
+                <button id="eraser" class="toolBox-buttons">eraser</button>
+                <button id="clear" class="toolBox-buttons">clear</button>
+            </div>
+        </div>
+        <div id="canvas-box">
+            <canvas id="myCanvas"></canvas>
+        </div>
+    </div>
+    <div id="adjust-size">
+        <label for="slider"></label><input type="range" min = "1" max = "100" value="5" id="slider">
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/sync.js"></script>
+</body>
+</html>

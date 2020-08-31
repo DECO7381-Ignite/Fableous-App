@@ -1,0 +1,58 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#main-part {
+    width: 900px;
+    height: 700px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    min-width: 900px;
+}
+
+#toolBox {
+    border: 1px solid black;
+    position: relative;
+    height: 100%;
+    left: 0;
+    width: 80px;
+    margin:0 10px
+}
+
+#toolBox-child{
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.toolBox-buttons {
+    display: inline-block;
+    margin:10px 0;
+}
+
+#canvas-box {
+    border:1px solid red;
+    position: relative;
+    height: 100%;
+    width: 800px;
+}
+
+#myCanvas {
+    border:1px solid green;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+#slider{
+    position: relative;
+    display: block;
+
+}
