@@ -6,53 +6,125 @@ body {
 #main-part {
     width: 900px;
     height: 700px;
-    position: relative;
+    position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
-    border: 1px solid black;
-    display: flex;
-    flex-direction: row;
-    min-width: 900px;
-}
-
-#toolBox {
-    border: 1px solid black;
-    position: relative;
-    height: 100%;
-    left: 0;
-    width: 80px;
-    margin:0 10px
-}
-
-#toolBox-child{
-    position: relative;
-    top: 50%;
-    transform: translate(0, -50%);
     display: flex;
     flex-direction: column;
+    min-width: 900px;
+    background-color: burlywood;
 }
 
-.toolBox-buttons {
-    display: inline-block;
-    margin:10px 0;
-}
-
-#canvas-box {
-    border:1px solid red;
-    position: relative;
-    height: 100%;
-    width: 800px;
-}
-
-#myCanvas {
-    border:1px solid green;
-    height: 100%;
-    width: 100%;
-    z-index: 10;
-}
-
-#slider{
-    position: relative;
+/* Header */
+#header {
+    background-color: cadetblue;
+    height: 80px;
     display: block;
+    position: relative;
+}
 
+#header div {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    background-color: whitesmoke;
+    float: left;
+    border: 1px solid black;
+}
+
+#user {
+    left: 3%;
+    border-radius: 20px;
+}
+
+#status {
+    left: 8%;
+}
+
+#comment-button {
+    right: 8%;
+}
+
+#home-button {
+    right: 3%;
+}
+
+/* Main body*/
+#main-body {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    position: relative;
+    height: 640px;
+}
+
+/* Additional toolbar */
+#additional-toolbar {
+    width: 60px;
+    position: relative;
+    flex-direction: column;
+    background-color: cornflowerblue;
+}
+
+#re-un-button {
+    position: absolute;
+    display: flex;
+}
+
+#re-un-button div{
+    width: 30px;
+    height: 30px;
+}
+
+#redo {
+    background-color: teal;
+}
+
+#undo {
+    background-color: tomato;
+}
+
+#adjust-size {
+    position: absolute;
+    transform: rotate(90deg);
+    width: 134px;
+    height: 20px;
+    bottom: 67px;
+    right: -40px;
+}
+
+/* Canvas */
+#canvas-box {
+    flex: 1;
+    background-color: chocolate;
+}
+
+/* Tool Box */
+#toolBox {
+    width: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: cornflowerblue;
+}
+
+#toolBox div{
+    flex: 1;
+}
+
+/* Footer */
+#footer {
+    background-color: cadetblue;
+    height: 80px;
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+}
+
+#footer div {
+    flex:1;
+    background-color: blueviolet;
+    margin: 2px;
 }

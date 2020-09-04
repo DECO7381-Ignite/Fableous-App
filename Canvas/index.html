@@ -8,20 +8,44 @@
 </head>
 <body>
     <div id="main-part">
-        <div id="toolBox">
-            <div id="toolBox-child">
-                <button id="pencil" class="toolBox-buttons">pencil</button>
-                <button id="eraser" class="toolBox-buttons">eraser</button>
-                <button id="clear" class="toolBox-buttons">clear</button>
+        <div id="header">
+            <div id="user"></div>
+            <div id="status"></div>
+            <div id="comment-button"></div>
+            <div id="home-button"></div>
+        </div>
+        <div id="main-body">
+            <div id="toolBox">
+                <div id="choose" class="toolBox-buttons">choose</div>
+                <div id="pencil" class="toolBox-buttons">pencil</div>
+                <div id="eraser" class="toolBox-buttons">eraser</div>
+                <div id="rectangle" class="toolBox-buttons">rectangle</div>
+                <div id="triangle" class="toolBox-buttons">traingle</div>
+                <div id="unknow" class="toolBox-buttons">unknow</div>
+                <div id="unknow-too" class="toolBox-buttons">unknow</div>
+                <div id="clear" class="toolBox-buttons">clear</div>
+                
+            </div>
+            <div id="canvas-box">
+                <canvas id="myCanvas"></canvas>
+            </div>
+            <div id="additional-toolbar">
+                <div id="re-un-button">
+                    <div id="undo">undo</div>
+                    <div id="redo">redo</div>
+                </div>
+                <div id="adjust-size">
+                    <label for="slider"></label><input type="range" min = "1" max = "100" value="5" id="slider">
+                </div>
             </div>
         </div>
-        <div id="canvas-box">
-            <canvas id="myCanvas"></canvas>
+        <divi id="footer">
+            <div id="back-button"></div>
+            <div id="page-number"></div>
+            <div id="next-button"></div>
         </div>
     </div>
-    <div id="adjust-size">
-        <label for="slider"></label><input type="range" min = "1" max = "100" value="5" id="slider">
-    </div>
+    
     <script src="js/script.js"></script>
     <script src="js/sync.js"></script>
 </body>

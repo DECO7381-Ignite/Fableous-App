@@ -83,16 +83,16 @@ function move(e) {
 function up(e) {
     if (!painting) return;
 
-    let {x, y} = getPoints(e);
-    points.push({x, y});
+    // let {x, y} = getPoints(e);
+    // points.push({x, y});
 
-    if (points.length >= 3) {
-        let lastTwoPoints = points.slice(-2);
-        let controlPoint = lastTwoPoints[0];
-        let endpoint = lastTwoPoints[1];
-        // drawLine(lastPoint, controlPoint, endpoint); 无用语句
-        // sendMessage(duuid, 1, lastPoint,controlPoint,endpoint); 调试用type1
-    }
+    // if (points.length >= 3) {
+    //     let lastTwoPoints = points.slice(-2);
+    //     let controlPoint = lastTwoPoints[0];
+    //     let endpoint = lastTwoPoints[1];
+    //     // drawLine(lastPoint, controlPoint, endpoint); 无用语句
+    //     // sendMessage(duuid, 1, lastPoint,controlPoint,endpoint); 调试用type1
+    // }
     lastPoint = null;
     painting = false;
     points = [];
