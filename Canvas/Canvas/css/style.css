@@ -1,0 +1,194 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+#main-part {
+    width: 95%;
+    height: 95%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    min-width: 900px;
+}
+
+
+
+/* Header */
+#header {
+    background-color: #efe2c7;
+    height: 80px;
+    display: block;
+    position: relative;
+}
+
+#header div {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    /*background-color: whitesmoke;*/
+    float: left;
+}
+
+#user {
+    left: 30px;
+}
+
+#status {
+    left: 90px;
+}
+
+#status p {
+    margin: 0 auto;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+}
+
+#comment-button {
+    right: 90px;
+}
+
+#comment-button img {
+    margin-top: 5px;
+}
+
+#home-button {
+    right: 30px;
+}
+
+
+
+/* Main body*/
+#main-body {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    position: relative;
+    height: 70%;
+}
+
+/* Additional toolbar */
+#additional-toolbar {
+    width: 60px;
+    height: 75%;
+    top: 50%;
+    transform: translate(0, -50%);
+    position: fixed;
+    right: 10px;
+    flex-direction: column;
+}
+
+#re-un-button {
+    position: absolute;
+    width: 100%;
+}
+
+#re-un-button div{
+    width: 120px;
+    float: right;
+}
+
+div#re-un-button div:hover {
+    transform: translate(-2px, -2px);
+}
+
+div#re-un-button div:active {
+    transform: translate(2px, 2px);
+}
+
+#redo {
+}
+
+#undo {
+}
+
+#color-pad {
+    position: absolute;
+    top: 125px;
+    height: 55vh;
+    width: inherit;
+}
+
+#adjust-size {
+    position: absolute;
+    width: 134px;
+    height: 20px;
+    bottom: 0;
+    right: 0;
+}
+
+/* Canvas */
+#canvas-box {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    border: 2px solid gray;
+    box-sizing: border-box;
+}
+
+/* Tool Box */
+#toolBox {
+    position: fixed;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 10px;
+    width: 80px;
+    height: 75%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: #a6b1bc;
+}
+
+#toolBox div {
+    flex: 1;
+    transition: ease 0.17s;
+}
+
+#toolBox div img {
+    height: 6vh;
+    width: 6vh;
+    transform: translate(20%, 20%);
+}
+
+div.toolBox-buttons:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+
+div.toolBox-buttons:active {
+    transform: scale(1);
+}
+
+
+
+/* Footer */
+#footer {
+    background-color: #efe2c7;
+    height: 80px;
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+}
+
+#footer div {
+    flex:1;
+    margin: 2px;
+}
+
+#footer div p {
+    margin: 0 auto;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 80px;
+    text-align: center;
+}
