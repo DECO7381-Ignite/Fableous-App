@@ -7,15 +7,16 @@ body {
 }
 
 #main-part {
+    margin: auto;
     width: 95%;
     height: 95%;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
-    min-width: 900px;
 }
 
 
@@ -80,10 +81,10 @@ body {
 /* Additional toolbar */
 #additional-toolbar {
     width: 60px;
-    height: 75%;
+    height: 95%;
     top: 50%;
     transform: translate(0, -50%);
-    position: fixed;
+    position: absolute;
     right: 10px;
     flex-direction: column;
 }
@@ -138,12 +139,12 @@ div#re-un-button div:active {
 
 /* Tool Box */
 #toolBox {
-    position: fixed;
+    position: absolute;
     top: 50%;
     transform: translate(0, -50%);
     left: 10px;
-    width: 80px;
-    height: 75%;
+    width: 9vh;
+    height: 95%;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
