@@ -9,40 +9,42 @@
 <body>
     <div id="main-part">
         <div id="header">
-            <div id="user"></div>
-            <div id="status"></div>
-            <div id="comment-button"></div>
-            <div id="home-button"></div>
+            <div id="user"><img src="icon/user.svg" alt="user_icon"></div>
+            <div id="status"><p>DRAWING</p></div>
+            <div id="comment-button"><img src="icon/comment.svg" alt="comment icon"></div>
+            <div id="home-button"><img src="icon/home.svg" alt="home icon"></div>
         </div>
         <div id="main-body">
             <div id="toolBox">
-                <div id="choose" class="toolBox-buttons">choose</div>
-                <div id="pencil" class="toolBox-buttons">pencil</div>
-                <div id="eraser" class="toolBox-buttons">eraser</div>
-                <div id="rectangle" class="toolBox-buttons">rectangle</div>
-                <div id="triangle" class="toolBox-buttons">traingle</div>
-                <div id="unknow" class="toolBox-buttons">unknow</div>
-                <div id="unknow-too" class="toolBox-buttons">unknow</div>
-                <div id="clear" class="toolBox-buttons">clear</div>
-                
+                <div id="choose" class="toolBox-buttons"><img src="icon/choose.svg" alt="choose icon"></div>
+                <div id="pencil" class="toolBox-buttons"><img src="icon/pencil.svg" alt="pencil icon"></div>
+                <div id="eraser" class="toolBox-buttons"><img src="icon/eraser.svg" alt="eraser icon"></div>
+                <div id="rectangle" class="toolBox-buttons"><img src="icon/rectangle.svg" alt="rectangle icon"></div>
+                <div id="triangle" class="toolBox-buttons"><img src="icon/triangle.svg" alt="triangle icon"></div>
+                <div id="circle" class="toolBox-buttons"><img src="icon/circle.svg" alt="circle icon"></div>
+                <div id="fill" class="toolBox-buttons"><img src="icon/fill.svg" alt="fill icon"></div>
+                <div id="clear" class="toolBox-buttons"><img src="icon/clear.svg" alt="clear icon"></div>
             </div>
             <div id="canvas-box">
                 <canvas id="myCanvas"></canvas>
             </div>
             <div id="additional-toolbar">
                 <div id="re-un-button">
-                    <div id="undo">undo</div>
-                    <div id="redo">redo</div>
+                    <div id="undo"><img src="icon/undo.svg" alt="undo icon"></div>
+                    <div id="redo"><img src="icon/redo.svg" alt="redo icon"></div>
+                </div>
+                <div id="color-pad">
+                    <img src="icon/color%20pad.svg" alt="color pad img">
                 </div>
                 <div id="adjust-size">
                     <label for="slider"></label><input type="range" min = "1" max = "100" value="5" id="slider">
                 </div>
             </div>
         </div>
-        <divi id="footer">
-            <div id="back-button"></div>
-            <div id="page-number"></div>
-            <div id="next-button"></div>
+        <div id="footer">
+            <div id="back-button"><p>&lt; Previous Page</p></div>
+            <div id="page-number"><p>Page 1</p></div>
+            <div id="next-button"><p>Next Page &gt;</p></div>
         </div>
     </div>
     
