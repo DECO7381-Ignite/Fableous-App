@@ -138,3 +138,7 @@ rangeValue.oninput = function () {
     console.log(ctx.lineWidth);
     sendMessage(duuid, 6, ctx.lineWidth, 0, 0);
 };
+
+//hide rate and pitch values
+document.getElementById("rate").style.display = "none";
+document.getElementById("pitch").style.display = "none";
