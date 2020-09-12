@@ -172,6 +172,18 @@ div.toolBox-buttons:active {
 
 
 
+/* Form Group */
+form {
+    display: flex;
+    justify-content: center;
+}
+
+#text-input {
+    width: 30vw;
+}
+
+
+
 /* Footer */
 #footer {
     background-color: #efe2c7;
