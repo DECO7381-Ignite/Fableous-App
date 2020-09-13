@@ -153,9 +153,10 @@ canvas.onmouseleave = function () {
 /** 填充相关 */
 
 function initialFill() {
+    let temp = ctx.fillStyle;
     ctx.fillStyle = "#FFFFFF"; // 先用纯白涂满画布
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#000000"; // 再把fillStyle改回默认黑
+    ctx.fillStyle = temp; // 再把fillStyle改回去
 }
 
 function fillCanvas(canvas, ctx, X, Y, newColor) {
@@ -277,7 +278,7 @@ fill.onclick = function () {
 
 // 点击clear按钮
 clear.onclick = function () {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    initialFill();
     sendMessage(duuid, 5, 0, 0, 0);
 };
 
