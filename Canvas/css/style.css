@@ -119,7 +119,7 @@ div#re-un-button div:active {
 #color-pad {
     position: absolute;
     top: 125px;
-    height: 51vh;
+    height: 35vh;
     min-height: 435px;
     width: inherit;
     display: flex;
