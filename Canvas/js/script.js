@@ -23,6 +23,7 @@ for (let c = 0; c < 12; c++) {
         chosenColor.childNodes[0].style.opacity = "0"; // 隐藏先前选色的✅
         this.childNodes[0].style.opacity = "1"; // 显示当前选色的✅
         chosenColor = this;
+        sendMessage(duuid,8,ctx.strokeStyle,0,0); // send 画笔颜色
     }
 }
 let chosenColor = colors[11]; // 默认选择黑色
@@ -61,10 +62,14 @@ function down(e) {
         points.push({x, y});
         lastPoint = {x, y};
 
-        rangeValue.oninput(); // 画之前统一成与此页条设置一样的粗细
+        // 画之前统一成与此页条设置一样的cuxi, yanse.
+        rangeValue.oninput();
+        // colors[c].onclick();
+        
         ctx.beginPath();
         ctx.arc(lastPoint.x, lastPoint.y, ctx.lineWidth / 2, 0, Math.PI * 2);
         ctx.fill();
+        
         sendMessage(duuid, 4, x, 0, y);
     } else if (chosenTool === toolBox[2]) { // 填充模式
         // pass
@@ -88,7 +93,10 @@ function move(e) {
                 x: (controlPoint.x + lastTwoPoints[1].x) / 2,
                 y: (controlPoint.y + lastTwoPoints[1].y) / 2,
             };
-            rangeValue.oninput(); // 画之前统一成与此页条设置一样的粗细
+            // 画之前统一成与此页条设置一样的cuxi, yanse.
+            rangeValue.oninput(); 
+            // colors[c].onclick();
+            console.log(ctx.strokeStyle);
 
             // 不同工具的鼠标移动事件
             // if (toolBox["pencil"] === "1") {
@@ -130,7 +138,8 @@ function up(e) {
         points = [];
     } else if (chosenTool === toolBox[2]) { // 填充模式
         let {x, y} = getPoints(e);
-        fillCanvas(canvas, ctx, x, y, ctx.fillStyle)
+        fillCanvas(canvas, ctx, x, y, ctx.fillStyle);
+        sendMessage(duuid, 7, x, ctx.fillStyle, y);
     }
 
 }
