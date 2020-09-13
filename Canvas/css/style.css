@@ -19,8 +19,6 @@ body {
     flex-direction: column;
 }
 
-
-
 /* Header */
 .header {
     background-color: #efe2c7;
@@ -145,8 +143,8 @@ div.colors {
 #c8 { background-color: #CCDADA; }
 #c9 { background-color: #B7CDD8; }
 #c10 { background-color: #789EB1; }
-#c11 { background-color: #000000;
-
+#c11 {
+    background-color: #000000;
     border-bottom: 2px solid #666;
 }
 
@@ -214,8 +212,6 @@ div.toolBox-buttons:hover {
 div.toolBox-buttons:active {
     transform: scale(1);
 }
-
-
 
 /* Form Group */
 form {
