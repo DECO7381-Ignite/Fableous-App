@@ -18,11 +18,11 @@
                 ctx.arc(x, y, ctx.lineWidth / 2, 0, Math.PI * 2);
                 ctx.fill();
             }
-        function cleaning(x, z, y) {
-                ctx.lineWidth = cuxi;
-                ctx.strokeStyle = "white";
-                drawLine(x, z, y);
-            }
+        // function cleaning(x, z, y) {
+        //         ctx.lineWidth = cuxi;
+        //         ctx.strokeStyle = "white";
+        //         drawLine(x, z, y);
+        //     }
         function fillC() {
                 ctx.fillStyle=fengg;
                 fillCanvas(canvas, ctx, data.x, data.y, fengg);

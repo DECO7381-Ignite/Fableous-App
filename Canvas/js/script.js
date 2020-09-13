@@ -16,7 +16,7 @@ let clear = document.getElementById("clear");
 
 let colors = [];
 for (let c = 0; c < 12; c++) {
-    colors.push(document.getElementById("c" + c))
+    colors.push(document.getElementById("c" + c));
     colors[c].onclick = function () { // 点击色块
         ctx.fillStyle = window.getComputedStyle(this).backgroundColor; // 改变fillStyle
         ctx.strokeStyle = ctx.fillStyle;
@@ -42,7 +42,7 @@ let points = [];
 
 const toolBox = ["choose", "pencil", "fill"];
 let chosenTool = toolBox[1];
-let stylus = 2;
+let stylus = 2; //联动 send 判断earser or pencil
 
 // 绑定canvas的鼠标点击，鼠标移动，鼠标松开事件
 canvas.addEventListener("mousedown", down, false);
@@ -64,12 +64,16 @@ function down(e) {
 
         // 画之前统一成与此页条设置一样的cuxi, yanse.
         rangeValue.oninput();
-        // colors[c].onclick();
+        if (stylus === 2){
+            chosenColor.onclick();
+        } else if (stylus === 3) {
+            ctx.fillStyle = "#ffffff";
+        };
         
         ctx.beginPath();
         ctx.arc(lastPoint.x, lastPoint.y, ctx.lineWidth / 2, 0, Math.PI * 2);
         ctx.fill();
-        
+        // send 点击事件
         sendMessage(duuid, 4, x, 0, y);
     } else if (chosenTool === toolBox[2]) { // 填充模式
         // pass
@@ -95,12 +99,16 @@ function move(e) {
             };
             // 画之前统一成与此页条设置一样的cuxi, yanse.
             rangeValue.oninput(); 
-            // colors[c].onclick();
-            console.log(ctx.strokeStyle);
+            if (stylus === 2){
+                chosenColor.onclick();
+            } else if (stylus === 3) {
+                ctx.strokeStyle = "#ffffff";
+            };
 
             // 不同工具的鼠标移动事件
             // if (toolBox["pencil"] === "1") {
             drawLine(lastPoint, controlPoint, endPoint);
+            // send 画还是擦
             sendMessage(duuid, stylus, lastPoint, controlPoint, endPoint);
             // } else if (toolBox["eraser"] === "1") {
             //     ctx.save();
@@ -139,6 +147,7 @@ function up(e) {
     } else if (chosenTool === toolBox[2]) { // 填充模式
         let {x, y} = getPoints(e);
         fillCanvas(canvas, ctx, x, y, ctx.fillStyle);
+        // send 填充
         sendMessage(duuid, 7, x, ctx.fillStyle, y);
     }
 
@@ -299,6 +308,7 @@ fill.onclick = function () {
 // 点击clear按钮
 clear.onclick = function () {
     initialFill();
+    // send clear
     sendMessage(duuid, 5, 0, 0, 0);
 };
 
@@ -308,11 +318,11 @@ clear.onclick = function () {
 
 
 rangeValue.oninput = function () {
-    ctx.lineWidth = rangeValue.value / 100 * 40;
+    ctx.lineWidth = Math.round(rangeValue.value / 100 * 40);
     if (ctx.lineWidth < 3) {
         ctx.lineWidth = 3;
     }
-    sendMessage(duuid, 6, ctx.lineWidth, 0, 0);
+    sendMessage(duuid, 6, ctx.lineWidth, 0, 0); // send cuxi
 };
 
 //'hide rate and pitch' I've move to top of this file to prevent canvas size error :D  -- Berry
