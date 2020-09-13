@@ -233,34 +233,34 @@ form {
     line-height: 18px;
 }
 
-/* Select Box*/
-#select-box{
-    position: absolute;
-    list-style: none;
-    width: 100px;
-    height: 100px;
-    margin: 0;
-    padding:0;
-    background: white;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    border-radius: 8px;
-    box-shadow: 3px 5px 8px 3px gray;
-    visibility: hidden;
-}
+/*!* Select Box*!*/
+/*#select-box{*/
+/*    position: absolute;*/
+/*    list-style: none;*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*    margin: 0;*/
+/*    padding:0;*/
+/*    background: white;*/
+/*    display: flex;*/
+/*    justify-content: space-evenly;*/
+/*    flex-direction: column;*/
+/*    border-radius: 8px;*/
+/*    box-shadow: 3px 5px 8px 3px gray;*/
+/*    visibility: hidden;*/
+/*}*/
 
-#select-box li {
-    background: #60a6c8;
-    color: white;
-    width: 80px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-    margin:0 auto;
-    left: 0;
-    right: 0;
-}
+/*#select-box li {*/
+/*    background: #60a6c8;*/
+/*    color: white;*/
+/*    width: 80px;*/
+/*    height: 20px;*/
+/*    line-height: 20px;*/
+/*    text-align: center;*/
+/*    margin:0 auto;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*}*/
 
 /* Browsing */
 #browsing-background {
