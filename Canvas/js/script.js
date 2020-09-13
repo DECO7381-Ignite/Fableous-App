@@ -14,7 +14,20 @@ let eraser = document.getElementById("eraser");
 let fill = document.getElementById("fill");
 let clear = document.getElementById("clear");
 
+let colors = [];
+for (let c = 0; c < 12; c++) {
+    colors.push(document.getElementById("c" + c))
+    colors[c].onclick = function () { // 点击色块
+        ctx.fillStyle = window.getComputedStyle(this).backgroundColor; // 改变fillStyle
+        ctx.strokeStyle = ctx.fillStyle;
+        chosenColor.childNodes[0].style.opacity = "0"; // 隐藏先前选色的✅
+        this.childNodes[0].style.opacity = "1"; // 显示当前选色的✅
+        chosenColor = this;
+    }
+}
+let chosenColor = colors[11]; // 默认选择黑色
 let rangeValue = document.getElementById("slider");
+
 
 canvas.width = Math.floor(document.getElementById("canvas-box").offsetWidth - 4);
 canvas.height = Math.floor(document.getElementById("canvas-box").offsetHeight - 4);
@@ -51,7 +64,6 @@ function down(e) {
         rangeValue.oninput(); // 画之前统一成与此页条设置一样的粗细
         ctx.beginPath();
         ctx.arc(lastPoint.x, lastPoint.y, ctx.lineWidth / 2, 0, Math.PI * 2);
-        ctx.fillStyle = ctx.strokeStyle;
         ctx.fill();
         sendMessage(duuid, 4, x, 0, y);
     } else if (chosenTool === toolBox[2]) { // 填充模式
@@ -175,7 +187,7 @@ function fillCanvas(canvas, ctx, X, Y, newColor) {
     let colorB = canvasData.data[4 * i + 2];
 
     // 获取填充颜色的RGB数组，如果与目标相同即跳出
-    let fillingColor = hexToRGB("#FF0000"); // should be newColor, FF0000 for testing
+    let fillingColor = hexToRGB(newColor);
     if (colorR===fillingColor.R && colorG===fillingColor.G && colorB===fillingColor.B) {
         return;
     }
@@ -258,7 +270,7 @@ choose.onclick = function () {
 
 // 点击pencil按钮
 pencil.onclick = function () {
-    ctx.strokeStyle = "#000000";
+    ctx.strokeStyle = ctx.fillStyle;
     stylus = 2;
     chosenTool = toolBox[1]; // pencil
 };
@@ -275,12 +287,16 @@ fill.onclick = function () {
     chosenTool = toolBox[2];
 }
 
-
 // 点击clear按钮
 clear.onclick = function () {
     initialFill();
     sendMessage(duuid, 5, 0, 0, 0);
 };
+
+
+/** 辅助工具相关 */
+
+
 
 rangeValue.oninput = function () {
     ctx.lineWidth = rangeValue.value / 100 * 40;

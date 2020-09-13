@@ -25,6 +25,7 @@ body {
 .header {
     background-color: #efe2c7;
     height: 80px;
+    min-height: 50px;
     display: block;
     position: relative;
 }
@@ -77,6 +78,7 @@ body {
     flex-direction: row;
     position: relative;
     height: 70%;
+    min-height: 610px;
 }
 
 /* Additional toolbar */
@@ -117,8 +119,45 @@ div#re-un-button div:active {
 #color-pad {
     position: absolute;
     top: 125px;
-    height: 55vh;
+    height: 51vh;
+    min-height: 435px;
     width: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+div.colors {
+    border: 2px solid #666;
+    box-sizing: border-box;
+    border-bottom: none;
+    flex: 1;
+    display: flex;
+}
+
+#c0 { background-color: #EAE7EE; }
+#c1 { background-color: #EBE3E3; }
+#c2 { background-color: #DAD7E2; }
+#c3 { background-color: #DEC9CE; }
+#c4 { background-color: #A994A5; }
+#c5 { background-color: #E7CEB8; }
+#c6 { background-color: #E0C4AE; }
+#c7 { background-color: #EBC8B5; }
+#c8 { background-color: #CCDADA; }
+#c9 { background-color: #B7CDD8; }
+#c10 { background-color: #789EB1; }
+#c11 { background-color: #000000;
+
+    border-bottom: 2px solid #666;
+}
+
+div.colors img {
+    width: 30px;
+    margin: auto;
+    opacity: 0;
+}
+
+#c11 img {
+    opacity: 1;
 }
 
 #adjust-size {
@@ -145,11 +184,14 @@ div#re-un-button div:active {
     transform: translate(0, -50%);
     left: 10px;
     width: 9vh;
+    min-width: 70px;
     height: 95%;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     background-color: #a6b1bc;
+    border: 2px solid #666;
+    box-sizing: border-box;
 }
 
 #toolBox div {
@@ -160,6 +202,8 @@ div#re-un-button div:active {
 #toolBox div img {
     height: 6vh;
     width: 6vh;
+    min-height: 45px;
+    min-width: 45px;
     transform: translate(20%, 20%);
 }
 
