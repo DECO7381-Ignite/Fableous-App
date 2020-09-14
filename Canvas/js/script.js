@@ -3,7 +3,6 @@
 document.getElementById("rate").style.display = "none";
 document.getElementById("pitch").style.display = "none";
 
-
 // 获取页面元素，并声明变量
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
@@ -13,7 +12,7 @@ let pencil = document.getElementById("pencil");
 let eraser = document.getElementById("eraser");
 let fill = document.getElementById("fill");
 let clear = document.getElementById("clear");
-
+// var uuju; //数据(双拼),image data
 let colors = [];
 for (let c = 0; c < 12; c++) {
     colors.push(document.getElementById("c" + c));
@@ -172,6 +171,7 @@ function drawLine(begin, control, end) {
     ctx.quadraticCurveTo(control.x, control.y, end.x, end.y);
     ctx.stroke();
     ctx.closePath();
+    // uuju=ctx.getImageData(0,0,canvas.width,canvas.height); redo研究
 }
 
 // 鼠标离开canvas事件
@@ -280,7 +280,9 @@ function hexToRGB(hex) {
 
 
 /** 工具箱按钮相关 */
-
+document.getElementById("undo").onclick=function() {
+    // ctx.putImageData(uuju,0,0); // redo研究
+}
 // 点击choose按钮
 choose.onclick = function () {
     chosenTool = toolBox[0];
@@ -326,3 +328,5 @@ rangeValue.oninput = function () {
 };
 
 //'hide rate and pitch' I've move to top of this file to prevent canvas size error :D  -- Berry
+
+// console.log(); //redo研究
