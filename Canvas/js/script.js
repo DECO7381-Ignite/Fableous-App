@@ -160,8 +160,8 @@ function up(e) {
 function getPoints(e) {
     let rect = canvas.getBoundingClientRect();
     return {
-        x : e.clientX - rect.left,
-        y : e.clientY - rect.top,
+        x : Math.round(e.clientX - rect.left),
+        y : Math.round(e.clientY - rect.top),
     }
 }
 
