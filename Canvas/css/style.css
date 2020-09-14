@@ -258,6 +258,7 @@ form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow-y: auto;
 }
 
 .stories {

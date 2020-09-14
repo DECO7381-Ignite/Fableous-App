@@ -293,13 +293,9 @@ clear.onclick = function () {
     sendMessage(duuid, 5, 0, 0, 0);
 };
 
-
 /** 辅助工具相关 */
-
-
-
 rangeValue.oninput = function () {
-    ctx.lineWidth = rangeValue.value / 100 * 40;
+    ctx.lineWidth = Math.round(rangeValue.value / 100 * 40);
     if (ctx.lineWidth < 3) {
         ctx.lineWidth = 3;
     }
