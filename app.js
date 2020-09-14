@@ -1,9 +1,10 @@
-// localhost version
-var WebSocketServer = require('ws').Server,
-    wss = new WebSocketServer({
-        port: 8080, 'Access-Control-Allow-Origin': "*"
+// uq server version
+const WebSocketServer = require('ws').Server;
+const wss = new WebSocketServer({
+        port: 8081
     });
-var clients = [];
+const clients = [];
+
 console.log('Server running');
 wss.on('connection', function(ws) {
     ws.on('message', function(message) {

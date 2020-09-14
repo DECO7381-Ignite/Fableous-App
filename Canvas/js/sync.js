@@ -1,20 +1,23 @@
 // websocket connection & uuid
     var duuid = uuid(8, 16);
     var ws = new WebSocket("ws://localhost:8080");
+    // uq server
+    // var ws = new WebSocket("wss://s4523761-fableous.uqcloud.net");
 
 // other device to sync
-        var cuxi = ctx.lineWidth;
+        var cuxi;
+        var yanse;
 
         function drawing(x, z, y) {
                 ctx.lineWidth = cuxi;
-                ctx.strokeStyle = "black";
+                ctx.strokeStyle = yanse;
                 drawLine(x, z, y);
             }
         function click1(x, y) {
                 ctx.lineWidth = cuxi; 
+                ctx.fillStyle = yanse;
                 ctx.beginPath();
                 ctx.arc(x, y, ctx.lineWidth / 2, 0, Math.PI * 2);
-                ctx.fillStyle = ctx.strokeStyle;
                 ctx.fill();
             }
         function cleaning(x, z, y) {
@@ -22,9 +25,10 @@
                 ctx.strokeStyle = "white";
                 drawLine(x, z, y);
             }
-        function clearCanvas() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }
+        function fillC() {
+                ctx.fillStyle=fengg;
+                fillCanvas(canvas, ctx, data.x, data.y, fengg);
+        }
   
         ws.onopen = function(e) {
                 console.log('Connection to server successfully');
@@ -52,10 +56,14 @@
                 } else if (data.type === 4) {
                     click1(data.x, data.y);
                 } else if (data.type === 5) {
-                    clearCanvas();
+                    initialFill();
                 } else if (data.type === 6) {
                     cuxi = data.x;
-                }
+                } else if (data.type === 7) {
+                    fillCanvas(canvas, ctx, data.x, data.y, data.z);
+                } else if (data.type === 8) {
+                    yanse = data.x;
+                } 
             }
 
         function uuid(len, radix) {
