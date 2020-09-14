@@ -2,7 +2,7 @@
 
 此项目最终解释权归 “东半球南太平洋地区大洋洲大袋鼠国 🇦🇺 澳斯吹利亚昆士兰州东南部大布里斯班地区布里斯班河边圣卢西亚区4072‘UQ’🏊🏻‍  全校大学生游泳比赛-职业组-团体赛冠军 🏆️ ” **Team Ignite** (*Dragonboat CO.*)所有.
 
-[已经上线！](https://s4523761-fableous.uqcloud.net/index.html)
+[已经上线！(Beta)](https://s4523761-fableous.uqcloud.net/index.html)
 
 ### Version 1.5 Changelog
 1. 工具栏（鼠标，画笔，填充），选中的工具，填充功能
