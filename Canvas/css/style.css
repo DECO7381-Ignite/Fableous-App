@@ -21,7 +21,7 @@ body {
 
 /* Header */
 .header {
-    background-color: #efe2c7;
+    background-color: #60A6C8;
     height: 80px;
     min-height: 50px;
     display: block;
@@ -37,9 +37,10 @@ body {
     float: left;
 }
 
-.user {
+div.user {
     left: 30px;
-    width: 40px;
+    top: 45%;
+    width: 50px;
 }
 
 .status {
@@ -383,7 +384,7 @@ form {
 
 /* Footer */
 .footer {
-    background-color: #efe2c7;
+    background-color: #60A6C8;
     height: 80px;
     display: flex;
     position: relative;
