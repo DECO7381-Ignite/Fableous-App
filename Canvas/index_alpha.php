@@ -135,7 +135,7 @@ $conn->close();
                 <input style="display:none" id="pdata" type="text" name="data">
                 <input type="submit" value="SAVE" onclick=savedata()>
             </form>
-            <input type="submit" value="TEST" onclick=gett()>
+            <input type="submit" value="TEST(JDNB from cloud)" onclick=gett()>
         </div>
     </div>
     <script>
