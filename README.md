@@ -2,15 +2,19 @@
 
 此项目最终解释权归 “东半球南太平洋地区大洋洲大袋鼠国 🇦🇺 澳斯吹利亚昆士兰州东南部大布里斯班地区布里斯班河边圣卢西亚区4072‘UQ’🏊🏻‍  全校大学生游泳比赛-职业组-团体赛冠军 🏆️ ” **Team Ignite** (*Dragonboat CO.*)所有.
 
-[已经上线！(Beta)](https://s4523761-fableous.uqcloud.net/index.html)
+## 主页面：
+[主页面 (Stable)](https://s4523761-fableous.uqcloud.net/index.html)
+[主页面 (Alpha)-可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
 
-### Version 1.5 Changelog
-1. 工具栏（鼠标，画笔，填充），选中的工具，填充功能
-现在点击时首先判断选中的工具是什么再进行相应操作
-2. 画笔增粗，现在画笔强制不小于3，因为太细了会导致填充错误
-3. 画布初始化时的操作已经调整：尺寸方面除去了container的border，并且取整方便填充时的数字计算。初始化时还会把画布整体涂白，之前默认全版为纯透明黑（影响填充操作）改掉了。
-4. 清空键逻辑重做，直接绑定至initialFill
+### 其他页面：
+[Homepage](https://s4523761-fableous.uqcloud.net/home.html)
+[Library (Stable)](https://s4523761-fableous.uqcloud.net/library.html)
+[Library (Alpha)-可以同步云端的图片信息](https://s4523761-fableous.uqcloud.net/library_alpha.php)
 
-整体代码修整了一下，注释什么的也排整齐了。
+### Version 1.6 Changelog
+1. 增加homepage
+2. 部分优化CSS 和 图标
+3. 初步完成图片保存到服务器并再次使用(alpha)：test按钮自动把云端保存过的图片读取（可能会有延迟取决于服务器）
+
 
 ##### <div align="right">*引用或git需注明来源*</div>
