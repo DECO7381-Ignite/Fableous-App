@@ -1,8 +1,9 @@
 // websocket connection & uuid
     var duuid = uuid(8, 16);
-    var ws = new WebSocket("ws://localhost:8080");
+    // localhost
+    // var ws = new WebSocket("ws://localhost:8080");
     // uq server
-    // var ws = new WebSocket("wss://s4523761-fableous.uqcloud.net");
+    var ws = new WebSocket("wss://s4523761-fableous.uqcloud.net");
 
 // other device to sync
         var cuxi;
