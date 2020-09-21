@@ -2,7 +2,8 @@
 $servername = "localhost";
 $username = "root";
 // server
-$password = "dbf76fb8c7e45fe1";
+//$password = "dbf76fb8c7e45fe1";
+$password = "";
 // localhost pas
 // $password = "";
 $dbname = "fableous";
@@ -79,8 +80,6 @@ $conn->close();
             </div>
         </div>
 
-
-
         <form>
             <div class="form-group">
             
@@ -123,34 +122,62 @@ $conn->close();
 
             <button class="btn btn-light btn-lg btn-block">Read aloud story text</button>
         </form>
-        
+        <button id="save-picture-button" onclick=savePicture()>SUBMIT</button>
+        <input type="submit" value="TEST(JDNB from cloud)" onclick=gett()>
+
         <div class="footer">
             <div id="back-button"><p>&lt; Previous Page</p></div>
             <div id="page-number"><p>Page 1</p></div>
             <div id="next-button"><p>Next Page &gt;</p></div>
-        <!-- upload function -->
-            <form action="upload.php" method="POST">
-                Picture name: <input type="text" name="pname">
-                Your name: <input type="text" name="user">
-                <input style="display:none" id="pdata" type="text" name="data">
-                <input type="submit" value="SAVE" onclick=savedata()>
-            </form>
-            <input type="submit" value="TEST(JDNB from cloud)" onclick=gett()>
         </div>
     </div>
+    <!-- upload function -->
+    <div id="black-background"></div>
+    <div id="save-picture-window">
+        <form id="save-picture-form" action="upload.php" method="POST">
+            <label>Picture name:
+                <input type="text" name="pname">
+            </label>
+            <label>Your name:
+                <input type="text" name="user">
+            </label>
+            <div>
+                <input id="ensure-save-picture-button" type="submit" value="SAVE" onclick=savedata()>
+                <button id="cancel-save-picture" onclick="return cancelSave()">CANCEL</button>
+            </div>
+            <input style="display:none" id="pdata" type="text" name="data">
+        </form>
+    </div>
     <script>
-    var mycanvas=document.getElementsByTagName("canvas");
-    var data = null;
-    var myimage = new Image();
+    let mycanvas=document.getElementById("myCanvas");
+    let data = null;
+    let myimage = new Image();
+
     function savedata() {
-        data=mycanvas[0].toDataURL();
+        data=mycanvas.toDataURL();
         document.getElementById("pdata").value=data;
     }
+
     function gett() {  
         myimage.src="<?php echo $img[0] ?>";
         mycanvas.width = myimage.width;
         mycanvas.height = myimage.height;
-        mycanvas[0].getContext("2d").drawImage(myimage, 0, 0);
+        mycanvas.getContext("2d").drawImage(myimage, 0, 0);
+    }
+
+    function savePicture() {
+        let blackBackground = document.getElementById("black-background");
+        let savePictureWindow = document.getElementById("save-picture-window");
+        blackBackground.style.visibility = "visible";
+        savePictureWindow.style.visibility = "visible";
+    }
+
+    function cancelSave() {
+        let blackBackground = document.getElementById("black-background");
+        let savePictureWindow = document.getElementById("save-picture-window");
+        blackBackground.style.visibility = "hidden";
+        savePictureWindow.style.visibility = "hidden";
+        return false;
     }
     </script>
     <script src="js/main.js"></script>

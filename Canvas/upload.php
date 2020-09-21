@@ -2,7 +2,8 @@
 $servername = "localhost";
 $username = "root";
 // server
-$password = "dbf76fb8c7e45fe1";
+//$password = "dbf76fb8c7e45fe1";
+$password = "";
 // localhost pas
 // $password = "";
 $dbname = "fableous";

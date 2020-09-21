@@ -2,7 +2,8 @@
 $servername = "localhost";
 $username = "root";
 // server
-$password = "dbf76fb8c7e45fe1";
+//$password = "dbf76fb8c7e45fe1";
+$password = "";
 // localhost pas
 // $password = "";
 $dbname = "fableous";
@@ -36,7 +37,9 @@ $conn->close();
 <body>
 <div id="browsing-background"></div>
 <div id="picture-box">
-    <div id="picture"></div>
+    <div id="picture">
+        <canvas id="library-canvas"></canvas>
+    </div>
     <div id="picture-button">
         <button id="rename-button">rename</button>
         <button id="delete-button">delete</button>
@@ -79,6 +82,8 @@ $conn->close();
     let userInput = document.getElementById("user-input");
     let storyID = 0;
     let storiesArray = document.getElementsByClassName("stories");
+    let libCanvas = document.getElementById("library-canvas");
+    let myimage = new Image();
 
     for (let s in storiesArray) {
         let a = storiesArray[s];
@@ -98,6 +103,11 @@ $conn->close();
 
     add.addEventListener("click", addStories, false);
 
+    function gett() {
+        myimage.src="<?php echo $imgs[0] ?>";
+        libCanvas.getContext("2d").drawImage(myimage, 0, 0, libCanvas.width, libCanvas.height);
+    }
+
     function addStories(e) {
         let stories = document.createElement("div");
         let storyTitle = document.createElement("p");
@@ -116,6 +126,7 @@ $conn->close();
         stories.appendChild(storyTitle);
 
         stories.onclick = function () {
+            gett();
             let background = document.getElementById("browsing-background");
             let picture = document.getElementById("picture-box");
             background.style.visibility = "visible";
@@ -131,12 +142,14 @@ $conn->close();
             closeButton.onclick = function () {
                 background.style.visibility = "hidden";
                 picture.style.visibility = "hidden";
+                inputNewName.style.visibility = "hidden";
             }
 
             deleteButton.onclick = function () {
                 background.style.visibility = "hidden";
                 picture.style.visibility = "hidden";
                 stories.parentNode.removeChild(stories);
+                inputNewName.style.visibility = "hidden";
             }
 
             renameButton.onclick = function () {
