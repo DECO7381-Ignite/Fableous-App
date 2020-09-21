@@ -6,7 +6,7 @@
 
 [主页面 (Stable)](https://s4523761-fableous.uqcloud.net/index.html)
 
-[主页面 (Alpha)-可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
+[主页面 (Alpha) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
 
 ### 其他页面：
 
@@ -14,7 +14,7 @@
 
 [Library (Stable)](https://s4523761-fableous.uqcloud.net/library.html)
 
-[Library (Alpha)-可以同步云端的图片信息](https://s4523761-fableous.uqcloud.net/library_alpha.php)
+[Library (Alpha) - 可以同步云端的图片信息](https://s4523761-fableous.uqcloud.net/library_alpha.php)
 
 ### Version 1.6 Changelog
 
