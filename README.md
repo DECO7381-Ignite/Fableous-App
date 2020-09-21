@@ -8,6 +8,13 @@
 
 [主页面 (Alpha) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
 
+### Version 1.6 Changelog
+
+1. 增加homepage
+2. 部分优化CSS 和 图标
+3. 初步完成图片保存到服务器并再次使用(alpha)：test按钮自动把云端保存过的图片("金丹牛逼")读取（可能会有延迟取决于服务器）
+4. 初步完成图片保存后并添加到library (alpha version)
+
 ### 其他页面：
 
 [Homepage](https://s4523761-fableous.uqcloud.net/home.html)
@@ -15,12 +22,5 @@
 [Library (Stable)](https://s4523761-fableous.uqcloud.net/library.html)
 
 [Library (Alpha) - 可以同步云端的图片信息](https://s4523761-fableous.uqcloud.net/library_alpha.php)
-
-### Version 1.6 Changelog
-
-1. 增加homepage
-2. 部分优化CSS 和 图标
-3. 初步完成图片保存到服务器并再次使用(alpha)：test按钮自动把云端保存过的图片读取（可能会有延迟取决于服务器）
-
 
 ##### <div align="right">*引用或git需注明来源*</div>
