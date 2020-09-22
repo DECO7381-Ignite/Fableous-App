@@ -11,8 +11,12 @@ let choose = document.getElementById("choose");
 let pencil = document.getElementById("pencil");
 let eraser = document.getElementById("eraser");
 let fill = document.getElementById("fill");
+let rectangle = document.getElementById("rectangle");
+let triangle = document.getElementById("triangle");
+let circle = document.getElementById("circle");
 let clear = document.getElementById("clear");
 // var uuju; //数据(双拼),image data
+
 let colors = [];
 for (let c = 0; c < 12; c++) {
     colors.push(document.getElementById("c" + c));
@@ -38,10 +42,13 @@ ctx.lineCap = "round";
 let painting = false;
 let lastPoint = null;
 let points = [];
+let isDrawingShape = false;
+let shapingVar = {"startP": null, "originalImage": null};
 
-const toolBox = ["choose", "pencil", "fill"];
+const toolBox = ["choose", "pencil", "fill", "shaping"];
 let chosenTool = toolBox[1];
 let stylus = 2; //联动 send 判断earser or pencil
+let chosenShape = null;
 
 // 绑定canvas的鼠标点击，鼠标移动，鼠标松开事件
 canvas.addEventListener("mousedown", down, false);
@@ -67,7 +74,7 @@ function down(e) {
             chosenColor.onclick();
         } else if (stylus === 3) {
             ctx.fillStyle = "#ffffff";
-        };
+        }
         
         ctx.beginPath();
         ctx.arc(lastPoint.x, lastPoint.y, ctx.lineWidth / 2, 0, Math.PI * 2);
@@ -76,6 +83,11 @@ function down(e) {
         sendMessage(duuid, 4, x, 0, y);
     } else if (chosenTool === toolBox[2]) { // 填充模式
         // pass
+    } else if (chosenTool === toolBox[3]) { // 形状模式
+        shapingVar.startP = getPoints(e);
+        isDrawingShape = true;
+        // 记录初始画布
+        shapingVar.originalImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
     }
 
 }
@@ -102,7 +114,7 @@ function move(e) {
                 chosenColor.onclick();
             } else if (stylus === 3) {
                 ctx.strokeStyle = "#ffffff";
-            };
+            }
 
             // 不同工具的鼠标移动事件
             // if (toolBox["pencil"] === "1") {
@@ -121,6 +133,11 @@ function move(e) {
         }
     } else if (chosenTool === toolBox[2]) { // 填充模式
         // pass
+    } else if (chosenTool === toolBox[3]) { // 矩形模式
+        if (isDrawingShape) {
+            shaping(shapingVar.startP["x"], shapingVar.startP["y"],
+                getPoints(e)["x"], getPoints(e)["y"]);
+        }
     }
 
 }
@@ -148,6 +165,9 @@ function up(e) {
         fillCanvas(canvas, ctx, x, y, ctx.fillStyle);
         // send 填充
         sendMessage(duuid, 7, x, ctx.fillStyle, y);
+    } else if (chosenTool === toolBox[3]) { // 矩形模式
+        isDrawingShape = false;
+        // @Will, better to do the sendMessage() here.
     }
 
 }
@@ -177,6 +197,11 @@ function drawLine(begin, control, end) {
 // 鼠标离开canvas事件
 canvas.onmouseleave = function () {
     painting = false;
+    // @Will, may need to send the x2,y2 and do the shaping to the server here.
+    // if (isDrawingShape) {
+    //     sendMessage(...);
+    // }
+    isDrawingShape = false;
 };
 
 
@@ -279,7 +304,39 @@ function hexToRGB(hex) {
 }
 
 
+/** 形状绘制相关 */
+
+function initShaping() {
+    initialFill();  // 清空canvas
+    ctx.putImageData(shapingVar.originalImage, 0, 0);  // 恢复初始画布
+}
+
+function shaping(x1, y1, x2, y2) {
+    ctx.save();
+    ctx.beginPath();
+
+    self.initShaping();  // 每移动鼠标便清空重画一次矩形，以达到实时预览效果
+    if (chosenShape === "rectangle") {
+        ctx.strokeRect(x1, y1, x2 - x1, y2 - y1); // 绘制矩形
+    } else if (chosenShape === "triangle") {
+        ctx.moveTo(Math.round((x1 + x2) / 2), y1);
+        ctx.lineTo(x1, y2);
+        ctx.lineTo(x2, y2);
+        ctx.lineTo(Math.round((x1 + x2) / 2), y1);
+        ctx.stroke();
+    } else if (chosenShape === "circle") {
+        let radius = Math.round(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
+        ctx.arc(x1, y1, radius,0,2 * Math.PI);
+        ctx.stroke();
+    }
+
+    ctx.restore();
+    ctx.closePath();
+}
+
+
 /** 工具箱按钮相关 */
+
 document.getElementById("undo").onclick=function() {
     // ctx.putImageData(uuju,0,0); // redo研究
 }
@@ -307,6 +364,25 @@ fill.onclick = function () {
     chosenTool = toolBox[2];
 }
 
+// 点击rectangle按钮
+rectangle.onclick = function () {
+    chosenTool = toolBox[3];
+    chosenShape = "rectangle";
+}
+
+// 点击triangle按钮
+triangle.onclick = function () {
+    chosenTool = toolBox[3];
+    chosenShape = "triangle";
+}
+
+// 点击circle按钮
+circle.onclick = function () {
+    chosenTool = toolBox[3];
+    chosenShape = "circle";
+}
+
+
 // 点击clear按钮
 clear.onclick = function () {
     initialFill();
@@ -314,7 +390,9 @@ clear.onclick = function () {
     sendMessage(duuid, 5, 0, 0, 0);
 };
 
+
 /** 辅助工具相关 */
+
 rangeValue.oninput = function () {
     ctx.lineWidth = Math.round(rangeValue.value / 100 * 40);
     if (ctx.lineWidth < 3) {
