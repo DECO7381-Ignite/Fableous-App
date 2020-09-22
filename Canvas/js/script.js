@@ -89,7 +89,6 @@ function down(e) {
         // 记录初始画布
         shapingVar.originalImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
     }
-
 }
 
 // 定义鼠标的移动事件的函数
@@ -170,8 +169,13 @@ function up(e) {
         // @Will, better to do the sendMessage() here.
     }
 
+    // 更新本地储存的canvas数据
+    updateCanvas(currentPage);
 }
 
+function updateCanvas(number) {
+    pagelists[number].data = canvas.toDataURL();
+}
 
 /** 画笔相关 */
 

@@ -51,6 +51,12 @@
                     <label for="slider"></label><input type="range" min = "1" max = "100" value="5" id="slider">
                 </div>
             </div>
+            <div id="pages">
+                <div id="pages-child-01">
+                    <div id="page-01" class="page-list"></div>
+                </div>
+                <button id="add-page">+</button>
+            </div>
         </div>
 
         <form>
@@ -148,5 +154,6 @@
     <script src="js/main.js"></script>
     <script src="js/script.js"></script>
     <script src="js/sync.js"></script>
+    <script src="js/addPage.js"></script>
 </body>
 </html>

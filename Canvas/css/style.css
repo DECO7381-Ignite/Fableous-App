@@ -10,6 +10,7 @@ body {
     margin: auto;
     width: 95%;
     height: 95%;
+    /*min-height: 700px;*/
     position: absolute;
     right: 0;
     top: 0;
@@ -76,8 +77,8 @@ div.user {
     flex: 1;
     flex-direction: row;
     position: relative;
-    height: 70%;
-    min-height: 610px;
+    /*height: 70%;*/
+    /*min-height: 610px;*/
 }
 
 /* Additional toolbar */
@@ -109,20 +110,15 @@ div#re-un-button div:active {
     transform: translate(2px, 2px);
 }
 
-#redo {
-}
-
-#undo {
-}
-
 #color-pad {
     position: absolute;
     top: 125px;
-    height: 35vh;
-    min-height: 435px;
+    height: 45vh;
+    /*min-height: 435px;*/
     width: inherit;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 div.colors {
@@ -239,6 +235,7 @@ form {
     height:40px;
     width: 40px;
 }
+
 /*#add-stories {*/
 /*    display: inline-block;*/
 /*    height:40px;*/
@@ -461,4 +458,55 @@ form {
     font-weight: bold;
     line-height: 80px;
     text-align: center;
+}
+
+/* Add Page */
+#pages {
+    width: 100%;
+    height: 150px;
+    background-color: grey;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    padding-right: 35px;
+    visibility: hidden;
+}
+
+#pages::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+#pages-child-01 {
+    display: flex;
+    flex-direction: row;
+}
+
+.page-list{
+    width: 180px;
+    height: 120px;
+    background-color: #DEC9CE;
+    margin: 15px;
+}
+
+/*#pages-child-02 {*/
+/*    width: 120px;*/
+/*    height: 120px;*/
+/*    margin: 15px;*/
+/*    border: 1px solid;*/
+/*}*/
+
+#add-page {
+    position: relative;
+    /*padding: 0;*/
+    /*margin: 0;*/
+    top: 35px;
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    font-size: 3em;
 }
