@@ -74,8 +74,6 @@ $conn->close();
     </div>
     <div id="main-lib">
         <button id="search">Search</button>
-        <button id="add-stories">+</button>
-        <input type="text" id="user-input">
         <div id="painting-box">
 <!--            <ul id="select-box">-->
 <!--                <li>Browse</li>-->
@@ -89,9 +87,7 @@ $conn->close();
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script>
-    let add = document.getElementById("add-stories");
     let paintingBox = document.getElementById("painting-box");
-    let userInput = document.getElementById("user-input");
     let storyID = 0;
     let storiesArray = document.getElementsByClassName("stories");
     let libraryImages = null;
