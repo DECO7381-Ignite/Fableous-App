@@ -1,29 +1,29 @@
 <?php
-$servername = "localhost";
-$username = "root";
-// server
-$password = "dbf76fb8c7e45fe1";
-// localhost pas
+//$servername = "localhost";
+//$username = "root";
+//// server
+////$password = "dbf76fb8c7e45fe1";
+//// localhost pas
 // $password = "";
-$dbname = "fableous";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-$sql = "SELECT pname, user, data FROM library WHERE pid=0 ";
-$result = $conn->query($sql);
-$img =array();
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $img[]=$row['data'];
-    }
-} else {
-    echo "0 结果";
-}
-$conn->close();
-?>
+//$dbname = "fableous";
+//
+//// Create connection
+//$conn = mysqli_connect($servername, $username, $password, $dbname);
+////if (!$conn) {
+////    die("Connection failed: " . mysqli_connect_error());
+////}
+////$sql = "SELECT pname, user, data FROM library WHERE pid=0 ";
+////$result = $conn->query($sql);
+////$img =array();
+////if ($result->num_rows > 0) {
+////    while($row = $result->fetch_assoc()) {
+////        $img[]=$row['data'];
+////    }
+////} else {
+////    echo "0 结果";
+////}
+////$conn->close();
+////?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,15 +154,16 @@ $conn->close();
 
     function savedata() {
         data=mycanvas.toDataURL();
+
         document.getElementById("pdata").value=data;
     }
-
-    function gett() {  
-        myimage.src="<?php echo $img[0] ?>";
-        mycanvas.width = myimage.width;
-        mycanvas.height = myimage.height;
-        mycanvas.getContext("2d").drawImage(myimage, 0, 0);
-    }
+    //
+    //function gett() {
+    //    myimage.src="<?php //echo $img[0] ?>//";
+    //    mycanvas.width = myimage.width;
+    //    mycanvas.height = myimage.height;
+    //    mycanvas.getContext("2d").drawImage(myimage, 0, 0);
+    //}
 
     function savePicture() {
         let blackBackground = document.getElementById("black-background");

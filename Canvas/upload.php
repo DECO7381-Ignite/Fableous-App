@@ -2,9 +2,9 @@
 $servername = "localhost";
 $username = "root";
 // server
-$password = "dbf76fb8c7e45fe1";
+//$password = "dbf76fb8c7e45fe1";
 // localhost pas
-// $password = "";
+ $password = "";
 $dbname = "fableous";
 
 // Create connection

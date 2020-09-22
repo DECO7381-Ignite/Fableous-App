@@ -2,9 +2,9 @@
 $servername = "localhost";
 $username = "root";
 // server
-$password = "dbf76fb8c7e45fe1";
+//$password = "dbf76fb8c7e45fe1";
 // localhost pas
-// $password = "";
+ $password = "";
 $dbname = "fableous";
 
 // Create connection
@@ -14,15 +14,29 @@ if (!$conn) {
 }
 $sql = "SELECT * FROM library WHERE user='max' ";
 $result = $conn->query($sql);
-$imgs =array();
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $imgs[]=$row['data'];
-    }
-} else {
-    echo "0 结果";
+$libraryData =array();
+$json = '';
+
+class libraryPhotos {
+    public $pid;
+    public $pname;
+    public $user;
+    public $imageData;
 }
 
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $library_pictures = new libraryPhotos();
+        $library_pictures -> pid = $row['pid'];
+        $library_pictures -> pname = $row['pname'];
+        $library_pictures -> user = $row['user'];
+        $library_pictures -> imageData = $row['data'];
+        $libraryData[]=$library_pictures;
+    }
+    $json = json_encode($libraryData);
+} else {
+    echo "0 result";
+}
 
 $conn->close();
 ?>
@@ -37,7 +51,6 @@ $conn->close();
 <div id="browsing-background"></div>
 <div id="picture-box">
     <div id="picture">
-        <canvas id="library-canvas"></canvas>
     </div>
     <div id="picture-button">
         <button id="rename-button">rename</button>
@@ -81,33 +94,33 @@ $conn->close();
     let userInput = document.getElementById("user-input");
     let storyID = 0;
     let storiesArray = document.getElementsByClassName("stories");
-    let libCanvas = document.getElementById("library-canvas");
-    let myimage = new Image();
+    let libraryImages = null;
+    let currentUser = "max";
+    let images = new Map();
 
-    for (let s in storiesArray) {
-        let a = storiesArray[s];
-        storiesArray[s].onclick = function() {
-            storiesArray[s].setAttribute("border", "1px solid green");
-        }
-        a.onclick = function () {
-            if (a.selected === 1) {
-                a.selected = 0;
-                a.setAttribute("border", "");
-            } else {
-                a.selected = 1;
-                a.setAttribute("border", "1px solid green");
+    window.onload = function () {
+        libraryImages = <?php echo $json?>;
+        for (let p in libraryImages) {
+            if (libraryImages[p].user === "max") {
+                let tempPname = libraryImages[p].pname;
+                let arr = [];
+
+                if (images.get(tempPname)) {
+                    arr = images.get(tempPname);
+                }
+
+                arr.push(libraryImages[p]);
+
+                images.set(tempPname, arr);
             }
         }
+
+        for (let key of images.keys()) {
+            addStories(key);
+        }
     }
 
-    add.addEventListener("click", addStories, false);
-
-    function gett() {
-        myimage.src="<?php echo $imgs[0] ?>";
-        libCanvas.getContext("2d").drawImage(myimage, 0, 0, libCanvas.width, libCanvas.height);
-    }
-
-    function addStories(e) {
+    function addStories(storyname) {
         let stories = document.createElement("div");
         let storyTitle = document.createElement("p");
 
@@ -116,18 +129,19 @@ $conn->close();
         stories.id = "stories" + storyID.toString();
         paintingBox.appendChild(stories);
         stories.setAttribute("position", "relative");
-        stories.selected = 0;
+        stories.pname = storyname;
 
         storyTitle.className = "story-name";
-        storyTitle.innerHTML = userInput.value;
+        storyTitle.innerHTML = storyname;
 
         storyTitle.id = "store-title" + storyID.toString();
         stories.appendChild(storyTitle);
 
         stories.onclick = function () {
-            gett();
+
             let background = document.getElementById("browsing-background");
             let picture = document.getElementById("picture-box");
+
             background.style.visibility = "visible";
             picture.style.visibility = "visible";
 
@@ -166,6 +180,30 @@ $conn->close();
                 inputNewName.style.visibility = "hidden";
             }
 
+            let arr = images.get(storyname);
+
+            let pictures = document.getElementById("picture");
+            pictures.innerHTML="";
+            for (let i in arr) {
+                let libImage = new Image();
+                libImage.src = arr[i].imageData;
+
+                let aDiv = document.createElement("div");
+                aDiv.style.width = "580px";
+                aDiv.style.height = "440px";
+                aDiv.style.margin = "5px";
+                let libCanvas = document.createElement("canvas");
+                libCanvas.className = "library-canvas";
+                libCanvas.style.width = "580px";
+                libCanvas.style.height = "440px";
+
+                pictures.appendChild(aDiv);
+                aDiv.appendChild(libCanvas);
+
+                libImage.onload = function () {
+                    libCanvas.getContext("2d").drawImage(libImage, 0, 0, libCanvas.width, libCanvas.height);
+                }
+            }
         }
     }
 </script>
