@@ -8,12 +8,10 @@
 
 [主页面 (Alpha) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
 
-### Version 1.6 Changelog
+### Version 1.7 Changelog
 
-1. 增加homepage
-2. 部分优化CSS 和 图标
-3. 初步完成图片保存到服务器并再次使用(alpha)：test按钮自动把云端保存过的图片("金丹牛逼")读取（可能会有延迟取决于服务器）
-4. 初步完成图片保存后并添加到library (alpha version)
+进展：完成从数据库读取数据，并将图片分组放置到library
+目前bug：当数据过大时，会产生读取错误
 
 ### 其他页面：
 
