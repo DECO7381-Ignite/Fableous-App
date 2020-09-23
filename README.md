@@ -8,11 +8,11 @@
 
 [主页面 (Alpha) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
 
-### Version 1.9 Changelog
+### Version 1.9.1 Changelog
 
-add Page功能完成
+实现成组上传image
 <br>
-解决了id错乱、新建页数据错乱等bug
+即将步入2.0版本
 
 ### 其他页面：
 
