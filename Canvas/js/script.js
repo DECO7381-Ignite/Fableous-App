@@ -62,6 +62,7 @@ initialFill();
 
 // 定义鼠标的点击事件函数
 function down(e) {
+    console.log(pageMap);
     if (chosenTool === toolBox[1]) { // 画笔模式
         painting = true;
         let {x, y} = getPoints(e);
@@ -138,11 +139,11 @@ function move(e) {
                 getPoints(e)["x"], getPoints(e)["y"]);
         }
     }
-
 }
 
 // 鼠标松开事件
 function up(e) {
+    console.log(pageMap);
     if (chosenTool === toolBox[1]) { // 画笔模式
         if (!painting) return;
 
@@ -169,8 +170,8 @@ function up(e) {
         // @Will, better to do the sendMessage() here.
     }
 
-    // 更新本地储存的canvas数据
-    updateCanvas(currentPage);
+    // // 更新本地储存的canvas数据
+    // updateCanvas(pageMap.get("currentPage"));
 }
 
 function updateCanvas(number) {
@@ -206,6 +207,10 @@ canvas.onmouseleave = function () {
     //     sendMessage(...);
     // }
     isDrawingShape = false;
+
+    // 更新本地储存的canvas数据
+    console.log("out");
+    updateCanvas(pageMap.get("currentPage"));
 };
 
 

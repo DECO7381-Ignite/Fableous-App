@@ -176,6 +176,8 @@ $conn->close();
                 inputNewName.style.visibility = "hidden";
             }
 
+            // 读取img并分组放到library
+
             let arr = images.get(storyname);
 
             let pictures = document.getElementById("picture");

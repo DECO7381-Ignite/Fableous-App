@@ -53,7 +53,7 @@
             </div>
             <div id="pages">
                 <div id="pages-child-01">
-                    <div id="page-01" class="page-list"></div>
+                    <div id="page-1" class="page-list"></div>
                 </div>
                 <button id="add-page">+</button>
             </div>

@@ -4,16 +4,25 @@ let pages = document.getElementById("pages");
 let add_page_button = document.getElementById("add-page");
 let pagesChild01 = document.getElementById("pages-child-01");
 let theCanvas = document.getElementById("myCanvas");
-var currentPage = 0;
+let firstPage = document.getElementById("page-1");
+let pageID = 0;
+var pageMap = new Map();
+pageMap.set("currentPage", 0);
+pageMap.set("previousPage", 0);
 
-for (let k in pagelists) {
-    pagelists[k].onclick = function () {
-        currentPage = k;
-        let img = new Image();
-        img.src = pagelists[k].data;
-        img.onload = function () {
-            theCanvas.getContext("2d").drawImage(img, 0, 0);
-        }
+firstPage.id = "" + pageID;
+pageID = pageID + 1;
+firstPage.innerHTML = "page - " + pageID;
+firstPage.onclick = function () {
+    pagelists = document.getElementsByClassName("page-list");
+    let temp = pageMap.get("currentPage");
+    pageMap.set("currentPage", parseInt(this.id));
+    pageMap.set("previousPage", temp);
+    console.log(pageMap);
+    let img = new Image();
+    img.src = pagelists[0].data;
+    img.onload = function () {
+        theCanvas.getContext("2d").drawImage(img, 0, 0);
     }
 }
 
@@ -29,18 +38,29 @@ add_page_button.onclick = function () {
     let newPage = document.createElement("div");
     newPage.className = "page-list";
     pagesChild01.appendChild(newPage);
+    newPage.id = "" + pageID;
+    pageID = pageID + 1;
+
+    let temp = pageMap.get("currentPage");
+    pageMap.set("currentPage", parseInt(newPage.id));
+    pageMap.set("previousPage", temp);
+    console.log(pageMap);
 
     pagelists = document.getElementsByClassName("page-list");
-    pagelists[pagelists.length - 2].data = theCanvas.toDataURL();
+    pagelists[pageMap.get("previousPage")].data = theCanvas.toDataURL();
+    initialFill();
+    newPage.innerHTML = "page - " + pageID;
+    newPage.data = theCanvas.toDataURL();
 
     newPage.onclick = function () {
-        currentPage = pagelists.length - 1;
-        console.log(currentPage);
+        let temp = pageMap.get("currentPage");
+        pageMap.set("currentPage", parseInt(newPage.id));
+        pageMap.set("previousPage", temp);
+        console.log(pageMap);
         let img = new Image();
-        img.src = this.data;
+        img.src = pagelists[parseInt(newPage.id)].data;
         img.onload = function () {
             theCanvas.getContext("2d").drawImage(img, 0, 0);
         }
     }
-    initialFill();
 }
