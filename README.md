@@ -8,13 +8,11 @@
 
 [主页面 (Alpha) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
 
-### Version 1.8 Changelog
+### Version 1.9 Changelog
 
-初步完成add page以及页内数据储存
+add Page功能完成
 <br>
-但是目前有奇妙的小bug
-<br>
-点击page按钮到相应的页去，index会出错
+解决了id错乱、新建页数据错乱等bug
 
 ### 其他页面：
 
