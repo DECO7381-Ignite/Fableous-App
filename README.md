@@ -8,10 +8,13 @@
 
 [主页面 (Alpha) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
 
-### Version 1.7 Changelog
+### Version 1.8 Changelog
 
-进展：完成从数据库读取数据，并将图片分组放置到library
-目前bug：当数据过大时，会产生读取错误
+初步完成add page以及页内数据储存
+<br>
+但是目前有奇妙的小bug
+<br>
+点击page按钮到相应的页去，index会出错
 
 ### 其他页面：
 
