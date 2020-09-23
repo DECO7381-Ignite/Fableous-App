@@ -209,7 +209,6 @@ canvas.onmouseleave = function () {
     isDrawingShape = false;
 
     // 更新本地储存的canvas数据
-    console.log("out");
     updateCanvas(pageMap.get("currentPage"));
 };
 

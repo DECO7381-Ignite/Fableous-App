@@ -133,7 +133,12 @@
 
     function savedata() {
         data=mycanvas.toDataURL();
-        document.getElementById("pdata").value=data;
+        pagelists = document.getElementsByClassName("page-list");
+        let arr = [];
+        for (let k in pagelists) {
+            arr.push(pagelists[k].data);
+        }
+        document.getElementById("pdata").value = arr.toString();
     }
 
     function savePicture() {
