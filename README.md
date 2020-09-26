@@ -5,11 +5,10 @@
 ##### <div align="right">*引用或git该项目须注明来源*</div>
 
 ## 主页面：
+
 [新主页 (注册，登录，导航)](https://s4523761-fableous.uqcloud.net/index/index.php)
 
-[Canvas (Stable)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.html)
-
-[Canvas (Beta) - 新特性拉满，bug拉满](https://s4523761-fableous.uqcloud.net/index/Canvas/index_beta.php)
+[Canvas (新特性拉满，bug拉满)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
 
 ### Version 2.0.0 Changelog
 
@@ -43,7 +42,7 @@
 + Home:
   - 老主页，将来或与新主页融合（对新主页作调整，或直接‘套娃’）
 
-修复后差不多bug后，会上线Canvas稳定版
+修复后差不多bug后，会上线Canvas最新稳定版
 
 #### bug特别多，但近期没有修复计划。主力研究目前仍在‘多页面’的bug修复与新特性添加。
 

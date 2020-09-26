@@ -25,8 +25,7 @@
           <!-- Placeholder buttons -->
           <li><a href="Canvas/home.html">Home</a></li>
           <li><a href="Canvas/library.php">Library</a></li>
-          <li><a href="Canvas/index.html">Canvas(stable)</a></li>
-          <li><a href="Canvas/index_beta.php">Canvas(beta)</a></li>
+          <li><a href="Canvas/index.php">Canvas</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
       </nav>

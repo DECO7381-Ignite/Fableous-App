@@ -17,8 +17,7 @@
           else if (isset($_SESSION['id'])) {
             // content for logged in users
             ////echo '<p class="login-status">You are logged in!</p>';
-            // echo '<a href="Canvas/index.php">Click here to access canvas</a>';
-            echo '<a href="Canvas/index_beta.php">Click here to access canvas</a>';
+            echo '<a href="Canvas/index.php">Click here to access canvas</a>';
             //include('DECO-7381/Canvas/index.php');
             //readfile('DECO-7381/Canvas/index.php');
             // above 2 do not render elements properly
