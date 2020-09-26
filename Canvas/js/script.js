@@ -17,6 +17,8 @@ let circle = document.getElementById("circle");
 let clear = document.getElementById("clear");
 // var uuju; //数据(双拼),image data
 
+let currentTool = document.getElementsByClassName("current-tool")[0].childNodes[0];
+
 // input text
 let inputTextButton = document.getElementById("input-text-button");
 inputTextButton.isTexting = false;
@@ -116,7 +118,6 @@ function down(e) {
         textWindow.style.top = ty + "px";
         textWindow.style.visibility = "visible";
         confirmText.onclick = function () {
-            ctx.fillStyle = "black";
             ctx.textAlign = "left";
             ctx.font = "18px Arial";
             ctx.fillText(textContent.value, x, y);
@@ -378,6 +379,8 @@ function shaping(x1, y1, x2, y2) {
 // 点击choose按钮
 choose.onclick = function () {
     chosenTool = toolBox[0];
+    turnOffTexting();
+    currentTool.innerHTML = "current tool: cursor";
 }
 
 // 点击pencil按钮
@@ -385,6 +388,8 @@ pencil.onclick = function () {
     ctx.strokeStyle = ctx.fillStyle;
     stylus = 2;
     chosenTool = toolBox[1]; // pencil
+    turnOffTexting();
+    currentTool.innerHTML = "current tool: pencil";
 };
 
 // 点击eraser按钮
@@ -392,29 +397,39 @@ eraser.onclick = function () {
     ctx.strokeStyle = "#ffffff";
     stylus = 3;
     chosenTool = toolBox[1]; // pencil
+    turnOffTexting();
+    currentTool.innerHTML = "current tool: eraser";
 };
 
 // 点击fill按钮
 fill.onclick = function () {
     chosenTool = toolBox[2];
+    turnOffTexting();
+    currentTool.innerHTML = "current tool: fill";
 }
 
 // 点击rectangle按钮
 rectangle.onclick = function () {
     chosenTool = toolBox[3];
     chosenShape = "rectangle";
+    turnOffTexting();
+    currentTool.innerHTML = "current tool: rectangle";
 }
 
 // 点击triangle按钮
 triangle.onclick = function () {
     chosenTool = toolBox[3];
     chosenShape = "triangle";
+    turnOffTexting();
+    currentTool.innerHTML = "current tool: triangle";
 }
 
 // 点击circle按钮
 circle.onclick = function () {
     chosenTool = toolBox[3];
     chosenShape = "circle";
+    turnOffTexting();
+    currentTool.innerHTML = "current tool: circle";
 }
 
 // 点击clear按钮
@@ -422,14 +437,24 @@ clear.onclick = function () {
     initialFill();
     // send clear
     sendMessage(duuid, 5, 0, 0, 0);
+    turnOffTexting();
+    currentTool.innerHTML = "current tool: clear";
 };
 
 // 点击text按钮
 inputTextButton.onclick = function () {
+    // change to cursor
+    chosenTool = toolBox[0];
     inputTextButton.isTexting = !inputTextButton.isTexting;
     if (!inputTextButton.isTexting) {
         textWindow.style.visibility = "hidden";
     }
+    currentTool.innerHTML = "current tool: text";
+}
+
+function turnOffTexting() {
+    inputTextButton.isTexting = false;
+    textWindow.style.visibility = "hidden";
 }
 
 /** 辅助工具相关 */

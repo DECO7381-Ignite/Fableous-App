@@ -11,6 +11,7 @@
         <div class="header">
             <div class="user"><img src="icon/user.svg" alt="user_icon"></div>
             <div class="status"><p>DRAWING</p></div>
+            <div class="current-tool"><p>current tool: pencil</p></div>
             <div class="comment-button"><img src="icon/comment.svg" alt="comment icon"></div>
             <div class="home-button"><img src="icon/home.svg" alt="home icon"></div>
         </div>

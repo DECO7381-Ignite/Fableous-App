@@ -57,6 +57,11 @@ div.user {
     text-align: center;
 }
 
+.current-tool {
+    right: 130px;
+    width: 200px;
+}
+
 .comment-button {
     right: 90px;
     width: 40px;
@@ -114,7 +119,7 @@ div#re-un-button div:active {
     position: absolute;
     top: 125px;
     height: 45vh;
-    /*min-height: 435px;*/
+    min-height: 435px;
     width: inherit;
     display: flex;
     flex-direction: column;
@@ -127,6 +132,10 @@ div.colors {
     border-bottom: none;
     flex: 1;
     display: flex;
+}
+
+div.colors:hover {
+    border: 4px solid #60c8b6;
 }
 
 #c0 { background-color: #EAE7EE; }
