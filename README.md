@@ -8,7 +8,7 @@
 
 [主页面 (Beta) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_beta.php)
 
-### Version 1.9.2 Changelog
+### Version 1.9.3 Changelog
 
 实现成组上传image
 <br>
@@ -18,6 +18,8 @@
 
  - library rename & delete in cloud database.
 <br>
+
+- 同步画图形与文字输入
 即将步入2.0版本
 
 ### 其他页面：
