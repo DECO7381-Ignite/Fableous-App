@@ -8,13 +8,15 @@
 
 [主页面 (Beta) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
 
-### Version 1.9.1 Changelog
+### Version 1.9.2 Changelog
 
 实现成组上传image
 <br>
  - 当图片过多时（4，5张以上时）也会产生图片无法读取的问题
 <br>
  - library页面的删除和重命名也需要和数据库同步
+
+ - library rename & delete in cloud database.
 <br>
 即将步入2.0版本
 
@@ -22,8 +24,6 @@
 
 [Homepage](https://s4523761-fableous.uqcloud.net/home.html)
 
-[Library (Stable)](https://s4523761-fableous.uqcloud.net/library.html)
-
-[Library (Beta) - 可以同步云端的图片信息](https://s4523761-fableous.uqcloud.net/library_alpha.php)
+[Library (Stable)](https://s4523761-fableous.uqcloud.net/library.php)
 
 ##### <div align="right">*引用或git需注明来源*</div>
