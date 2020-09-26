@@ -38,6 +38,20 @@ if ($result->num_rows > 0) {
     echo "0 result";
 }
 
+if (isset($_GET["id"])) {
+    $deleteID=$_GET["id"];
+    $dsql = "DELETE FROM library WHERE pid='$deleteID' "; 
+    $conn->query($dsql);
+    header("Location:library_beta.php");
+}
+if (isset($_GET["uid"])) {
+    $updateID=$_GET["uid"];
+    $uname=$_GET["uname"];
+    $usql = "UPDATE library SET pname='$uname' WHERE pid='$updateID'"; 
+    $conn->query($usql);
+    header("Location:library_beta.php");
+}
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -59,6 +73,7 @@ $conn->close();
     </div>
     <div id="input-new-name">
         <input type="text" id="new-name">
+
         <div id="rename-button-box">
             <button id="confirm-rename-button">confirm</button>
             <button id="cancel-rename-button">cancel</button>
@@ -126,6 +141,7 @@ $conn->close();
         paintingBox.appendChild(stories);
         stories.setAttribute("position", "relative");
         stories.pname = storyname;
+        stories.pid=images.get(storyname)[0].pid;
 
         storyTitle.className = "story-name";
         storyTitle.innerHTML = storyname;
@@ -159,6 +175,7 @@ $conn->close();
                 picture.style.visibility = "hidden";
                 stories.parentNode.removeChild(stories);
                 inputNewName.style.visibility = "hidden";
+                window.location.href="?id="+stories.pid;
             }
 
             renameButton.onclick = function () {
@@ -170,6 +187,7 @@ $conn->close();
                 storyTitle.innerHTML = newName.value;
                 inputNewName.style.visibility = "hidden";
                 newName.value = "";
+                window.location.href="?uid="+stories.pid+"&uname="+storyTitle.innerHTML;
             }
 
             cancelRenameButton.onclick = function () {
