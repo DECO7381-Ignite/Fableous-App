@@ -139,7 +139,6 @@ $conn->close();
         stories.className = "stories";
         stories.id = "stories" + storyID.toString();
         paintingBox.appendChild(stories);
-        stories.setAttribute("position", "relative");
         stories.pname = storyname;
         stories.pid=images.get(storyname)[0].pid;
 
@@ -148,6 +147,11 @@ $conn->close();
 
         storyTitle.id = "store-title" + storyID.toString();
         stories.appendChild(storyTitle);
+
+        // 设置随机封面背景
+        let storiesBG = ["storiesBG1", "storiesBG2", "storiesBG3"];
+        let randomBG = "background-image: url('./icon/" + storiesBG[Math.floor(Math.random() * 3)] + ".svg');";
+        stories.setAttribute("style", randomBG);
 
         stories.onclick = function () {
 

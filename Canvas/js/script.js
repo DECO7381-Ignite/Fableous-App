@@ -17,6 +17,10 @@ let circle = document.getElementById("circle");
 let clear = document.getElementById("clear");
 // var uuju; //数据(双拼),image data
 
+// input text
+let inputTextButton = document.getElementById("input-text-button");
+inputTextButton.isTexting = false;
+
 let colors = [];
 for (let c = 0; c < 12; c++) {
     colors.push(document.getElementById("c" + c));
@@ -57,12 +61,26 @@ canvas.addEventListener("mouseup", up, false);
 // 上来先把画布全涂白，而不是默认的(0,0,0,0) - 透明黑
 initialFill();
 
+/* text input */
+let textWindow = document.createElement("div");
+textWindow.id = "text.window";
+textWindow.style.position = "absolute";
+textWindow.style.visibility = "hidden";
+let textContent = document.createElement("input");
+textContent.type = "text";
+textContent.id = "text-content";
+let confirmText = document.createElement("button");
+confirmText.id = "confirm-content";
+confirmText.innerText = "confirm";
+
+body.appendChild(textWindow);
+textWindow.appendChild(textContent);
+textWindow.appendChild(confirmText);
 
 /** 鼠标三事件 */
 
 // 定义鼠标的点击事件函数
 function down(e) {
-    console.log(pageMap);
     if (chosenTool === toolBox[1]) { // 画笔模式
         painting = true;
         let {x, y} = getPoints(e);
@@ -89,6 +107,23 @@ function down(e) {
         isDrawingShape = true;
         // 记录初始画布
         shapingVar.originalImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    }
+    if (inputTextButton.isTexting) {
+        let tx = e.clientX;
+        let ty = e.clientY;
+        let {x, y} = getPoints(e);
+        textWindow.style.left = tx + "px";
+        textWindow.style.top = ty + "px";
+        textWindow.style.visibility = "visible";
+        confirmText.onclick = function () {
+            ctx.fillStyle = "black";
+            ctx.textAlign = "left";
+            ctx.font = "18px Arial";
+            ctx.fillText(textContent.value, x, y);
+            inputTextButton.isTexting = false;
+            textContent.value = "";
+            textWindow.style.visibility = "hidden";
+        }
     }
 }
 
@@ -143,7 +178,6 @@ function move(e) {
 
 // 鼠标松开事件
 function up(e) {
-    console.log(pageMap);
     if (chosenTool === toolBox[1]) { // 画笔模式
         if (!painting) return;
 
@@ -169,9 +203,6 @@ function up(e) {
         isDrawingShape = false;
         // @Will, better to do the sendMessage() here.
     }
-
-    // // 更新本地储存的canvas数据
-    // updateCanvas(pageMap.get("currentPage"));
 }
 
 function updateCanvas(number) {
@@ -179,7 +210,6 @@ function updateCanvas(number) {
 }
 
 /** 画笔相关 */
-
 // 获取鼠标的坐标
 function getPoints(e) {
     let rect = canvas.getBoundingClientRect();
@@ -211,7 +241,6 @@ canvas.onmouseleave = function () {
     // 更新本地储存的canvas数据
     updateCanvas(pageMap.get("currentPage"));
 };
-
 
 /** 填充相关 */
 
@@ -311,9 +340,7 @@ function hexToRGB(hex) {
     } : null;
 }
 
-
 /** 形状绘制相关 */
-
 function initShaping() {
     initialFill();  // 清空canvas
     ctx.putImageData(shapingVar.originalImage, 0, 0);  // 恢复初始画布
@@ -344,10 +371,10 @@ function shaping(x1, y1, x2, y2) {
 
 
 /** 工具箱按钮相关 */
+// document.getElementById("undo").onclick=function() {
+//     // ctx.putImageData(uuju,0,0); // redo研究
+// }
 
-document.getElementById("undo").onclick=function() {
-    // ctx.putImageData(uuju,0,0); // redo研究
-}
 // 点击choose按钮
 choose.onclick = function () {
     chosenTool = toolBox[0];
@@ -390,7 +417,6 @@ circle.onclick = function () {
     chosenShape = "circle";
 }
 
-
 // 点击clear按钮
 clear.onclick = function () {
     initialFill();
@@ -398,9 +424,15 @@ clear.onclick = function () {
     sendMessage(duuid, 5, 0, 0, 0);
 };
 
+// 点击text按钮
+inputTextButton.onclick = function () {
+    inputTextButton.isTexting = !inputTextButton.isTexting;
+    if (!inputTextButton.isTexting) {
+        textWindow.style.visibility = "hidden";
+    }
+}
 
 /** 辅助工具相关 */
-
 rangeValue.oninput = function () {
     ctx.lineWidth = Math.round(rangeValue.value / 100 * 40);
     if (ctx.lineWidth < 3) {

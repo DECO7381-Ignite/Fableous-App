@@ -262,8 +262,16 @@ form {
 .stories {
     width: 160px;
     height: 160px;
-    background: aqua;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: 3px solid #60A6C8;
+    box-sizing: border-box;
     margin:1em 2em;
+}
+
+.stories:hover {
+    border: 6px solid #60c882;
 }
 
 .story-name{
