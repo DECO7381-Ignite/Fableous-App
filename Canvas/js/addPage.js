@@ -23,6 +23,7 @@ firstPage.onclick = function () {
     img.onload = function () {
         theCanvas.getContext("2d").drawImage(img, 0, 0);
     }
+    sendMessage(duuid,13,pageMap.get("currentPage"),0,0);
 }
 
 pageNumber.onclick = function () {
@@ -55,6 +56,7 @@ add_page_button.onclick = function () {
     initialFill();
     newPage.innerHTML = "page - " + pageID;
     newPage.data = theCanvas.toDataURL();
+    sendMessage(duuid,12,pagelists.length,0,0);
 
     newPage.onclick = function () {
         let temp = pageMap.get("currentPage");
@@ -65,6 +67,7 @@ add_page_button.onclick = function () {
         img.onload = function () {
             theCanvas.getContext("2d").drawImage(img, 0, 0);
         }
+        // sendMessage(duuid,14,pageMap.get("currentPage"),0,0); 需要新算法或重构newpage方法
     }
     //
     // deleteButton.onclick = function () {

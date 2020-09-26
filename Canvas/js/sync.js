@@ -11,6 +11,7 @@
         var x1;
         var y1;
         var z_shape;
+        var newPage;
 
         function drawing(x, z, y) {
                 ctx.lineWidth = cuxi;
@@ -63,6 +64,21 @@
             ctx.font = "18px Arial";
             ctx.fillText(z, x, y);
         }
+        function addpage1(x) {
+            if (pagelists.length <x) {
+                document.getElementById("add-page").onclick();
+            }
+            
+        }
+        function switchpage1(x) {
+            if (pageMap.get("currentPage")!=x) {
+                document.getElementById("0").onclick();
+            }
+        }
+        // function switchpage2(x) {
+        //     console.log(x);
+        //     newPage.onclick();
+        // }
   
         ws.onopen = function(e) {
                 console.log('Connection to server successfully');
@@ -106,7 +122,14 @@
                     z_shape=null;
                 } else if (data.type === 11) {
                     textInputf(data.x,data.x,data.z);
-                }
+                } else if (data.type === 12) {
+                    addpage1(data.x);
+                } else if (data.type === 13) {
+                    switchpage1(data.x);
+                } 
+                // else if (data.type === 14) {
+                //     switchpage2(data.x);
+                // } 
             }
 
         function uuid(len, radix) {

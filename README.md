@@ -8,18 +8,17 @@
 
 [主页面 (Beta) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_beta.php)
 
-### Version 1.9.3 Changelog
+### Version 1.9.4 Changelog
 
 实现成组上传image
-<br>
- - 当图片过多时（4，5张以上时）也会产生图片无法读取的问题
-<br>
- - library页面的删除和重命名也需要和数据库同步
 
- - library rename & delete in cloud database.
-<br>
+- 当图片过多时（4，5张以上时）也会产生图片无法读取的问题
+
+- library页面的删除和重命名数据库同步
 
 - 同步画图形与文字输入
+
+- 同步部分多界面（如添加，回首页）
 即将步入2.0版本
 
 ### 其他页面：
