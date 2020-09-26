@@ -5,22 +5,25 @@
 ##### <div align="right">*引用或git该项目须注明来源*</div>
 
 ## 主页面：
-[新主页 (注册，登录)](https://s4523761-fableous.uqcloud.net/index/index.php)
+[新主页 (注册，登录，导航)](https://s4523761-fableous.uqcloud.net/index/index.php)
 
 [Canvas (Stable)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.html)
 
 [Canvas (Beta) - 新特性拉满，bug拉满](https://s4523761-fableous.uqcloud.net/index/Canvas/index_beta.php)
 
-### Version 2.0 Changelog
+### Version 2.0.0 Changelog
 
-<i>整体修正：</i>
+赶在了10月份之前，2.0上线！
+
+<i>1. 整体修正：</i>
 - 部分CSS美化
 - 部分代码实现方式重构
 - 项目架构重构（套娃）
+- 修复部分bug
 
-<i>具体功能（截至目前）与修改：</i>
+<i>2. 具体功能（截至目前）与修改：</i>
 
-+ 新主页:
++ index (新主页):
   - 注册登录功能（测试用户名/密码：test）
   - 各个页面导航功能
 
