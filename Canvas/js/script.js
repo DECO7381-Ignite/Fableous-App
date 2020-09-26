@@ -62,7 +62,6 @@ initialFill();
 
 // 定义鼠标的点击事件函数
 function down(e) {
-    console.log(pageMap);
     if (chosenTool === toolBox[1]) { // 画笔模式
         painting = true;
         let {x, y} = getPoints(e);
@@ -143,7 +142,6 @@ function move(e) {
 
 // 鼠标松开事件
 function up(e) {
-    console.log(pageMap);
     if (chosenTool === toolBox[1]) { // 画笔模式
         if (!painting) return;
 
