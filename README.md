@@ -41,7 +41,6 @@
 
 ### 其他页面：
 
-[Homepage (老主页)](https://s4523761-fableous.uqcloud.net/index/Canvas/home.html)
-
 [Library (Stable)](https://s4523761-fableous.uqcloud.net/index/Canvas/library.php)
 
+[Homepage (老主页)](https://s4523761-fableous.uqcloud.net/index/Canvas/home.html)
