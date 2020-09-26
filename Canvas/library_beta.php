@@ -40,14 +40,14 @@ if ($result->num_rows > 0) {
 
 if (isset($_GET["id"])) {
     $deleteID=$_GET["id"];
-    $dsql = "DELETE FROM library WHERE pid='$deleteID' "; 
+    $dsql = "DELETE FROM library WHERE pname='$deleteID'"; 
     $conn->query($dsql);
     header("Location:library_beta.php");
 }
 if (isset($_GET["uid"])) {
     $updateID=$_GET["uid"];
     $uname=$_GET["uname"];
-    $usql = "UPDATE library SET pname='$uname' WHERE pid='$updateID'"; 
+    $usql = "UPDATE library SET pname='$uname' WHERE pname='$updateID'"; 
     $conn->query($usql);
     header("Location:library_beta.php");
 }
@@ -140,7 +140,6 @@ $conn->close();
         stories.id = "stories" + storyID.toString();
         paintingBox.appendChild(stories);
         stories.pname = storyname;
-        stories.pid=images.get(storyname)[0].pid;
 
         storyTitle.className = "story-name";
         storyTitle.innerHTML = storyname;
@@ -179,7 +178,7 @@ $conn->close();
                 picture.style.visibility = "hidden";
                 stories.parentNode.removeChild(stories);
                 inputNewName.style.visibility = "hidden";
-                window.location.href="?id="+stories.pid;
+                window.location.href="?id="+stories.pname;
             }
 
             renameButton.onclick = function () {
@@ -191,7 +190,7 @@ $conn->close();
                 storyTitle.innerHTML = newName.value;
                 inputNewName.style.visibility = "hidden";
                 newName.value = "";
-                window.location.href="?uid="+stories.pid+"&uname="+storyTitle.innerHTML;
+                window.location.href="?uid="+stories.pname+"&uname="+storyTitle.innerHTML;
             }
 
             cancelRenameButton.onclick = function () {
