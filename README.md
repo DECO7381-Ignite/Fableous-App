@@ -6,7 +6,7 @@
 
 [主页面 (Stable)](https://s4523761-fableous.uqcloud.net/index.html)
 
-[主页面 (Beta) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_alpha.php)
+[主页面 (Beta) - 可以保存图片到服务器](https://s4523761-fableous.uqcloud.net/index_beta.php)
 
 ### Version 1.9.2 Changelog
 
