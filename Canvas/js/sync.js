@@ -1,13 +1,16 @@
 // websocket connection & uuid
     var duuid = uuid(8, 16);
     // localhost
-    // var ws = new WebSocket("ws://localhost:8080");
+    var ws = new WebSocket("ws://localhost:8080");
     // uq server
-    var ws = new WebSocket("wss://s4523761-fableous.uqcloud.net");
+    // var ws = new WebSocket("wss://s4523761-fableous.uqcloud.net");
 
 // other device to sync
         var cuxi;
         var yanse;
+        var x1;
+        var y1;
+        var z_shape;
 
         function drawing(x, z, y) {
                 ctx.lineWidth = cuxi;
@@ -29,6 +32,36 @@
         function fillC() {
                 ctx.fillStyle=fengg;
                 fillCanvas(canvas, ctx, data.x, data.y, fengg);
+        }
+        function rectangle1(x1, y1, x2, y2,z) {
+                ctx.lineWidth = cuxi; 
+                ctx.strokeStyle = yanse;
+                ctx.save();
+                ctx.beginPath();
+                chosenShape1=z;
+
+                if (chosenShape1 === "rectangle") {
+                    ctx.strokeRect(x1, y1, x2 - x1, y2 - y1); // 绘制矩形
+                } else if (chosenShape1 === "triangle") {
+                    ctx.moveTo(Math.round((x1 + x2) / 2), y1);
+                    ctx.lineTo(x1, y2);
+                    ctx.lineTo(x2, y2);
+                    ctx.lineTo(Math.round((x1 + x2) / 2), y1);
+                    ctx.stroke();
+                } else if (chosenShape1 === "circle") {
+                    let radius = Math.round(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
+                    ctx.arc(x1, y1, radius,0,2 * Math.PI);
+                    ctx.stroke();
+                }
+            
+                ctx.restore();
+                ctx.closePath();
+        }
+        function textInputf(x,y,z) {
+            ctx.fillStyle = yanse;
+            ctx.textAlign = "left";
+            ctx.font = "18px Arial";
+            ctx.fillText(z, x, y);
         }
   
         ws.onopen = function(e) {
@@ -64,7 +97,16 @@
                     fillCanvas(canvas, ctx, data.x, data.y, data.z);
                 } else if (data.type === 8) {
                     yanse = data.x;
-                } 
+                } else if (data.type === 9) {
+                    x1=data.x["x"];
+                    y1=data.x["y"];
+                    z_shape=data.z;
+                } else if (data.type === 10) {
+                    rectangle1(x1,y1,data.x["x"],data.x["y"],z_shape);
+                    z_shape=null;
+                } else if (data.type === 11) {
+                    textInputf(data.x,data.x,data.z);
+                }
             }
 
         function uuid(len, radix) {

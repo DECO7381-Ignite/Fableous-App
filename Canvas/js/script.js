@@ -49,7 +49,7 @@ let painting = false;
 let lastPoint = null;
 let points = [];
 let isDrawingShape = false;
-let shapingVar = {"startP": null, "originalImage": null};
+let shapingVar = {"startP": null, "endP":null, "originalImage": null};
 
 const toolBox = ["choose", "pencil", "fill", "shaping"];
 let chosenTool = toolBox[1];
@@ -117,10 +117,13 @@ function down(e) {
         textWindow.style.left = tx + "px";
         textWindow.style.top = ty + "px";
         textWindow.style.visibility = "visible";
+
+        
         confirmText.onclick = function () {
             ctx.textAlign = "left";
             ctx.font = "18px Arial";
             ctx.fillText(textContent.value, x, y);
+            sendMessage(duuid,11, x,textContent.value,y);
             inputTextButton.isTexting = false;
             textContent.value = "";
             textWindow.style.visibility = "hidden";
@@ -173,6 +176,8 @@ function move(e) {
         if (isDrawingShape) {
             shaping(shapingVar.startP["x"], shapingVar.startP["y"],
                 getPoints(e)["x"], getPoints(e)["y"]);
+            shapingVar.endP = getPoints(e);
+            sendMessage(duuid,9,shapingVar.startP,chosenShape); 
         }
     }
 }
@@ -202,6 +207,8 @@ function up(e) {
         sendMessage(duuid, 7, x, ctx.fillStyle, y);
     } else if (chosenTool === toolBox[3]) { // 矩形模式
         isDrawingShape = false;
+        sendMessage(duuid,10,shapingVar.endP,0,0);    
+        
         // @Will, better to do the sendMessage() here.
     }
 }
@@ -285,7 +292,7 @@ function fillCanvas(canvas, ctx, X, Y, newColor) {
         let needColorG = canvasData.data[4 * n + 1];
         let needColorB = canvasData.data[4 * n + 2];
         // 判断颜色 + 存储种子点: //在判断 颜色 是否是 种子点的颜色
-        if( c>=0 && c <= width && r>=0 && r<= height
+        if( c>=0 && c <= width && r>=0 && rchosenShape<= height
             && needColorR === colorR && needColorG === colorG && needColorB ===colorB) {
             // 若 符合情况 则将该店改颜色
             canvasData.data[4 * n] = fillingColor.R;
