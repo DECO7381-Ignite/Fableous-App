@@ -103,6 +103,8 @@
         </form>
         <button id="save-picture-button" onclick=savePicture()>SUBMIT</button>
 
+        <button id="input-text-button">Text</button>
+
         <div class="footer">
             <div id="back-button"><p>&lt; Previous Page</p></div>
             <div id="page-number"><p>Page 1</p></div>
