@@ -10,9 +10,14 @@
 
 [Canvas (新特性拉满，bug拉满)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
 
-### Version 2.0.0 Changelog
+### Version 2.0.1 Changelog
 
 赶在了10月份之前，2.0上线！
+
+<i>0. 版本修正：</i>
+- 修复填充，橡皮颜色同步问题
+- 修复fill功能失效
+- 修复textinput座标不对问题
 
 <i>1. 整体修正：</i>
 - 部分CSS美化

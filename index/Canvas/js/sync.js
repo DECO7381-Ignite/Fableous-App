@@ -11,7 +11,6 @@
         var x1;
         var y1;
         var z_shape;
-        var newPage;
 
         function drawing(x, z, y) {
                 ctx.lineWidth = cuxi;
@@ -58,11 +57,11 @@
                 ctx.restore();
                 ctx.closePath();
         }
-        function textInputf(x,y,z) {
+        function textInputf(z,zix,ziy) {
             ctx.fillStyle = yanse;
             ctx.textAlign = "left";
             ctx.font = "18px Arial";
-            ctx.fillText(z, x, y);
+            ctx.fillText(z, zix, ziy);
         }
         function addpage1(x) {
             if (pagelists.length <x) {
@@ -121,7 +120,7 @@
                     rectangle1(x1,y1,data.x["x"],data.x["y"],z_shape);
                     z_shape=null;
                 } else if (data.type === 11) {
-                    textInputf(data.x,data.x,data.z);
+                    textInputf(data.z,data.x,data.y);
                 } else if (data.type === 12) {
                     addpage1(data.x);
                 } else if (data.type === 13) {

@@ -207,9 +207,7 @@ function up(e) {
         sendMessage(duuid, 7, x, ctx.fillStyle, y);
     } else if (chosenTool === toolBox[3]) { // 矩形模式
         isDrawingShape = false;
-        sendMessage(duuid,10,shapingVar.endP,0,0);    
-        
-        // @Will, better to do the sendMessage() here.
+        sendMessage(duuid,10,shapingVar.endP,0,0);
     }
 }
 
@@ -240,7 +238,6 @@ function drawLine(begin, control, end) {
 // 鼠标离开canvas事件
 canvas.onmouseleave = function () {
     painting = false;
-    // @Will, may need to send the x2,y2 and do the shaping to the server here.
     // if (isDrawingShape) {
     //     sendMessage(...);
     // }
