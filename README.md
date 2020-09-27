@@ -52,7 +52,7 @@
 
 #### bug特别多，但近期没有修复计划。主力研究目前仍在‘多页面’的bug修复与新特性添加。
 
-<div align="right">Sep/27/2020</div>
+<div align="right">Sep/28/2020</div>
 
 ### 其他页面：
 
