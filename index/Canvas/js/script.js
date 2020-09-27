@@ -53,7 +53,7 @@ let shapingVar = {"startP": null, "endP":null, "originalImage": null};
 
 const toolBox = ["choose", "pencil", "fill", "shaping"];
 let chosenTool = toolBox[1];
-let stylus = 2; //联动 send 判断earser or pencil
+let stylus = 2; //联动 send 判断eraser or pencil
 let chosenShape = null;
 
 // 绑定canvas的鼠标点击，鼠标移动，鼠标松开事件
@@ -89,7 +89,7 @@ function down(e) {
         points.push({x, y});
         lastPoint = {x, y};
 
-        // 画之前统一成与此页条设置一样的cuxi, yanse.
+        // 画之前统一成与此页条设置一样的粗细, 颜色.
         rangeValue.oninput();
         if (stylus === 2){
             chosenColor.onclick();
@@ -292,7 +292,7 @@ function fillCanvas(canvas, ctx, X, Y, newColor) {
         let needColorG = canvasData.data[4 * n + 1];
         let needColorB = canvasData.data[4 * n + 2];
         // 判断颜色 + 存储种子点: //在判断 颜色 是否是 种子点的颜色
-        if( c>=0 && c <= width && r>=0 && rchosenShape<= height
+        if( c>=0 && c <= width && r>=0 && r<= height
             && needColorR === colorR && needColorG === colorG && needColorB ===colorB) {
             // 若 符合情况 则将该店改颜色
             canvasData.data[4 * n] = fillingColor.R;
@@ -411,6 +411,7 @@ eraser.onclick = function () {
 // 点击fill按钮
 fill.onclick = function () {
     chosenTool = toolBox[2];
+    chosenColor.onclick();
     turnOffTexting();
     currentTool.innerHTML = "current tool: fill";
 }
@@ -418,6 +419,7 @@ fill.onclick = function () {
 // 点击rectangle按钮
 rectangle.onclick = function () {
     chosenTool = toolBox[3];
+    chosenColor.onclick();
     chosenShape = "rectangle";
     turnOffTexting();
     currentTool.innerHTML = "current tool: rectangle";
@@ -426,6 +428,7 @@ rectangle.onclick = function () {
 // 点击triangle按钮
 triangle.onclick = function () {
     chosenTool = toolBox[3];
+    chosenColor.onclick();
     chosenShape = "triangle";
     turnOffTexting();
     currentTool.innerHTML = "current tool: triangle";
@@ -434,6 +437,7 @@ triangle.onclick = function () {
 // 点击circle按钮
 circle.onclick = function () {
     chosenTool = toolBox[3];
+    chosenColor.onclick();
     chosenShape = "circle";
     turnOffTexting();
     currentTool.innerHTML = "current tool: circle";
