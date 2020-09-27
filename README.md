@@ -8,9 +8,9 @@
 
 [新主页 (注册，登录，导航)](https://s4523761-fableous.uqcloud.net/index/index.php)
 
-[Canvas (新特性拉满，bug拉满)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
+[Canvas (新特性拉满，少量bug)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
 
-### Version 2.0.1 Changelog
+### Version 2.0.2 Changelog
 
 赶在了10月份之前，2.0上线！
 
@@ -18,6 +18,7 @@
 - 修复填充，橡皮颜色同步问题
 - 修复fill功能失效
 - 修复textinput座标不对问题
+- 修改部分readme
 
 <i>1. 整体修正：</i>
 - 部分CSS美化
