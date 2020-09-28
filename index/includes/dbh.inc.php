@@ -1,8 +1,8 @@
 <?php
 $dBServername = "localhost";
 $dBUsername = "root";
-// $dBPassword = "";
-$dBPassword= "dbf76fb8c7e45fe1";
+$dBPassword = "";
+//$dBPassword= "dbf76fb8c7e45fe1";
 $dBName = "fableous";
 
 // Create connection
