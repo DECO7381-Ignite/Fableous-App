@@ -26,7 +26,7 @@
           <li><a href="Canvas/home.html">Home</a></li>
           <li><a href="Canvas/library.php">Library</a></li>
           <li><a href="Canvas/index.php">Canvas</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="Canvas/teacher.php">Teacher</a></li>
         </ul>
       </nav>
       <div class="header-login">

@@ -29,6 +29,5 @@
 
 <?php
   // And just like we include the header from a separate file, we do the same with the footer.
-  require "footer.php";
 ?>
 

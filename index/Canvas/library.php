@@ -2,9 +2,9 @@
 $servername = "localhost";
 $username = "root";
 // server
-//$password = "dbf76fb8c7e45fe1";
+$password = "dbf76fb8c7e45fe1";
 // localhost pas
-$password = "";
+// $password = "";
 $dbname = "fableous";
 
 // Create connection
@@ -231,8 +231,8 @@ function displayAllBooks() {
 <!--test-->
 
 <?php
-
-$con = new PDO("mysql:host=localhost;dbname=fableous", 'root', '');
+// $con = new PDO("mysql:host=localhost;dbname=fableous", 'root', '');
+$con = new PDO("mysql:host=localhost;dbname=fableous", 'root', 'dbf76fb8c7e45fe1');
 
 if (isset($_POST["submit"])) {
     $str = $_POST["library"]; 
