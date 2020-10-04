@@ -85,7 +85,7 @@ $conn->close();
         <div class="user"><img src="icon/user.svg" alt="user_icon"></div>
         <div class="status"><p>Class Library</p></div>
         <div class="comment-button"><img src="icon/comment.svg" alt="comment icon"></div>
-        <div class="home-button"><img src="icon/home.svg" alt="home icon"></div>
+        <div class="home-button"><a style="text-decoration:none;color:black;" href="../index.php"><img src="icon/home.svg" alt="home icon"></a></div>
     </div>
     <button id="library" onclick="displayAllBooks()">click here to display all books in the library</button>
     <div id="main-lib">

@@ -13,7 +13,7 @@
             <div class="status"><p>DRAWING</p></div>
             <div class="current-tool"><p>current tool: pencil</p></div>
             <div class="comment-button"><img src="icon/comment.svg" alt="comment icon"></div>
-            <div class="home-button"><img src="icon/home.svg" alt="home icon"></div>
+            <div class="home-button"><a style="text-decoration:none;color:black;" href="../index.php"><img src="icon/home.svg" alt="home icon"></a></div>
         </div>
         <div id="main-body">
             <div id="toolBox">
