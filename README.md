@@ -10,15 +10,13 @@
 
 [Canvas (新特性拉满，少量bug)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
 
-### Version 2.0.2 Changelog
+### Version 2.1.0 Changelog
 
 赶在了10月份之前，2.0上线！
 
 <i>0. 版本修正：</i>
-- 修复填充，橡皮颜色同步问题
-- 修复fill功能失效
-- 修复textinput座标不对问题
-- 修改部分readme
+- 新增老师页面
+- library search功能
 
 <i>1. 整体修正：</i>
 - 部分CSS美化
@@ -47,8 +45,21 @@
 
 + Home:
   - 老主页，将来或与新主页融合（对新主页作调整，或直接‘套娃’）
+  
++ Teacher：
+  - Class Library： 班级stories
+  - Waiting Approval: UNKNOWN
+  - Not Approved: UNKNOWN
+  - Student: students list
+  - Setting: UNAVAILABLE
 
 修复后差不多bug后，会上线Canvas最新稳定版
+
+<i>3. 上一版本：</i>
+- 修复填充，橡皮颜色同步问题
+- 修复fill功能失效
+- 修复textinput座标不对问题
+- 修改部分readme
 
 #### bug特别多，但近期没有修复计划。主力研究目前仍在‘多页面’的bug修复与新特性添加。
 
