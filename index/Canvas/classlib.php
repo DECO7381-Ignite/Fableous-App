@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
     }
     $json = json_encode($libraryData);
 } else {
-    echo "0 result";
+    echo "<script>alert('0 result');</script>";
 }
 
 if (isset($_GET["id"])) {
@@ -66,11 +66,6 @@ $conn->close();
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<form method="POST">
-    <label>Search book(s) by author's name</label>
-    <input type="text" name="author">
-    <input type="submit" name="submit" value="search">
-</form>
 <div id="browsing-background"></div>
 <div id="picture-box">
     <div id="picture">
@@ -91,6 +86,11 @@ $conn->close();
 </div>
 <div class="main-part">
     <div id="main-lib">
+        <form method="POST">
+            <label>Search book(s) by author's name: </label>
+            <input type="text" name="author">
+            <input type="submit" name="submit" value="search">
+        </form>
         <div id="painting-box">
 <!--            <ul id="select-box">-->
 <!--                <li>Browse</li>-->
