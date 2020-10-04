@@ -10,13 +10,15 @@
 
 [Canvas (新特性拉满，少量bug)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
 
-### Version 2.1.1 Changelog
+### Version 2.1.2 Changelog
 
-赶在了10月份之前，2.0上线！
+船新的2.0版本
 
 <i>0. 版本修正：</i>
 - 新增老师页面
 - library search功能
+
+[Teacher (New)](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
 
 <i>1. 整体修正：</i>
 - 部分CSS美化
@@ -66,8 +68,9 @@
 <div align="right">Sep/28/2020</div>
 
 ### 其他页面：
-[Teacher (New)](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
 
 [Library (Stable)](https://s4523761-fableous.uqcloud.net/index/Canvas/library.php)
 
 [Homepage (老主页)](https://s4523761-fableous.uqcloud.net/index/Canvas/home.html)
+
+[Teacher (New)](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)

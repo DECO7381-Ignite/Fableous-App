@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Teacher</title>
     <link href="//db.onlinewebfonts.com/c/8df141f447c5686cf9dbae8dabb1e71a?family=AllRoundGothicW01-Bold" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/teacher.css">
 </head>
@@ -33,13 +33,14 @@
                             <span>Class Library</span>
                             <button>Download</button>
                         </section>
-                        <section id="head-2" class="first-3-page-head-2">
-                            <input type="text" value="search..." id="search">
-                            <button id="filter">F</span>
+                        <section id="head-2" class="first-3-page-head-2">   
+                        <button id="filter">F</span>
                             <button id="delete">D</button>
                         </section>
                     </section>
-                    <section id="class-library-body" class="first-3-page-body">content 1</section>
+                    <section id="class-library-body" class="first-3-page-body">
+                    <embed id="classlib" src="classlib.php" width=100% height=100%>
+                    </section>
                 </div>
                 <div id="waiting-approval" class="first-3-page">
                     <section id="waiting-approval-head" class="first-3-page-head">
