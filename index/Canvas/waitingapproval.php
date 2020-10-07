@@ -2,9 +2,9 @@
 $servername = "localhost";
 $username = "root";
 // server
-$password = "dbf76fb8c7e45fe1";
+//$password = "dbf76fb8c7e45fe1";
 // localhost pas
-//  $password = "";
+  $password = "";
 $dbname = "fableous";
 
 // Create connection
@@ -27,6 +27,7 @@ class libraryPhotos {
     public $pname;
     public $user;
     public $imageData;
+    public $approvalStatus;
 }
 
 if ($result->num_rows > 0) {
@@ -57,6 +58,14 @@ if (isset($_GET["uid"])) {
     $conn->query($usql);
     header("Location:classlib.php");
 }
+if (isset($_GET["approvalStat"])) {
+    $updateID2=$_GET["as"];
+    $uname3=$_GET["approvalStat"];
+    $uname2=$_GET["uname2"];
+    $usql2 = "UPDATE library SET approvalStatus='$uname2' WHERE approvalStatus='$updateID2'"; 
+    $conn->query($usql2);
+    header("Location:classlib.php");
+}
 
 $conn->close();
 ?>
@@ -75,6 +84,7 @@ $conn->close();
         <button id="rename-button">rename</button>
         <button id="delete-button">delete</button>
         <button id="close-button">close</button>
+        <button id="approve-button">approve all</button>
     </div>
     <div id="input-new-name">
         <input type="text" id="new-name">
@@ -114,6 +124,11 @@ $conn->close();
         libraryImages = <?php echo $json?>;
         for (let p in libraryImages) {
             if (libraryImages[p].user) {
+
+                if(libraryImages[p].approvalStatus != 0) {
+                    continue;
+                }
+
                 let tempPname = libraryImages[p].pname;
                 let arr = [];
 
@@ -167,6 +182,17 @@ $conn->close();
             let confirmRenameButton = document.getElementById("confirm-rename-button");
             let cancelRenameButton = document.getElementById("cancel-rename-button");
             let inputNewName = document.getElementById("input-new-name");
+            let approveButton = document.getElementById("approve-button");
+            let rejectButton = document.getElementById("reject-button");
+
+            approveButton.onclick = function () {
+                /*
+                background.style.visibility = "hidden";
+                picture.style.visibility = "hidden";
+                inputNewName.style.visibility = "hidden";*/
+                //stories.approvalStatus = 1;
+                window.location.href="?approvalStat="+1+"&uname2="+storyTitle.innerHTML;
+            }
 
             closeButton.onclick = function () {
                 background.style.visibility = "hidden";
@@ -191,7 +217,7 @@ $conn->close();
                 storyTitle.innerHTML = newName.value;
                 inputNewName.style.visibility = "hidden";
                 newName.value = "";
-                window.location.href="?uid="+stories.pname+"&uname="+storyTitle.innerHTML;
+                window.location.href="?uid="+stories.pname+"&uname="+storyTitle.innerHTML; //this line affects for sure 
             }
 
             cancelRenameButton.onclick = function () {
@@ -229,4 +255,3 @@ $conn->close();
 </script>
 </body>
 </html>
-<!--test-->

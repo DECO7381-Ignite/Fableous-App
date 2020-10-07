@@ -54,7 +54,7 @@
                             <button id="delete">D</button>
                         </section>
                     </section>
-                    <section id="waiting-approval-body" class="first-3-page-body">content 2</section>
+                    <section id="waiting-approval-body" class="first-3-page-body"><embed id="waitingapproval" src="waitingapproval.php" width=100% height=100%></section>
                 </div>
                 <div id="not-approved" class="first-3-page">
                     <section id="not-approved-head" class="first-3-page-head">
