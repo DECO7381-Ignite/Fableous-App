@@ -60,8 +60,13 @@ let chosenShape = null;
 canvas.addEventListener("mousedown", down, false);
 canvas.addEventListener("mousemove", move, false);
 canvas.addEventListener("mouseup", up, false);
+canvas.addEventListener("touchstart", touchDown, false);
+canvas.addEventListener("touchmove", touchMove, false);
+canvas.addEventListener("touchend", touchUp, false);
+let pointForTouchUp = {"clientX": 0, "clientY": 0};
 // 上来先把画布全涂白，而不是默认的(0,0,0,0) - 透明黑
 initialFill();
+ctx.lineWidth = 3; // initializing the line width
 
 /* text input */
 let textWindow = document.createElement("div");
@@ -131,6 +136,11 @@ function down(e) {
     }
 }
 
+function touchDown(e) {
+    e = e.touches[0]; // get the first touch point event info
+    down(e);
+}
+
 // 定义鼠标的移动事件的函数
 function move(e) {
     if (chosenTool === toolBox[1]) { // 画笔模式
@@ -182,6 +192,12 @@ function move(e) {
     }
 }
 
+function touchMove(e) {
+    e = e.touches[0]; // get the first touch point event info
+    move(e);
+    pointForTouchUp = [e.clientX, e.clientY]; // touchEnd event has no position info so we save point info here.
+}
+
 // 鼠标松开事件
 function up(e) {
     if (chosenTool === toolBox[1]) { // 画笔模式
@@ -209,6 +225,11 @@ function up(e) {
         isDrawingShape = false;
         sendMessage(duuid,10,shapingVar.endP,0,0);
     }
+}
+
+function touchUp(e) {
+    e = pointForTouchUp; // get point info from last move record
+    up(e);
 }
 
 function updateCanvas(number) {

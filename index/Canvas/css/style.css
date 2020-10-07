@@ -99,12 +99,15 @@ div.user {
 
 #re-un-button {
     position: absolute;
-    width: 100%;
+    width: 200px;
+    top: -2%;
+    right: 65px;
+    display: flex;
 }
 
 #re-un-button div{
-    width: 120px;
-    float: right;
+    width: 100%;
+    margin: 5px;
 }
 
 div#re-un-button div:hover {
@@ -117,13 +120,13 @@ div#re-un-button div:active {
 
 #color-pad {
     position: absolute;
-    top: 125px;
-    height: 45vh;
-    min-height: 435px;
+    top: 0;
+    height: 90%;
+    min-height: 430px;
     width: inherit;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 div.colors {
