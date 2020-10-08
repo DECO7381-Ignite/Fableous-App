@@ -63,7 +63,7 @@ const speak = () => {
 
     // Speak end
     speakText.onend = e => {
-      console.log('Done speaking...');
+      // console.log('Done speaking...');
     };
 
     // Speak error

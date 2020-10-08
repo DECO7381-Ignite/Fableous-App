@@ -12,13 +12,14 @@
 
 [Canvas (Writing)](https://s4523761-fableous.uqcloud.net/index/Canvas/textStory.php)
 
-### Version 2.2.0 Changelog
+### Version 2.2.1 Changelog
 
 船新的2.0版本, 船在摇晃
 
 <i>0. 版本修正：</i>
 + 分离writing/drawing
 + 登录导航，较完整流程体验: 老师学生不同帐号进不同页面
++ 多设备适配，页面大小变化
 
 [Teacher (New)](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
 
