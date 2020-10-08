@@ -3,6 +3,79 @@
 }
 
 /*********************************************/
+/* Cursor Settings */
+.cursorPencil {
+    cursor: url("../icon/pencil.cur"), auto;
+}
+.cursorEraser {
+    cursor: url("../icon/eraser.cur") 0 13, auto;
+}
+.cursorFill {
+    cursor: url("../icon/fill.cur") 0 60, move;
+}
+
+div.toolBox-buttons img, div.toolBox-buttons section, input#slider {
+    cursor: pointer;
+}
+
+/*********************************************/
+/* Tools Animation */
+div.toolBox-buttons img {
+    transition: ease 0.17s;
+}
+
+div.toolBox-buttons img:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+
+div.toolBox-buttons img:active {
+    transform: rotate(360deg) scale(1);
+}
+
+div#color-pad-button {
+    position: relative;
+}
+
+section#chosen-color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+div#color-pad-button div:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: linear-gradient(45deg,
+    #fb0094, #0000ff, #00ff00, #ffff00,
+    #ff0000, #fb0094, #0000ff, #00ff00,
+    #ffff00, #ff0000, #fb0094, #0000ff);
+    background-size: 800%;
+    width: 49px;
+    height: 49px;
+    animation: hua 20s linear infinite;
+}
+
+@keyframes hua {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1000% 0;
+    }
+}
+
+div#color-pad-button section#chosen-color:hover {
+    border: none;
+}
+
+/*********************************************/
 /* Add Page */
 #pages {
   width: 100%;
@@ -246,7 +319,7 @@
       width: 45px;
       height: 45px;
       background-color: black;
-      border: 2px solid black;
+      border: 3px solid whitesmoke;
   }
 
   /*********************************************/
@@ -495,7 +568,12 @@
       width: 35px;
       height: 35px;
       background-color: black;
-      border: 2px solid black;
+      border: 3px solid whitesmoke;
+  }
+
+  div#color-pad-button div:first-child {
+      width: 39px;
+      height: 39px;
   }
 
   /*********************************************/
@@ -760,7 +838,12 @@
       width: 30px;
       height: 30px;
       background-color: black;
-      border: 2px solid black;
+      border: 3px solid whitesmoke;
+  }
+
+  div#color-pad-button div:first-child {
+      width: 34px;
+      height: 34px;
   }
 
   /*********************************************/

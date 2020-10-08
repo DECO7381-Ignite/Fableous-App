@@ -433,6 +433,7 @@ choose.onclick = function () {
     // turnOffTexting();
     showHideSMT(adjustSize, "hide", "none");
     selectTool($(".toolBox-buttons"), $(this).index());
+    $("#myCanvas").removeClass();
 }
 
 // 点击pencil按钮
@@ -443,6 +444,7 @@ pencil.onclick = function () {
     // turnOffTexting();
     showHideSMT(adjustSize, "show", "block");
     selectTool($(".toolBox-buttons"), $(this).index());
+    $("#myCanvas").removeClass().addClass("cursorPencil");
 };
 
 // 点击eraser按钮
@@ -453,6 +455,7 @@ eraser.onclick = function () {
     // turnOffTexting();
     showHideSMT(adjustSize, "show", "block");
     selectTool($(".toolBox-buttons"), $(this).index());
+    $("#myCanvas").removeClass().addClass("cursorEraser");
 };
 
 // 点击fill按钮
@@ -462,6 +465,7 @@ fill.onclick = function () {
     showHideSMT(adjustSize, "hide", "none");
     // turnOffTexting();
     selectTool($(".toolBox-buttons"), $(this).index());
+    $("#myCanvas").removeClass().addClass("cursorFill");
 }
 
 // 点击rectangle按钮
@@ -472,6 +476,7 @@ rectangle.onclick = function () {
     // turnOffTexting();
     showHideSMT(adjustSize, "show", "block");
     selectTool($(".toolBox-buttons"), $(this).index());
+    $("#myCanvas").removeClass();
 }
 
 // 点击triangle按钮
@@ -482,6 +487,7 @@ triangle.onclick = function () {
     // turnOffTexting();
     showHideSMT(adjustSize, "show", "block");
     selectTool($(".toolBox-buttons"), $(this).index());
+    $("#myCanvas").removeClass();
 }
 
 // 点击circle按钮
@@ -492,6 +498,7 @@ circle.onclick = function () {
     // turnOffTexting();
     showHideSMT(adjustSize, "show", "block");
     selectTool($(".toolBox-buttons"), $(this).index());
+    $("#myCanvas").removeClass();
 }
 
 // 点击clear按钮

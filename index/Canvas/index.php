@@ -31,7 +31,7 @@
                 <div id="triangle" class="toolBox-buttons"><img src="icon/triangle.svg" alt="triangle icon"></div>
                 <div id="circle" class="toolBox-buttons"><img src="icon/circle.svg" alt="circle icon"></div>
                 <div id="fill" class="toolBox-buttons"><img src="icon/fill.svg" alt="fill icon"></div>
-                <div id="color-pad-button" class="toolBox-buttons"><section id="chosen-color"></section></div>
+                <div id="color-pad-button" class="toolBox-buttons"><div></div><section id="chosen-color"></section></div>
                 <div id="clear" class="toolBox-buttons"><img src="icon/clear.svg" alt="clear icon"></div>
               </section>
             </div>
