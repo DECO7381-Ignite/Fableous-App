@@ -23,10 +23,28 @@
         </a>
         <ul>
           <!-- Placeholder buttons -->
-          <li><a href="Canvas/home.html">Home</a></li>
-          <li><a href="Canvas/library.php">Library</a></li>
-          <li><a href="Canvas/index.php">Canvas</a></li>
-          <li><a href="Canvas/teacher.php">Teacher</a></li>
+          <?php
+          if (isset($_SESSION['id']) && $_SESSION['id']==1) {
+            echo '<li><a href="Canvas/home.php">Home</a></li>
+            <li><a href="Canvas/library.php">Library</a></li>
+            <li><a href="Canvas/index.php">Canvas</a></li>
+            <li><a href="Canvas/textStory.php">Writing</a></li>
+            <li><a href="Canvas/teacher.php">Teacher</a></li>';
+          }
+          else if (isset($_SESSION['id']) && $_SESSION['id']==2) {
+            echo '<li><a href="Canvas/library.php">Library</a></li>
+            <li><a href="Canvas/index.php">Canvas</a></li>
+            <li><a href="Canvas/textStory.php">Writing</a></li>
+            <li><a href="Canvas/teacher.php">Teacher</a></li>';
+          }
+          else if (isset($_SESSION['id']) && $_SESSION['id']==3) {
+            echo '<li><a href="Canvas/home.php">Home</a></li>
+            <li><a href="Canvas/library.php">Library</a></li>
+            <li><a href="Canvas/index.php">Canvas</a></li>
+            <li><a href="Canvas/textStory.php">Writing</a></li>';
+          }
+          ?>
+          
         </ul>
       </nav>
       <div class="header-login">

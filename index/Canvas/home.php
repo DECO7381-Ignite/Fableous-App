@@ -1,3 +1,12 @@
+<?php
+  // start a session which allow for us to store information as SESSION variables.
+  session_start();
+  // "require" creates an error message and stops the script. "include" creates an error and continues the script.
+  require "../includes/dbh.inc.php";
+  if (!$_SESSION['id']){
+    echo "<script> {window.alert('Please login first!');} history.back();</script>";
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +18,13 @@
 <body>
     <div id="book">
         <div id="user">
+        <?php
+                if (isset($_SESSION['id'])) {
+                    echo '<form action="../includes/logout.inc.php" method="post">
+                    <button type="submit" name="login-submit">Logout</button>
+                    </form>';
+                }
+        ?>
             <img src="icon/user.svg" alt="user_icon">
         </div>
         <div id="title">
@@ -16,17 +32,21 @@
         </div>
         <div id="menu">
             <button id="addStory">Add New Story</button>
-            <button id="classLib">Class Library</button>
+            <button id="classLib"><a href="library.php">Class Library</a></button>
             <button id="settings">Settings</button>
         </div>
     </div>
     <div id="addStoryMenu">
-        <button id="painter">painter</button>
-        <button id="storyTeller">storyTeller</button>
+        <button id="painter"><a href="index.php">painter</a></button>
+        <button id="storyTeller"><a href="textStory.php">storyTeller</a></button>
         <button id="back">back</button>
     </div>
 </body>
 <style>
+    a{
+        text-decoration: none;
+        color:black;
+    }
     body {
         font-family: AllRoundGothicW01-Bold, sans-serif;
         display: flex;

@@ -18,7 +18,7 @@
                 drawLine(x, z, y);
             }
         function click1(x, y) {
-                ctx.lineWidth = cuxi; 
+                ctx.lineWidth = cuxi;
                 ctx.fillStyle = yanse;
                 ctx.beginPath();
                 ctx.arc(x, y, ctx.lineWidth / 2, 0, Math.PI * 2);
@@ -34,7 +34,7 @@
                 fillCanvas(canvas, ctx, data.x, data.y, fengg);
         }
         function rectangle1(x1, y1, x2, y2,z) {
-                ctx.lineWidth = cuxi; 
+                ctx.lineWidth = cuxi;
                 ctx.strokeStyle = yanse;
                 ctx.save();
                 ctx.beginPath();
@@ -53,7 +53,7 @@
                     ctx.arc(x1, y1, radius,0,2 * Math.PI);
                     ctx.stroke();
                 }
-            
+
                 ctx.restore();
                 ctx.closePath();
         }
@@ -67,7 +67,7 @@
             if (pagelists.length <x) {
                 document.getElementById("add-page").onclick();
             }
-            
+
         }
         function switchpage1(x) {
             if (pageMap.get("currentPage")!=x) {
@@ -78,7 +78,7 @@
         //     console.log(x);
         //     newPage.onclick();
         // }
-  
+
         ws.onopen = function(e) {
                 console.log('Connection to server successfully');
                 sendMessage(duuid, 0, 0, 0, 0);
@@ -124,11 +124,13 @@
                 } else if (data.type === 12) {
                     addpage1(data.x);
                 } else if (data.type === 13) {
-                    switchpage1(data.x);
-                } 
-                // else if (data.type === 14) {
-                //     switchpage2(data.x);
-                // } 
+                    updateCanvas(data.y);
+                    changeCanvas(data.x);
+                }
+                else if (data.type === 14) {
+                    updateCanvas(data.y);
+                    changeCanvas(data.x);
+                }
             }
 
         function uuid(len, radix) {

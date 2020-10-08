@@ -8,17 +8,17 @@
 
 [新主页 (注册，登录，导航)](https://s4523761-fableous.uqcloud.net/index/index.php)
 
-[Canvas (新特性拉满，少量bug)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
+[Canvas (Drawing)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
 
-### Version 2.1.3 Changelog
+[Canvas (Writing)](https://s4523761-fableous.uqcloud.net/index/Canvas/textStory.php)
+
+### Version 2.2.0 Changelog
 
 船新的2.0版本, 船在摇晃
 
 <i>0. 版本修正：</i>
-- 新增老师页面
-- library search功能
-- teacher页面library页面添加
-- 各页面增加回主页按钮：画板和library是右上角图标；teacher是左上角文字
++ 分离writing/drawing
++ 登录导航，较完整流程体验: 老师学生不同帐号进不同页面
 
 [Teacher (New)](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
 
@@ -60,6 +60,10 @@
 修复后差不多bug后，会上线Canvas最新稳定版
 
 <i>3. 上一版本：</i>
+- 新增老师页面
+- library search功能
+- teacher页面library页面添加
+- 各页面增加回主页按钮：画板和library是右上角图标；teacher是左上角文字
 - 修复填充，橡皮颜色同步问题
 - 修复fill功能失效
 - 修复textinput座标不对问题
@@ -67,12 +71,12 @@
 
 #### bug特别多，但近期没有修复计划。主力研究目前仍在‘多页面’的bug修复与新特性添加。
 
-<div align="right">Oct/04/2020</div>
+<div align="right">Oct/08/2020</div>
 
 ### 其他页面：
 
 [Library (Stable)](https://s4523761-fableous.uqcloud.net/index/Canvas/library.php)
 
-[Homepage (老主页)](https://s4523761-fableous.uqcloud.net/index/Canvas/home.html)
+[Homepage (for student)](https://s4523761-fableous.uqcloud.net/index/Canvas/home.php)
 
 [Teacher (New)](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)

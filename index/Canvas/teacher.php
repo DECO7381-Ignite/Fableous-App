@@ -1,3 +1,9 @@
+<?php
+  // start a session which allow for us to store information as SESSION variables.
+  session_start();
+  // "require" creates an error message and stops the script. "include" creates an error and continues the script.
+  require "../includes/dbh.inc.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +30,13 @@
                 <div id="notification">1</div>
                 <div id="chat">2</div>
                 <div id="name">name</div>
+                <?php
+                if (isset($_SESSION['id'])) {
+                    echo '<form action="../includes/logout.inc.php" method="post">
+                    <button type="submit" name="login-submit">Logout</button>
+                    </form>';
+                }
+                ?>
                 <div id="profile"></div>
             </div>
             <div class="contents">

@@ -1,7 +1,7 @@
 
-// hide rate and pitch values
-document.getElementById("rate").style.display = "none";
-document.getElementById("pitch").style.display = "none";
+// // hide rate and pitch values
+// document.getElementById("rate").style.display = "none";
+// document.getElementById("pitch").style.display = "none";
 
 // 获取页面元素，并声明变量
 let canvas = document.getElementById("myCanvas");
@@ -15,12 +15,16 @@ let rectangle = document.getElementById("rectangle");
 let triangle = document.getElementById("triangle");
 let circle = document.getElementById("circle");
 let clear = document.getElementById("clear");
+let adjustSize = document.getElementById("adjust-size");
+let colorPanel = document.getElementById("color-pad");
+let colorPanelButton = document.getElementById("color-pad-button");
+let onOffColorPanel = false;
+let theStoryText = "";
+var pagesData = new Array();
 // var uuju; //数据(双拼),image data
 
-let currentTool = document.getElementsByClassName("current-tool")[0].childNodes[0];
-
-// input text
-let inputTextButton = document.getElementById("input-text-button");
+// // input text
+let inputTextButton = document.getElementById("text");
 inputTextButton.isTexting = false;
 
 let colors = [];
@@ -33,9 +37,10 @@ for (let c = 0; c < 12; c++) {
         this.childNodes[0].style.opacity = "1"; // 显示当前选色的✅
         chosenColor = this;
         sendMessage(duuid,8,ctx.strokeStyle,0,0); // send 画笔颜色
+        document.getElementById("chosen-color").style.backgroundColor = getComputedStyle(colors[c], null)['backgroundColor'];
     }
 }
-let chosenColor = colors[11]; // 默认选择黑色
+let chosenColor = colors[11]; // 默认选择黑色showHideSMT(colorPanel, "hide", "none");
 let rangeValue = document.getElementById("slider");
 
 
@@ -52,7 +57,7 @@ let isDrawingShape = false;
 let shapingVar = {"startP": null, "endP":null, "originalImage": null};
 
 const toolBox = ["choose", "pencil", "fill", "shaping"];
-let chosenTool = toolBox[1];
+let chosenTool = toolBox[0];
 let stylus = 2; //联动 send 判断eraser or pencil
 let chosenShape = null;
 
@@ -60,12 +65,33 @@ let chosenShape = null;
 canvas.addEventListener("mousedown", down, false);
 canvas.addEventListener("mousemove", move, false);
 canvas.addEventListener("mouseup", up, false);
+
+// touch event relevant
 canvas.addEventListener("touchstart", touchDown, false);
 canvas.addEventListener("touchmove", touchMove, false);
 canvas.addEventListener("touchend", touchUp, false);
+
 let pointForTouchUp = {"clientX": 0, "clientY": 0};
+
+function touchDown(e) {
+    e = e.touches[0]; // get the first touch point event info
+    down(e);
+}
+
+function touchMove(e) {
+    e = e.touches[0]; // get the first touch point event info
+    move(e);
+    pointForTouchUp = [e.clientX, e.clientY]; // touchEnd event has no position info so we save point info here.
+}
+
+function touchUp(e) {
+    e = pointForTouchUp; // get point info from last move record
+    up(e);
+}
+
 // 上来先把画布全涂白，而不是默认的(0,0,0,0) - 透明黑
 initialFill();
+
 ctx.lineWidth = 3; // initializing the line width
 
 /* text input */
@@ -80,7 +106,7 @@ let confirmText = document.createElement("button");
 confirmText.id = "confirm-content";
 confirmText.innerText = "confirm";
 
-body.appendChild(textWindow);
+document.body.appendChild(textWindow);
 textWindow.appendChild(textContent);
 textWindow.appendChild(confirmText);
 
@@ -101,7 +127,7 @@ function down(e) {
         } else if (stylus === 3) {
             ctx.fillStyle = "#ffffff";
         }
-        
+
         ctx.beginPath();
         ctx.arc(lastPoint.x, lastPoint.y, ctx.lineWidth / 2, 0, Math.PI * 2);
         ctx.fill();
@@ -123,22 +149,16 @@ function down(e) {
         textWindow.style.top = ty + "px";
         textWindow.style.visibility = "visible";
 
-        
         confirmText.onclick = function () {
             ctx.textAlign = "left";
             ctx.font = "18px Arial";
             ctx.fillText(textContent.value, x, y);
             sendMessage(duuid,11, x,textContent.value,y);
-            inputTextButton.isTexting = false;
+            theStoryText = theStoryText + ". " + textContent.value;
             textContent.value = "";
             textWindow.style.visibility = "hidden";
         }
     }
-}
-
-function touchDown(e) {
-    e = e.touches[0]; // get the first touch point event info
-    down(e);
 }
 
 // 定义鼠标的移动事件的函数
@@ -158,7 +178,7 @@ function move(e) {
                 y: (controlPoint.y + lastTwoPoints[1].y) / 2,
             };
             // 画之前统一成与此页条设置一样的cuxi, yanse.
-            rangeValue.oninput(); 
+            rangeValue.oninput();
             if (stylus === 2){
                 chosenColor.onclick();
             } else if (stylus === 3) {
@@ -187,15 +207,9 @@ function move(e) {
             shaping(shapingVar.startP["x"], shapingVar.startP["y"],
                 getPoints(e)["x"], getPoints(e)["y"]);
             shapingVar.endP = getPoints(e);
-            sendMessage(duuid,9,shapingVar.startP,chosenShape); 
+            sendMessage(duuid,9,shapingVar.startP,chosenShape);
         }
     }
-}
-
-function touchMove(e) {
-    e = e.touches[0]; // get the first touch point event info
-    move(e);
-    pointForTouchUp = [e.clientX, e.clientY]; // touchEnd event has no position info so we save point info here.
 }
 
 // 鼠标松开事件
@@ -227,13 +241,21 @@ function up(e) {
     }
 }
 
-function touchUp(e) {
-    e = pointForTouchUp; // get point info from last move record
-    up(e);
-}
-
 function updateCanvas(number) {
     pagelists[number].data = canvas.toDataURL();
+    pagesData[number].data = canvas.toDataURL();
+}
+
+// Change canvas to the page that the Texter chosen
+function changeCanvas(number) {
+  console.log("Change: " + number);
+  let img = new Image();
+  img.src = pagesData[number].data;
+  img.onload = function () {
+      theCanvas.getContext("2d").drawImage(img, 0, 0);
+  }
+  let n = number + 1;
+  $("#page-number>p").html("Page " + n);
 }
 
 /** 画笔相关 */
@@ -404,8 +426,9 @@ function shaping(x1, y1, x2, y2) {
 // 点击choose按钮
 choose.onclick = function () {
     chosenTool = toolBox[0];
-    turnOffTexting();
-    currentTool.innerHTML = "current tool: cursor";
+    // turnOffTexting();
+    showHideSMT(adjustSize, "hide", "none");
+    selectTool($(".toolBox-buttons"), $(this).index());
 }
 
 // 点击pencil按钮
@@ -413,8 +436,9 @@ pencil.onclick = function () {
     ctx.strokeStyle = ctx.fillStyle;
     stylus = 2;
     chosenTool = toolBox[1]; // pencil
-    turnOffTexting();
-    currentTool.innerHTML = "current tool: pencil";
+    // turnOffTexting();
+    showHideSMT(adjustSize, "show", "block");
+    selectTool($(".toolBox-buttons"), $(this).index());
 };
 
 // 点击eraser按钮
@@ -422,16 +446,18 @@ eraser.onclick = function () {
     ctx.strokeStyle = "#ffffff";
     stylus = 3;
     chosenTool = toolBox[1]; // pencil
-    turnOffTexting();
-    currentTool.innerHTML = "current tool: eraser";
+    // turnOffTexting();
+    showHideSMT(adjustSize, "show", "block");
+    selectTool($(".toolBox-buttons"), $(this).index());
 };
 
 // 点击fill按钮
 fill.onclick = function () {
     chosenTool = toolBox[2];
     chosenColor.onclick();
-    turnOffTexting();
-    currentTool.innerHTML = "current tool: fill";
+    showHideSMT(adjustSize, "hide", "none");
+    // turnOffTexting();
+    selectTool($(".toolBox-buttons"), $(this).index());
 }
 
 // 点击rectangle按钮
@@ -439,8 +465,9 @@ rectangle.onclick = function () {
     chosenTool = toolBox[3];
     chosenColor.onclick();
     chosenShape = "rectangle";
-    turnOffTexting();
-    currentTool.innerHTML = "current tool: rectangle";
+    // turnOffTexting();
+    showHideSMT(adjustSize, "show", "block");
+    selectTool($(".toolBox-buttons"), $(this).index());
 }
 
 // 点击triangle按钮
@@ -448,8 +475,9 @@ triangle.onclick = function () {
     chosenTool = toolBox[3];
     chosenColor.onclick();
     chosenShape = "triangle";
-    turnOffTexting();
-    currentTool.innerHTML = "current tool: triangle";
+    // turnOffTexting();
+    showHideSMT(adjustSize, "show", "block");
+    selectTool($(".toolBox-buttons"), $(this).index());
 }
 
 // 点击circle按钮
@@ -457,8 +485,9 @@ circle.onclick = function () {
     chosenTool = toolBox[3];
     chosenColor.onclick();
     chosenShape = "circle";
-    turnOffTexting();
-    currentTool.innerHTML = "current tool: circle";
+    // turnOffTexting();
+    showHideSMT(adjustSize, "show", "block");
+    selectTool($(".toolBox-buttons"), $(this).index());
 }
 
 // 点击clear按钮
@@ -466,19 +495,31 @@ clear.onclick = function () {
     initialFill();
     // send clear
     sendMessage(duuid, 5, 0, 0, 0);
-    turnOffTexting();
-    currentTool.innerHTML = "current tool: clear";
+    // turnOffTexting();
+    showHideSMT(adjustSize, "hide", "none");
+    selectTool($(".toolBox-buttons"), $(this).index());
 };
+
+// click color panel function
+colorPanelButton.onclick = function () {
+    if (onOffColorPanel === false) {
+      showHideSMT(colorPanel, "show", "flex");
+      onOffColorPanel = !onOffColorPanel;
+    } else {
+      showHideSMT(colorPanel, "hide", "none");
+      onOffColorPanel = !onOffColorPanel;
+    }
+}
 
 // 点击text按钮
 inputTextButton.onclick = function () {
     // change to cursor
     chosenTool = toolBox[0];
+    selectTool($(".toolBox-buttons"), $(this).index());
     inputTextButton.isTexting = !inputTextButton.isTexting;
     if (!inputTextButton.isTexting) {
         textWindow.style.visibility = "hidden";
     }
-    currentTool.innerHTML = "current tool: text";
 }
 
 function turnOffTexting() {
@@ -494,6 +535,37 @@ rangeValue.oninput = function () {
     }
     sendMessage(duuid, 6, ctx.lineWidth, 0, 0); // send cuxi
 };
+
+function showHideSMT(obj, str1, str2) {
+  if (str1 === "show") {
+    obj.style.display = str2;
+  } else {
+    obj.style.display = "none";
+  }
+}
+
+$(window).on("load", function() {
+    selectTool($(".toolBox-buttons"), 0);
+});
+
+function selectTool(obj, i) {
+    obj.eq(i).css("backgroundColor", "#60A6C8").siblings().css("backgroundColor", "#a6b1bc");
+}
+
+let showToolBoxButton = document.getElementById("show-toolBox-button");
+let isToolBoxDisplaying = false;
+let toolBoxDOM = document.getElementById("toolBox");
+showToolBoxButton.onclick = function () {
+  if (isToolBoxDisplaying === false) {
+    showHideSMT(toolBoxDOM, "show", "flex");
+    isToolBoxDisplaying = !isToolBoxDisplaying;
+  } else {
+    showHideSMT(toolBoxDOM, "hide", "none");
+    isToolBoxDisplaying = !isToolBoxDisplaying;
+  }
+}
+
+
 
 //'hide rate and pitch' I've move to top of this file to prevent canvas size error :D  -- Berry
 

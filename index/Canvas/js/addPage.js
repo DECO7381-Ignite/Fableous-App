@@ -12,6 +12,7 @@ pageMap.set("previousPage", 0);
 
 firstPage.id = "" + pageID;
 pageID = pageID + 1;
+pagesData[parseInt(firstPage.id)] = firstPage;
 firstPage.innerHTML = "page - " + pageID;
 firstPage.onclick = function () {
     pagelists = document.getElementsByClassName("page-list");
@@ -22,30 +23,29 @@ firstPage.onclick = function () {
     img.src = pagelists[0].data;
     img.onload = function () {
         theCanvas.getContext("2d").drawImage(img, 0, 0);
+        sendMessage(duuid,13,pageMap.get("currentPage"),0,temp);
+        $("#page-number>p").html("Page " + 1);
     }
-    sendMessage(duuid,13,pageMap.get("currentPage"),0,0);
 }
 
 pageNumber.onclick = function () {
-    if (pages.style.visibility === "visible") {
-        pages.style.visibility = "hidden";
+    if (pages.style.display === "flex") {
+        pages.style.display = "none";
     } else {
-        pages.style.visibility = "visible";
+        pages.style.display = "flex";
     }
 }
 
 add_page_button.onclick = function () {
     let newPage = document.createElement("div");
-    // let deleteButton = document.createElement("button");
-    // let pp = document.createElement("p");
+
     newPage.className = "page-list";
     pagesChild01.appendChild(newPage);
     newPage.id = "" + pageID;
     pageID = pageID + 1;
-    //
-    // newPage.appendChild(pp);
-    // newPage.appendChild(deleteButton);
-    // deleteButton.innerHTML="-";
+    pagesData[parseInt(newPage.id)] = newPage;
+
+    $("#page-number>p").html("Page " + pageID);
 
     let temp = pageMap.get("currentPage");
     pageMap.set("currentPage", parseInt(newPage.id));
@@ -66,20 +66,9 @@ add_page_button.onclick = function () {
         img.src = pagelists[parseInt(newPage.id)].data;
         img.onload = function () {
             theCanvas.getContext("2d").drawImage(img, 0, 0);
+            sendMessage(duuid,14, parseInt(newPage.id),0,temp);
+            let n = parseInt(newPage.id) + 1;
+            $("#page-number>p").html("Page " + n);
         }
-        // sendMessage(duuid,14,pageMap.get("currentPage"),0,0); 需要新算法或重构newpage方法
     }
-    //
-    // deleteButton.onclick = function () {
-    //     pagesChild01.removeChild(newPage);
-    //     pageMap.set("currentPage", pageMap.get("previousPage"));
-    //     updateCanvas(pageMap.get("currentPage"));
-    //     console.log("##############");
-    //     console.log(pageMap);
-    //     let img = new Image();
-    //     img.src = pagelists[pageMap.get("currentPage")].data;
-    //     img.onload = function () {
-    //         theCanvas.getContext("2d").drawImage(img, 0, 0);
-    //     }
-    // }
 }

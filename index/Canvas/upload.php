@@ -17,6 +17,7 @@ $pname = $_POST["pname"];
 $user = $_POST["user"];
 $data = $_POST["data"];
 $pdata1 = null;
+$story=$_POST["story"];
 //echo $data."\n";
 $pages = explode("data:image/png;base64,", $data);
 $number = count($pages);
@@ -24,8 +25,8 @@ foreach($pages as $key => $pdata) {
     if (!$pdata=="") {
         $pdata1 = "data:image/png;base64,". str_replace(",","",$pdata);
 
-        $sql = "INSERT INTO library (pname, user, data)
-        VALUES ('$pname', '$user', '$pdata1')";
+        $sql = "INSERT INTO library (pname, user, data, story)
+        VALUES ('$pname', '$user', '$pdata1','$story')";
 
         if ($conn->query($sql) === FALSE) {
             echo "Error: " . $sql . "<br>" . $conn->error;

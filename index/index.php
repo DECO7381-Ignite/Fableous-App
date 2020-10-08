@@ -11,13 +11,24 @@
           -->
           <?php
           if (!isset($_SESSION['id'])) {         
-            echo '<p class="login-status">You are logged out!</p>
-            <p class="login-status">(For developer: user/password - test/test)</p>';
+            echo '<p class="login-status">You are logged out!</p><br><br><br>
+            <p class="login-status">(For developer: user/password - test/test)</p><br>
+            <p class="login-status">(For teacher: user/password - teacher/teacher)</p><br>
+            <p class="login-status">(For student: user/password - student/student)</p>';
           }
-          else if (isset($_SESSION['id'])) {
+          else if (isset($_SESSION['id']) && $_SESSION['id']==2) {
             // content for logged in users
             ////echo '<p class="login-status">You are logged in!</p>';
-            echo '<a href="Canvas/index.php">Click here to access canvas</a>';
+            header('Location: Canvas/teacher.php');
+            //include('DECO-7381/Canvas/index.php');
+            //readfile('DECO-7381/Canvas/index.php');
+            // above 2 do not render elements properly
+          }
+          else if (isset($_SESSION['id']) && $_SESSION['id']==3) {
+            // content for logged in users
+            ////echo '<p class="login-status">You are logged in!</p>';
+            header('Location: Canvas/home.php');
+            // echo '<a href="Canvas/home.html">Click here to access home</a>';
             //include('DECO-7381/Canvas/index.php');
             //readfile('DECO-7381/Canvas/index.php');
             // above 2 do not render elements properly
