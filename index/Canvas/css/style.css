@@ -20,14 +20,19 @@ div.toolBox-buttons img, div.toolBox-buttons section, input#slider {
 
 /*********************************************/
 /* Tools Animation */
+section.home-button:hover {
+    transform: scale(1.1);
+}
+section.home-button:active {
+    transform: scale(0.9);
+}
+
 div.toolBox-buttons img {
     transition: ease 0.17s;
 }
-
 div.toolBox-buttons img:hover {
     transform: rotate(360deg) scale(1.2);
 }
-
 div.toolBox-buttons img:active {
     transform: rotate(360deg) scale(1);
 }
@@ -80,7 +85,7 @@ div#color-pad-button section#chosen-color:hover {
 #pages {
   width: 100%;
   height: 150px;
-  background-color: grey;
+  background-color: rgba(128,128,128,0.7);
   border-radius: 10px;
   position: absolute;
   bottom: 0;
@@ -89,6 +94,14 @@ div#color-pad-button section#chosen-color:hover {
   flex-direction: row;
   display: none;
   z-index: 15;
+}
+
+div#page-number {
+  cursor: pointer;
+}
+
+div#page-number>p {
+    transition: color 0.5s ease;
 }
 
 #pages-child-01 {
@@ -101,6 +114,20 @@ div#color-pad-button section#chosen-color:hover {
   height: 120px;
   background-color: #DEC9CE;
   margin: 15px;
+  border-radius: 10px;
+  font-size: 1.8em;
+  font-weight: 700;
+  line-height: 3em;
+  text-align: center;
+  transition: font-size 0.1s ease;
+    cursor: pointer;
+}
+
+.page-list:hover {
+    font-size: 2em;
+}
+.page-list:active {
+    font-size: 1.9em;
 }
 
 #add-page {
@@ -110,10 +137,37 @@ div#color-pad-button section#chosen-color:hover {
   height: 80px;
   min-width: 80px;
   font-size: 3em;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#add-page:hover {
+    transform: translate(-1px, -1px);
+    border-width: 3px;
+}
+#add-page:active {
+    transform: translate(1px, 1px);
+}
+#add-page:focus {
+    outline: 0;
 }
 
 /*********************************************/
 /* Save pictures */
+button#save-picture-button {
+    width: 70px;
+    height: 30px;
+    border-image: linear-gradient(45deg, rgba(227,126,7,0.6) 0%,
+                rgba(171,28,184,0.6) 50%, rgba(69,252,215,0.6) 100%) 1 round;
+    border-width: 3px;
+    cursor: pointer;
+}
+button#save-picture-button:hover {
+    border-image: linear-gradient(45deg, rgba(227,126,7,1) 0%,
+    rgba(171,28,184,1) 50%, rgba(69,252,215,1) 100%) 1 round;
+}
+
 #black-background {
     margin: 0;
     padding: 0;
@@ -165,6 +219,13 @@ div#color-pad-button section#chosen-color:hover {
     border: 0;
     background-color: #60A6C8;
     color: white;
+    cursor: pointer;
+}
+#ensure-save-picture-button:hover, #cancel-save-picture:hover {
+    color: black;
+}
+#ensure-save-picture-button:focus, #cancel-save-picture:focus {
+    outline: none;
 }
 
 #save-picture-button {
@@ -431,6 +492,14 @@ div#color-pad-button section#chosen-color:hover {
       line-height: 80px;
       text-align: center;
   }
+
+  div#page-number :hover {
+      transform: translate(0, -1px);
+      font-size: 26px;
+  }
+  div#page-number :active {
+      font-size: 23px;
+  }
 }
 
 
@@ -685,6 +754,14 @@ div#color-pad-button section#chosen-color:hover {
       font-weight: bold;
       line-height: 50px;
       text-align: center;
+  }
+
+  div#page-number :hover {
+      transform: translate(0, -1px);
+      font-size: 20px;
+  }
+  div#page-number :active {
+      font-size: 17px;
   }
 }
 
@@ -961,5 +1038,13 @@ div#color-pad-button section#chosen-color:hover {
       font-weight: bold;
       line-height: 50px;
       text-align: center;
+  }
+
+  div#page-number :hover {
+      transform: translate(0, -1px);
+      font-size: 18px;
+  }
+  div#page-number :active {
+      font-size: 15px;
   }
 }

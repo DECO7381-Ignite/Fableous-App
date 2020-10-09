@@ -24,7 +24,8 @@ firstPage.onclick = function () {
     img.onload = function () {
         theCanvas.getContext("2d").drawImage(img, 0, 0);
         sendMessage(duuid,13,pageMap.get("currentPage"),0,temp);
-        $("#page-number>p").html("Page " + 1);
+        $("#page-number>p").html("Page " + 1).css("color","whitesmoke");
+        setTimeout(() => {  $("#page-number>p").css("color","black") }, 500);
     }
 }
 
@@ -68,7 +69,8 @@ add_page_button.onclick = function () {
             theCanvas.getContext("2d").drawImage(img, 0, 0);
             sendMessage(duuid,14, parseInt(newPage.id),0,temp);
             let n = parseInt(newPage.id) + 1;
-            $("#page-number>p").html("Page " + n);
+            $("#page-number>p").html("Page " + n).css("color","whitesmoke");
+            setTimeout(() => {  $("#page-number>p").css("color","black") }, 500);
         }
     }
 }
