@@ -28,7 +28,7 @@
                 <div id="text" class="toolBox-buttons"><img src="icon/text.svg" alt="text icon"></div>
                 <div id="eraser" class="toolBox-buttons"><img src="icon/eraser.svg" alt="eraser icon"></div>
                 <div id="mic" class="toolBox-buttons"><img src="icon/mic.svg" alt="mic icon"></div>
-                <div id="color-pad-button" class="toolBox-buttons"><section id="chosen-color"></section></div>
+                <div id="color-pad-button" class="toolBox-buttons"><div></div><section id="chosen-color"></section></div>
               </section>
             </div>
 
