@@ -18,13 +18,13 @@
 <body>
     <div id="book">
         <div id="user">
-        <?php
-                if (isset($_SESSION['id'])) {
-                    echo '<form action="../includes/logout.inc.php" method="post">
-                    <button type="submit" name="login-submit">Logout</button>
-                    </form>';
-                }
-        ?>
+<!--        --><?php
+//                if (isset($_SESSION['id'])) {
+//                    echo '<form action="../includes/logout.inc.php" method="post">
+//                    <button type="submit" name="login-submit">Logout</button>
+//                    </form>';
+//                }
+//        ?>
             <img src="icon/user.svg" alt="user_icon">
         </div>
         <div id="title">
@@ -122,6 +122,7 @@
         padding: 35px;
         box-sizing: border-box;
         border-radius: 17px;
+        position: relative;
     }
 
     div#menu button {
@@ -138,15 +139,18 @@
     }
 
     div#menu button:first-of-type {
-        margin: 15px auto;
+        top: 15%;
+        margin: 0 auto;
         left: 0;
         right: 0;
     }
     div#menu button:nth-of-type(2) {
-        margin: 145px 0 0 15px;
+        bottom: 15%;
+        left: 10%;
     }
     div#menu button:nth-of-type(3) {
-        margin: 145px 0 0 235px;
+        bottom: 15%;
+        right: 10%;
     }
 
     div#menu button:hover {
@@ -209,14 +213,55 @@
         font-size: 1.4em;
         background-color: #a6b1bc;
     }
+
+@media (max-width: 720px) {
+
+    * {
+        overflow: hidden;
+    }
+
+    div#book {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
+
+    div#user {
+        width: 50px;
+        float: none;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+    }
+
+    div#title {
+        clear: none;
+        font-size: 4em;
+        margin-top: 50px;
+    }
+
+    div#menu {
+        margin: 60px auto 0 auto;
+    }
+
+    div#menu button {
+        width: 36%;
+        font-size: 1.3em;
+    }
+
+}
 </style>
 <script>
     let addStoryMenu = window.document.getElementById("addStoryMenu");
     let back = window.document.getElementById("back");
     let addStory = window.document.getElementById("addStory");
+    let menu = window.document.getElementById("menu");
 
     addStory.onclick = function () {
         addStoryMenu.style.transform = "scale(1)";
+        addStoryMenu.style.top = String(menu.offsetTop + menu.offsetParent.offsetTop) + "px";
+        addStoryMenu.style.left = String(menu.offsetLeft + menu.offsetParent.offsetLeft) + "px";
+        addStoryMenu.style.width = String(menu.offsetWidth) + "px";
     }
 
     back.onclick = function () {
