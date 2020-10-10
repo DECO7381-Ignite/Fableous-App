@@ -20,10 +20,10 @@ div.toolBox-buttons img, div.toolBox-buttons section, input#slider {
 
 /*********************************************/
 /* Tools Animation */
-section.home-button:hover {
+section.home-button a img:hover {
     transform: scale(1.1);
 }
-section.home-button:active {
+section.home-button a img:active {
     transform: scale(0.9);
 }
 
