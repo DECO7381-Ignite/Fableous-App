@@ -255,7 +255,7 @@ button#save-picture-button:hover {
     min-width: 992px;
     min-height: 688px;
     width: 95%;
-    height: 95vh;
+    height: 90vh;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -523,7 +523,7 @@ button#save-picture-button:hover {
 
   .main-part {
     width: 100%;
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
   }
@@ -783,7 +783,7 @@ button#save-picture-button:hover {
 
   .main-part {
     width: 100%;
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
   }
