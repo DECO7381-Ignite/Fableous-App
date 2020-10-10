@@ -4,7 +4,8 @@
   // "require" creates an error message and stops the script. "include" creates an error and continues the script.
   require "../includes/dbh.inc.php";
   if (!$_SESSION['id']){
-    echo "<script> {window.alert('Please login first!');} history.back();</script>";
+    echo "<script> {  window.alert('Please login first!');
+                      window.location.href='../index.php';  } </script>";
   }
 ?>
 <!DOCTYPE html>
@@ -17,14 +18,17 @@
 </head>
 <body>
     <div id="book">
+
+        <?php
+        if (isset($_SESSION['id'])) {
+            echo '<form action="../includes/logout.inc.php" method="post">
+                    <button type="submit" name="login-submit">Logout</button>
+                    </form>';
+        }
+        ?>
+
         <div id="user">
-<!--        --><?php
-//                if (isset($_SESSION['id'])) {
-//                    echo '<form action="../includes/logout.inc.php" method="post">
-//                    <button type="submit" name="login-submit">Logout</button>
-//                    </form>';
-//                }
-//        ?>
+
             <img src="icon/user.svg" alt="user_icon">
         </div>
         <div id="title">
@@ -73,6 +77,26 @@
         box-sizing: border-box;
     }
 
+    div#book form:first-of-type {
+        position: absolute;
+        top: 30px;
+        right: 130px;
+    }
+
+    div#book form:first-of-type button {
+        background: none;
+        font-size: 1.05em;
+        color: rgba(255, 182, 193, 0.7);
+        border: 2px solid rgba(138, 204, 255, 0.7);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    div#book form:first-of-type button:hover {
+        color: rgb(255, 182, 193);
+        border-color: rgb(138, 204, 255);
+    }
+
     div#user {
         width: 85px;
         float: right;
@@ -93,7 +117,6 @@
 
     div#title {
         font-size: 7.5em;
-        color: whitesmoke;
         text-align: center;
         width: 100%;
         clear: both;
@@ -104,14 +127,7 @@
         border: 2px solid rgba(0,0,0,0);
         box-sizing: border-box;
         border-radius: 10px;
-    }
-
-    div#title a:hover {
-        border: 2px solid whitesmoke;
-    }
-
-    div#title a:visited {
-        color: whitesmoke;
+        color: #222;
     }
 
     div#menu {
