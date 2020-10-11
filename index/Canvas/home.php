@@ -179,6 +179,9 @@
         color: lightgreen;
         transform: scale(1);
     }
+    div#menu button a:hover {
+        color: whitesmoke;
+    }
 
     div#addStoryMenu {
         position: absolute;

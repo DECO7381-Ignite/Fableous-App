@@ -180,6 +180,7 @@
               }
               document.getElementById("pdata").value = arr.toString();
               document.getElementById("pstory").value = theStoryText.toString();
+              window.location.href = "library.php";
           }
 
           function savePicture() {
