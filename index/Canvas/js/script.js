@@ -1,13 +1,13 @@
 
 document.body.addEventListener('touchmove', function (e) {
-    e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
-  }, {passive: false}); //passive 参数不能省略，用来兼容ios和android
+    e.preventDefault(); // prevent the default dragging action on touch screen.
+  }, {passive: false}); //passive, for compatibility with IOS and Android
 
 // // hide rate and pitch values
 // document.getElementById("rate").style.display = "none";
 // document.getElementById("pitch").style.display = "none";
 
-// 获取页面元素，并声明变量
+// get all elements from the page and settle all variables
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 
@@ -34,17 +34,18 @@ inputTextButton.isTexting = false;
 let colors = [];
 for (let c = 0; c < 12; c++) {
     colors.push(document.getElementById("c" + c));
-    colors[c].onclick = function () { // 点击色块
-        ctx.fillStyle = window.getComputedStyle(this).backgroundColor; // 改变fillStyle
+    colors[c].onclick = function () { // click the color blocks
+        ctx.fillStyle = window.getComputedStyle(this).backgroundColor; // change fillStyle
         ctx.strokeStyle = ctx.fillStyle;
-        chosenColor.childNodes[0].style.opacity = "0"; // 隐藏先前选色的✅
-        this.childNodes[0].style.opacity = "1"; // 显示当前选色的✅
+        chosenColor.childNodes[0].style.opacity = "0"; // hide the previous selected color's ✅
+        this.childNodes[0].style.opacity = "1"; // show new ✅ on new chosen color block
         chosenColor = this;
-        sendMessage(duuid,8,ctx.strokeStyle,0,0); // send 画笔颜色
+        sendMessage(duuid,8,ctx.strokeStyle,0,0); // send fill color
         document.getElementById("chosen-color").style.backgroundColor = getComputedStyle(colors[c], null)['backgroundColor'];
     }
 }
-let chosenColor = colors[11]; // 默认选择黑色showHideSMT(colorPanel, "hide", "none");
+let chosenColor = colors[11]; // the default color is black.
+// showHideSMT(colorPanel, "hide", "none");
 let rangeValue = document.getElementById("slider");
 
 
@@ -62,10 +63,10 @@ let shapingVar = {"startP": null, "endP":null, "originalImage": null};
 
 const toolBox = ["choose", "pencil", "fill", "shaping"];
 let chosenTool = toolBox[0];
-let stylus = 2; //联动 send 判断eraser or pencil
+let stylus = 2; // using 'send' to check whether drawing or erasing
 let chosenShape = null;
 
-// 绑定canvas的鼠标点击，鼠标移动，鼠标松开事件
+// bind event listener to the three main action, mouse down, move and up
 canvas.addEventListener("mousedown", down, false);
 canvas.addEventListener("mousemove", move, false);
 canvas.addEventListener("mouseup", up, false);
@@ -93,7 +94,7 @@ function touchUp(e) {
     up(e);
 }
 
-// 上来先把画布全涂白，而不是默认的(0,0,0,0) - 透明黑
+// initialize the canvas with 100% opacity white rather than the original 0% black
 initialFill();
 
 ctx.lineWidth = 3; // initializing the line width
@@ -114,17 +115,17 @@ document.body.appendChild(textWindow);
 textWindow.appendChild(textContent);
 textWindow.appendChild(confirmText);
 
-/** 鼠标三事件 */
+/** Mouse Events */
 
-// 定义鼠标的点击事件函数
+// define mouse down function
 function down(e) {
-    if (chosenTool === toolBox[1]) { // 画笔模式
+    if (chosenTool === toolBox[1]) { // pencil drawing mode
         painting = true;
         let {x, y} = getPoints(e);
         points.push({x, y});
         lastPoint = {x, y};
 
-        // 画之前统一成与此页条设置一样的粗细, 颜色.
+        // sync the pencil weight and color at first
         rangeValue.oninput();
         if (stylus === 2){
             chosenColor.onclick();
@@ -135,14 +136,14 @@ function down(e) {
         ctx.beginPath();
         ctx.arc(lastPoint.x, lastPoint.y, ctx.lineWidth / 2, 0, Math.PI * 2);
         ctx.fill();
-        // send 点击事件
+        // send mouse down event
         sendMessage(duuid, 4, x, 0, y);
-    } else if (chosenTool === toolBox[2]) { // 填充模式
+    } else if (chosenTool === toolBox[2]) { // fill mode
         // pass
-    } else if (chosenTool === toolBox[3]) { // 形状模式
+    } else if (chosenTool === toolBox[3]) { // shaping mode
         shapingVar.startP = getPoints(e);
         isDrawingShape = true;
-        // 记录初始画布
+        // record origin canvas
         shapingVar.originalImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
     }
     if (inputTextButton.isTexting) {
@@ -165,23 +166,23 @@ function down(e) {
     }
 }
 
-// 定义鼠标的移动事件的函数
+// define mouse move function
 function move(e) {
-    if (chosenTool === toolBox[1]) { // 画笔模式
+    if (chosenTool === toolBox[1]) { // pencil drawing mode
         if (!painting) return;
 
         let {x, y} = getPoints(e);
         points.push({x, y});
 
         if (points.length >= 3) {
-            //使用拉塞尔函数，使线条更丝滑
+            // Use the Bessel function to make the lines more silky
             let lastTwoPoints = points.slice(-2);
             let controlPoint = lastTwoPoints[0];
             let endPoint = {
                 x: (controlPoint.x + lastTwoPoints[1].x) / 2,
                 y: (controlPoint.y + lastTwoPoints[1].y) / 2,
             };
-            // 画之前统一成与此页条设置一样的cuxi, yanse.
+            // sync the pencil weight and color at first
             rangeValue.oninput();
             if (stylus === 2){
                 chosenColor.onclick();
@@ -189,10 +190,10 @@ function move(e) {
                 ctx.strokeStyle = "#ffffff";
             }
 
-            // 不同工具的鼠标移动事件
+            // different tools in mouse move
             // if (toolBox["pencil"] === "1") {
             drawLine(lastPoint, controlPoint, endPoint);
-            // send 画还是擦
+            // send draw or eraser
             sendMessage(duuid, stylus, lastPoint, controlPoint, endPoint);
             // } else if (toolBox["eraser"] === "1") {
             //     ctx.save();
@@ -204,9 +205,9 @@ function move(e) {
             // }
             lastPoint = endPoint;
         }
-    } else if (chosenTool === toolBox[2]) { // 填充模式
+    } else if (chosenTool === toolBox[2]) { // fill mode
         // pass
-    } else if (chosenTool === toolBox[3]) { // 矩形模式
+    } else if (chosenTool === toolBox[3]) { // shaping mode
         if (isDrawingShape) {
             shaping(shapingVar.startP["x"], shapingVar.startP["y"],
                 getPoints(e)["x"], getPoints(e)["y"]);
@@ -216,9 +217,9 @@ function move(e) {
     }
 }
 
-// 鼠标松开事件
+// define mouse up function
 function up(e) {
-    if (chosenTool === toolBox[1]) { // 画笔模式
+    if (chosenTool === toolBox[1]) { // pencil drawing mode
         if (!painting) return;
 
         let {x, y} = getPoints(e);
@@ -234,12 +235,12 @@ function up(e) {
         lastPoint = null;
         painting = false;
         points = [];
-    } else if (chosenTool === toolBox[2]) { // 填充模式
+    } else if (chosenTool === toolBox[2]) { // fill mode
         let {x, y} = getPoints(e);
         fillCanvas(canvas, ctx, x, y, ctx.fillStyle);
-        // send 填充
+        // send fill
         sendMessage(duuid, 7, x, ctx.fillStyle, y);
-    } else if (chosenTool === toolBox[3]) { // 矩形模式
+    } else if (chosenTool === toolBox[3]) { // shaping mode
         isDrawingShape = false;
         sendMessage(duuid,10,shapingVar.endP,0,0);
     }
@@ -262,8 +263,8 @@ function changeCanvas(number) {
   $("#page-number>p").html("Page " + n);
 }
 
-/** 画笔相关 */
-// 获取鼠标的坐标
+/** Drawings */
+// get mouse position
 function getPoints(e) {
     let rect = canvas.getBoundingClientRect();
     return {
@@ -272,7 +273,7 @@ function getPoints(e) {
     }
 }
 
-// 根据坐标画曲线
+// draw lines according to points
 function drawLine(begin, control, end) {
     ctx.beginPath();
     ctx.moveTo(begin.x, begin.y);
@@ -282,7 +283,7 @@ function drawLine(begin, control, end) {
     // uuju=ctx.getImageData(0,0,canvas.width,canvas.height); redo研究
 }
 
-// 鼠标离开canvas事件
+// mouse leave the canvas
 canvas.onmouseleave = function () {
     painting = false;
     // if (isDrawingShape) {
@@ -290,17 +291,17 @@ canvas.onmouseleave = function () {
     // }
     isDrawingShape = false;
 
-    // 更新本地储存的canvas数据
+    // update local canvas data
     updateCanvas(pageMap.get("currentPage"));
 };
 
-/** 填充相关 */
+/** Fillings */
 
 function initialFill() {
     let temp = ctx.fillStyle;
-    ctx.fillStyle = "#FFFFFF"; // 先用纯白涂满画布
+    ctx.fillStyle = "#FFFFFF"; // fill the canvas with 100% opacity white
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = temp; // 再把fillStyle改回去
+    ctx.fillStyle = temp; // change back the fill style
 }
 
 function fillCanvas(canvas, ctx, X, Y, newColor) {
@@ -309,48 +310,48 @@ function fillCanvas(canvas, ctx, X, Y, newColor) {
     let width = canvas.width;
     let height = canvas.height;
 
-    // 获取所有画布点位信息
+    // get all points data on the canvas
     let canvasData = ctx.getImageData(0, 0, width, height);
 
-    // 获取第 Y 行 第 X 列的像素信息
+    // get row Y column X image point's data
     let i = Y * width + X;
     let colorR = canvasData.data[4 * i];
     let colorG = canvasData.data[4 * i + 1];
     let colorB = canvasData.data[4 * i + 2];
 
-    // 获取填充颜色的RGB数组，如果与目标相同即跳出
+    // Gets the RGB of fill colors, and jumps out if it is the same as the target
     let fillingColor = hexToRGB(newColor);
     if (colorR===fillingColor.R && colorG===fillingColor.G && colorB===fillingColor.B) {
         return;
     }
 
-    // 设置堆栈，堆底默认为起始点
+    // set stack, the stack bottom is the start point
     let stackColumn = [X];
     let stackRow = [Y];
     let c; // column
     let r; // row
 
     function CheckNewPoint(r, c){
-        let n = r * width + c; // 获取点位信息
+        let n = r * width + c; // get point's data
         let needColorR = canvasData.data[4 * n];
         let needColorG = canvasData.data[4 * n + 1];
         let needColorB = canvasData.data[4 * n + 2];
-        // 判断颜色 + 存储种子点: //在判断 颜色 是否是 种子点的颜色
+        // check color and save points
         if( c>=0 && c <= width && r>=0 && r<= height
             && needColorR === colorR && needColorG === colorG && needColorB ===colorB) {
-            // 若 符合情况 则将该店改颜色
+            // if match then change color
             canvasData.data[4 * n] = fillingColor.R;
             canvasData.data[4 * n + 1] = fillingColor.G;
             canvasData.data[4 * n + 2] = fillingColor.B;
-            // 并压入堆栈
+            // and push to the stack
             stackRow.push(r);
             stackColumn.push(c);
         }
     }
 
-    // 非递归种子算法
+    // non-recursion seed fill algorithm
     while(true){
-        if(stackColumn.length <= 0){ // 堆空时跳出
+        if(stackColumn.length <= 0){ // jump out if the stack is empty
             break;
         }
         c = stackColumn.pop();
@@ -377,11 +378,11 @@ function fillCanvas(canvas, ctx, X, Y, newColor) {
     ctx.putImageData(canvasData, 0, 0);
 }
 
-/* 转换HEX至RGB，如 "#FFFFFF" 至 {R: 255, G: 255, B: 255} */
+/* HEX to RGB，such as "#FFFFFF" to {R: 255, G: 255, B: 255} */
 function hexToRGB(hex) {
     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
     hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-        return r + r + g + g + b + b; // 拓展简写的HEX
+        return r + r + g + g + b + b; // including short hand
     });
 
     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -392,19 +393,19 @@ function hexToRGB(hex) {
     } : null;
 }
 
-/** 形状绘制相关 */
+/** Shaping */
 function initShaping() {
-    initialFill();  // 清空canvas
-    ctx.putImageData(shapingVar.originalImage, 0, 0);  // 恢复初始画布
+    initialFill();  // clear canvas
+    ctx.putImageData(shapingVar.originalImage, 0, 0);  // recover origin image
 }
 
 function shaping(x1, y1, x2, y2) {
     ctx.save();
     ctx.beginPath();
 
-    self.initShaping();  // 每移动鼠标便清空重画一次矩形，以达到实时预览效果
+    self.initShaping();  // redraw the shape whenever the mouse moving to show real time shaping
     if (chosenShape === "rectangle") {
-        ctx.strokeRect(x1, y1, x2 - x1, y2 - y1); // 绘制矩形
+        ctx.strokeRect(x1, y1, x2 - x1, y2 - y1); // draw shape
     } else if (chosenShape === "triangle") {
         ctx.moveTo(Math.round((x1 + x2) / 2), y1);
         ctx.lineTo(x1, y2);
@@ -422,12 +423,12 @@ function shaping(x1, y1, x2, y2) {
 }
 
 
-/** 工具箱按钮相关 */
+/** Tool Buttons */
 // document.getElementById("undo").onclick=function() {
 //     // ctx.putImageData(uuju,0,0); // redo研究
 // }
 
-// 点击choose按钮
+// click choose button
 choose.onclick = function () {
     chosenTool = toolBox[0];
     // turnOffTexting();
@@ -436,7 +437,7 @@ choose.onclick = function () {
     $("#myCanvas").removeClass();
 }
 
-// 点击pencil按钮
+// click pencil button
 pencil.onclick = function () {
     ctx.strokeStyle = ctx.fillStyle;
     stylus = 2;
@@ -447,7 +448,7 @@ pencil.onclick = function () {
     $("#myCanvas").removeClass().addClass("cursorPencil");
 };
 
-// 点击eraser按钮
+// click eraser button
 eraser.onclick = function () {
     ctx.strokeStyle = "#ffffff";
     stylus = 3;
@@ -458,7 +459,7 @@ eraser.onclick = function () {
     $("#myCanvas").removeClass().addClass("cursorEraser");
 };
 
-// 点击fill按钮
+// click fill button
 fill.onclick = function () {
     chosenTool = toolBox[2];
     chosenColor.onclick();
@@ -468,7 +469,7 @@ fill.onclick = function () {
     $("#myCanvas").removeClass().addClass("cursorFill");
 }
 
-// 点击rectangle按钮
+// click rectangle button
 rectangle.onclick = function () {
     chosenTool = toolBox[3];
     chosenColor.onclick();
@@ -479,7 +480,7 @@ rectangle.onclick = function () {
     $("#myCanvas").removeClass();
 }
 
-// 点击triangle按钮
+// click triangle button
 triangle.onclick = function () {
     chosenTool = toolBox[3];
     chosenColor.onclick();
@@ -490,7 +491,7 @@ triangle.onclick = function () {
     $("#myCanvas").removeClass();
 }
 
-// 点击circle按钮
+// click circle button
 circle.onclick = function () {
     chosenTool = toolBox[3];
     chosenColor.onclick();
@@ -501,7 +502,7 @@ circle.onclick = function () {
     $("#myCanvas").removeClass();
 }
 
-// 点击clear按钮
+// click clear button
 clear.onclick = function () {
     initialFill();
     // send clear
@@ -522,7 +523,7 @@ colorPanelButton.onclick = function () {
     }
 }
 
-// 点击text按钮
+// click text button
 inputTextButton.onclick = function () {
     // change to cursor
     chosenTool = toolBox[0];
@@ -538,13 +539,13 @@ function turnOffTexting() {
     textWindow.style.visibility = "hidden";
 }
 
-/** 辅助工具相关 */
+/** Additional Tools */
 rangeValue.oninput = function () {
     ctx.lineWidth = Math.round(rangeValue.value / 100 * 40);
     if (ctx.lineWidth < 3) {
         ctx.lineWidth = 3;
     }
-    sendMessage(duuid, 6, ctx.lineWidth, 0, 0); // send cuxi
+    sendMessage(duuid, 6, ctx.lineWidth, 0, 0); // send weight
 };
 
 function showHideSMT(obj, str1, str2) {
@@ -575,9 +576,3 @@ showToolBoxButton.onclick = function () {
     isToolBoxDisplaying = !isToolBoxDisplaying;
   }
 }
-
-
-
-//'hide rate and pitch' I've move to top of this file to prevent canvas size error :D  -- Berry
-
-// console.log(); //redo研究
