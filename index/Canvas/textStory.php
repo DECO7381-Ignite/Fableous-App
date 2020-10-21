@@ -151,7 +151,7 @@
                     <div id="c9" class="colors"><img src="icon/tick.svg" alt="tick icon"></div>
                     <div id="c10" class="colors"><img src="icon/tick.svg" alt="tick icon"></div>
                     <div id="c11" class="colors"><img src="icon/tickWhite.svg" alt="tick icon"></div>
-                </div>turnOffTexting
+                </div>
 
                 <div id="adjust-size">
                     <label for="slider"></label><input type="range" min = "1" max = "100" value="5" id="slider">
