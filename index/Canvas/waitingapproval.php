@@ -163,7 +163,7 @@ $conn->close();
         storyTitle.id = "store-title" + storyID.toString();
         stories.appendChild(storyTitle);
 
-        // 设置随机封面背景
+        // random cover pictures for stories
         let storiesBG = ["storiesBG1", "storiesBG2", "storiesBG3"];
         let randomBG = "background-image: url('./icon/" + storiesBG[Math.floor(Math.random() * 3)] + ".svg');";
         stories.setAttribute("style", randomBG);
@@ -224,7 +224,7 @@ $conn->close();
                 inputNewName.style.visibility = "hidden";
             }
 
-            // 读取img并分组放到library
+            // get the pictures data and group them
 
             let arr = images.get(storyname);
 

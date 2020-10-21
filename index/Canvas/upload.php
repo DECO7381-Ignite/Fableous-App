@@ -23,11 +23,11 @@ $pages = explode("data:image/png;base64,", $data);
 $number = count($pages);
 foreach($pages as $key => $pdata) {
     if (!$pdata=="") {
-        $pdata1 = "data:image/png;base64,". str_replace(",","",$pdata);
-
+        $pdata1 = "data:image/png;base64,". str_replace(",","",$pdata); // make a completed base64 format of picture
+        // sql statements
         $sql = "INSERT INTO library (pname, user, data, story)
         VALUES ('$pname', '$user', '$pdata1','$story')";
-
+        // insert and check it
         if ($conn->query($sql) === FALSE) {
             echo "Error: " . $sql . "<br>" . $conn->error;
             return;
@@ -37,20 +37,6 @@ foreach($pages as $key => $pdata) {
         echo "<script> alert('save succeed');history.back();</script>";
     }
 }
-
-//echo "data:image/png;base64," . str_replace(",","",$pages[1]);
-//$json = json_decode('$data', true);
-//echo "\n";
-//echo $json;
-//foreach ($data as $key => $value) {
-//    echo $value;
-//    echo "\n";
-//}
-
-
-
-
-
 
 $conn->close();
 ?>

@@ -170,7 +170,7 @@
           let mycanvas=document.getElementById("myCanvas");
           let data = null;
           let myimage = new Image();
-
+          // upload the pictures/story to databse
           function savedata() {
               data=mycanvas.toDataURL();
               pagelists = document.getElementsByClassName("page-list");
@@ -182,7 +182,7 @@
               document.getElementById("pstory").value = theStoryText.toString();
               window.location.href = "library.php";
           }
-
+          // confirm window 
           function savePicture() {
               let blackBackground = document.getElementById("black-background");
               let savePictureWindow = document.getElementById("save-picture-window");
@@ -191,7 +191,7 @@
               $("#input-picture-name").val("");
               $("#input-user-name").val("");
           }
-
+          // cancel save
           function cancelSave() {
               let blackBackground = document.getElementById("black-background");
               let savePictureWindow = document.getElementById("save-picture-window");

@@ -12,6 +12,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+// search function
 if (isset($_POST["submit"]) && trim($_POST["author"]) != "") {
     $str = $_POST["author"];
     $sql = "SELECT * FROM library WHERE user = '$str'";
@@ -29,7 +30,7 @@ class libraryPhotos {
     public $imageData;
     public $story;
 }
-
+// get and set pics data to local JSON
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $library_pictures = new libraryPhotos();
@@ -44,13 +45,14 @@ if ($result->num_rows > 0) {
 } else {
     echo "<script>alert('no result');</script>";
 }
-
+// delete pictures
 if (isset($_GET["id"])) {
     $deleteID=$_GET["id"];
     $dsql = "DELETE FROM library WHERE pname='$deleteID'";
     $conn->query($dsql);
     header("Location:library.php");
 }
+// rename the pictures
 if (isset($_GET["uid"])) {
     $updateID=$_GET["uid"];
     $uname=$_GET["uname"];
@@ -206,7 +208,7 @@ $conn->close();
     storyTitle.id = "store-title" + storyID.toString();
     stories.appendChild(storyTitle);
 
-    // 设置随机封面背景
+    // random cover pictures for stories
     let storiesBG = ["storiesBG1", "storiesBG2", "storiesBG3"];
     let randomBG = "background-image: url('./icon/" + storiesBG[Math.floor(Math.random() * 3)] + ".svg');";
     stories.setAttribute("style", randomBG);
@@ -258,7 +260,7 @@ $conn->close();
             inputNewName.style.visibility = "hidden";
         }
 
-        // 读取img并分组放到library
+        // get pictures data and group them (same picture name)
 
         let arr = images.get(storyname);
 

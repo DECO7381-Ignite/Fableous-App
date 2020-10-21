@@ -1,4 +1,5 @@
 function loadStudents() {
+    // manage students feature
     let students = [
         {name:"a", id:1, attendence:"y", team:"team 1", dietary:"a", extra:"none"},
         {name:"b", id:2, attendence:"y", team:"team 1", dietary:"a", extra:"none"},
@@ -45,7 +46,7 @@ function closeAddWindow() {
     $("#add-window-diet").val("");
     $("#add-window-extra").val("");
 }
-
+// add student
 function addStudent(name, id, attendence, team, dietary, extra) {
     let studentList = $("#students-list");
     studentList.append(

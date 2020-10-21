@@ -12,6 +12,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+// search function inner page
 if (isset($_POST["submit"]) && trim($_POST["author"]) != "") {
     $str = $_POST["author"];
     $sql = "SELECT * FROM library WHERE user = '$str'";
@@ -21,7 +22,7 @@ if (isset($_POST["submit"]) && trim($_POST["author"]) != "") {
 $result = $conn->query($sql);
 $libraryData =array();
 $json = '';
-
+// data lables
 class libraryPhotos {
     public $pid;
     public $pname;
@@ -29,7 +30,7 @@ class libraryPhotos {
     public $imageData;
     public $story;
 }
-
+// get data and save to local json
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $library_pictures = new libraryPhotos();
@@ -45,13 +46,14 @@ if ($result->num_rows > 0) {
 } else {
     echo "<script>alert('0 result');</script>";
 }
-
+// delete the pictures in the database
 if (isset($_GET["id"])) {
     $deleteID=$_GET["id"];
     $dsql = "DELETE FROM library WHERE pname='$deleteID'"; 
     $conn->query($dsql);
     header("Location:classlib.php");
 }
+// rename the pictures in the database
 if (isset($_GET["uid"])) {
     $updateID=$_GET["uid"];
     $uname=$_GET["uname"];
@@ -156,7 +158,7 @@ $conn->close();
     let libraryImages = null;
     let currentUser = "max";
     let images = new Map();
-
+    // get pictures data and show them
     window.onload = function () {
         libraryImages = <?php echo $json?>;
         for (let p in libraryImages) {
@@ -178,7 +180,7 @@ $conn->close();
             addStories(key);
         }
     }
-
+  // add a story (picture project)
   function addStories(storyname) {
     let stories = document.createElement("div");
     let storyTitle = document.createElement("p");
@@ -195,7 +197,7 @@ $conn->close();
     storyTitle.id = "store-title" + storyID.toString();
     stories.appendChild(storyTitle);
 
-    // 设置随机封面背景
+    // random brief cover pictures of stories
     let storiesBG = ["storiesBG1", "storiesBG2", "storiesBG3"];
     let randomBG = "background-image: url('./icon/" + storiesBG[Math.floor(Math.random() * 3)] + ".svg');";
     stories.setAttribute("style", randomBG);
@@ -216,13 +218,13 @@ $conn->close();
         let inputNewName = document.getElementById("input-new-name");
         // story info
         document.getElementById("text-input").value=images.get(storyname)[0].story;
-
+        // cancel button
         closeButton.onclick = function () {
             background.style.visibility = "hidden";
             picture.style.visibility = "hidden";
             inputNewName.style.visibility = "hidden";
         }
-
+        // detele button
         deleteButton.onclick = function () {
             background.style.visibility = "hidden";
             picture.style.visibility = "hidden";
@@ -230,7 +232,7 @@ $conn->close();
             inputNewName.style.visibility = "hidden";
             window.location.href="?id="+stories.pname;
         }
-
+        // rename button
         renameButton.onclick = function () {
             inputNewName.style.visibility = "visible";
         }
@@ -247,7 +249,7 @@ $conn->close();
             inputNewName.style.visibility = "hidden";
         }
 
-        // 读取img并分组放到library
+        // load pictures data and to the groups(same picture name)
 
         let arr = images.get(storyname);
 
