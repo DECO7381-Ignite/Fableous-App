@@ -9,11 +9,11 @@ button {
 }
 
 body {
-  background-color: #F3F3F3;
+  /* background-color: #F3F3F3; */
 }
 
 .wrapper-main {
-  width: 900px;
+  width: 94%;
   margin: 0 auto;
 }
 
@@ -77,22 +77,25 @@ header {
 
 .header-login form input {
   height: 100%;
-  width: 160px;
-  padding: 0 15px;
+  width: 80%;
+  padding: 5% 15px;
+  outline:none;
   border: none;
+  border-bottom: 0.5px solid gray;
   border-radius: 4px;
-  background-color: #F6F6F6;
-  float: left;
+  background-color: #FFF;
   margin-left: 8px;
   font-family: arial;
+  box-shadow: #FFF;
 }
 
 .header-login form button {
   height: 100%;
-  padding: 0 10px;
+  padding: 15px 20%;
   border: none;
-  border-radius: 4px;
-  background-color: #333;
+  border-radius: 2px;
+  background-color: #269bb6;
+  margin-top:2%;
   margin-left: 8px;
   font-family: arial;
   font-size: 13px;
