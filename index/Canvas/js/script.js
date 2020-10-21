@@ -3,10 +3,6 @@ document.body.addEventListener('touchmove', function (e) {
     e.preventDefault(); // prevent the default dragging action on touch screen.
   }, {passive: false}); //passive, for compatibility with IOS and Android
 
-// // hide rate and pitch values
-// document.getElementById("rate").style.display = "none";
-// document.getElementById("pitch").style.display = "none";
-
 // get all elements from the page and settle all variables
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
@@ -24,10 +20,9 @@ let colorPanel = document.getElementById("color-pad");
 let colorPanelButton = document.getElementById("color-pad-button");
 let onOffColorPanel = false;
 let theStoryText = "";
-var pagesData = new Array();
-// var uuju; //数据(双拼),image data
+let pagesData = [];
 
-// // input text
+// input text
 let inputTextButton = document.getElementById("text");
 inputTextButton.isTexting = false;
 
@@ -45,7 +40,6 @@ for (let c = 0; c < 12; c++) {
     }
 }
 let chosenColor = colors[11]; // the default color is black.
-// showHideSMT(colorPanel, "hide", "none");
 let rangeValue = document.getElementById("slider");
 
 
@@ -191,18 +185,9 @@ function move(e) {
             }
 
             // different tools in mouse move
-            // if (toolBox["pencil"] === "1") {
             drawLine(lastPoint, controlPoint, endPoint);
             // send draw or eraser
             sendMessage(duuid, stylus, lastPoint, controlPoint, endPoint);
-            // } else if (toolBox["eraser"] === "1") {
-            //     ctx.save();
-            //     ctx.beginPath();
-            //     ctx.arc(e.clientX, e.clientY, 5, 0, 2*Math.PI);
-            //     ctx.clip();
-            //     ctx.clearRect(0,0,canvas.width,canvas.height);
-            //     ctx.restore();
-            // }
             lastPoint = endPoint;
         }
     } else if (chosenTool === toolBox[2]) { // fill mode
@@ -225,13 +210,6 @@ function up(e) {
         let {x, y} = getPoints(e);
         points.push({x, y});
 
-        if (points.length >= 3) {
-            let lastTwoPoints = points.slice(-2);
-            let controlPoint = lastTwoPoints[0];
-            let endpoint = lastTwoPoints[1];
-            // drawLine(lastPoint, controlPoint, endpoint); 无用语句
-            // sendMessage(duuid, 1, lastPoint,controlPoint,endpoint); 调试用type1
-        }
         lastPoint = null;
         painting = false;
         points = [];
@@ -280,15 +258,11 @@ function drawLine(begin, control, end) {
     ctx.quadraticCurveTo(control.x, control.y, end.x, end.y);
     ctx.stroke();
     ctx.closePath();
-    // uuju=ctx.getImageData(0,0,canvas.width,canvas.height); redo研究
 }
 
 // mouse leave the canvas
 canvas.onmouseleave = function () {
     painting = false;
-    // if (isDrawingShape) {
-    //     sendMessage(...);
-    // }
     isDrawingShape = false;
 
     // update local canvas data
@@ -424,9 +398,6 @@ function shaping(x1, y1, x2, y2) {
 
 
 /** Tool Buttons */
-// document.getElementById("undo").onclick=function() {
-//     // ctx.putImageData(uuju,0,0); // redo研究
-// }
 
 // click choose button
 choose.onclick = function () {
@@ -435,6 +406,7 @@ choose.onclick = function () {
     showHideSMT(adjustSize, "hide", "none");
     selectTool($(".toolBox-buttons"), $(this).index());
     $("#myCanvas").removeClass();
+    turnOffTexting();
 }
 
 // click pencil button
@@ -457,6 +429,7 @@ eraser.onclick = function () {
     showHideSMT(adjustSize, "show", "block");
     selectTool($(".toolBox-buttons"), $(this).index());
     $("#myCanvas").removeClass().addClass("cursorEraser");
+    turnOffTexting();
 };
 
 // click fill button
@@ -532,9 +505,10 @@ inputTextButton.onclick = function () {
     if (!inputTextButton.isTexting) {
         textWindow.style.visibility = "hidden";
     }
+    $("#myCanvas").removeClass();
 }
 
-function turnOffTexting() {
+function turnOffTexting() { // turn off texting when clicking other buttons
     inputTextButton.isTexting = false;
     textWindow.style.visibility = "hidden";
 }
