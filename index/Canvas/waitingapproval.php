@@ -4,7 +4,7 @@ $username = "root";
 // server
 $password = "dbf76fb8c7e45fe1";
 // localhost pas
-//   $password = "";
+// $password = "";
 $dbname = "fableous";
 
 // Create connection
@@ -73,7 +73,7 @@ $conn->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/library.css">
 </head>
 <body>
 <div id="browsing-background"></div>

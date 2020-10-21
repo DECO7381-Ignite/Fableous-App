@@ -22,7 +22,7 @@ function loadStudents() {
             "<td>" + student.team + "</td>" +
             "<td>" + student.dietary + "</td>" +
             "<td>" + student.extra + "</td>" +
-            "<td>" + "<button>Detail</button>" + "</td>" +
+            "<td>" + "<button class='student-detail-button' style='background-color:white; border:1px solid gray; color:gray'>Detail</button>" + "</td>" +
             "</tr>"
         )
     }
