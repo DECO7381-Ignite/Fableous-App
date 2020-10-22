@@ -59,6 +59,7 @@
 
             <div id="adjust-size">
                 <label for="slider"></label><input type="range" min = "1" max = "100" value="5" id="slider">
+                <div id="line_weight_display"></div>
             </div>
           </div>
         </div>

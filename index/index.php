@@ -9,7 +9,7 @@
           if (!isset($_SESSION['id'])) {         
             echo '
             <div style="float:left; width:60%; margin-right:0">
-            <img src="img/home.jpg" style="width:100%">
+            <img src="img/home.jpg" style="width:100%" alt="home image">
             </div>
             <div class="header-login" style="text-align:center;float:flex; width:35%; margin-top:9%;">
             <form action="includes/login.inc.php" method="post">
@@ -22,6 +22,12 @@
             <p class="login-status">(For developer: user/password - test/test)</p><br>
             <p class="login-status">(For teacher: user/password - teacher/teacher)</p><br>
             <p class="login-status">(For student: user/password - student/student)</p>
+            <div style="color: gray; border: 2px solid #DDD; margin-top: 20px;">
+                Quick Login Demo<br>
+                <button id="quickLogin1" name="login-submit" style="font-size: 10px; padding: 10px 3%;">teacher</button>
+                <button id="quickLogin2" name="login-submit" style="font-size: 10px; padding: 10px 3%;">student</button>
+                <button id="quickLogin3" name="login-submit" style="font-size: 10px; padding: 10px 3%;">developer</button>
+            </div>
             </form>
             
           </div>
@@ -39,6 +45,21 @@
         </section>
       </div>
     </main>
+
+<script>
+    document.getElementById("quickLogin1").onclick = function () { // quick login as teacher
+        document.getElementsByName("mailuid")[0].value = "teacher";
+        document.getElementsByName("pwd")[0].value = "teacher";
+    }
+    document.getElementById("quickLogin2").onclick = function () { // quick login as student
+        document.getElementsByName("mailuid")[0].value = "student";
+        document.getElementsByName("pwd")[0].value = "student";
+    }
+    document.getElementById("quickLogin3").onclick = function () { // quick login as developer
+        document.getElementsByName("mailuid")[0].value = "test";
+        document.getElementsByName("pwd")[0].value = "test";
+    }
+</script>
 
 <?php
 ?>

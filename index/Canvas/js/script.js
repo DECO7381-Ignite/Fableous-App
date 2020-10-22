@@ -16,6 +16,7 @@ let triangle = document.getElementById("triangle");
 let circle = document.getElementById("circle");
 let clear = document.getElementById("clear");
 let adjustSize = document.getElementById("adjust-size");
+let lineWeightDemo = document.getElementById("line_weight_display");
 let colorPanel = document.getElementById("color-pad");
 let colorPanelButton = document.getElementById("color-pad-button");
 let onOffColorPanel = false;
@@ -98,15 +99,37 @@ let textWindow = document.createElement("div");
 textWindow.id = "text.window";
 textWindow.style.position = "absolute";
 textWindow.style.visibility = "hidden";
-let textContent = document.createElement("input");
+textWindow.style.display = "flex";
+let textContent = document.createElement("textarea");
 textContent.type = "text";
 textContent.id = "text-content";
+textContent.placeholder = "What's the story like..";
+let fontSizeBox = document.createElement("div");
+fontSizeBox.id = "fontSizeBox";
+let fontGroups = [document.createElement("button"),
+                    document.createElement("button"),
+                    document.createElement("button")];
+let inputFontSize = 18;
+console.log(inputFontSize);
+fontGroups.forEach(function (item, index) {
+    fontSizeBox.appendChild(item);
+    item.innerText = "A";
+    if (index === 0) { item.style.color = "lightcoral"; item.style.cursor = "default";}
+    item.onclick = function () {
+        inputFontSize = index * 8 + 18;
+        textContent.style.fontSize = inputFontSize + "px";
+        fontGroups.forEach(function (item) { item.style.color = ""; item.style.cursor = "pointer";});
+        this.style.color = "lightcoral";
+        this.style.cursor = "default";
+    };
+});
 let confirmText = document.createElement("button");
 confirmText.id = "confirm-content";
 confirmText.innerText = "confirm";
 
 document.body.appendChild(textWindow);
 textWindow.appendChild(textContent);
+textWindow.appendChild(fontSizeBox);
 textWindow.appendChild(confirmText);
 
 /** Mouse Events */
@@ -150,7 +173,7 @@ function down(e) {
 
         confirmText.onclick = function () {
             ctx.textAlign = "left";
-            ctx.font = "18px Arial";
+            ctx.font = inputFontSize + "px Arial";
             ctx.fillText(textContent.value, x, y);
             sendMessage(duuid,11, x,textContent.value,y);
             theStoryText = theStoryText + ". " + textContent.value;
@@ -520,6 +543,10 @@ rangeValue.oninput = function () {
         ctx.lineWidth = 3;
     }
     sendMessage(duuid, 6, ctx.lineWidth, 0, 0); // send weight
+    $(lineWeightDemo).css("height", String(ctx.lineWidth) + "px");
+    $(lineWeightDemo).css("width", (((String(ctx.lineWidth)-3)/37)*25+100) + "px");
+    $(lineWeightDemo).css("border-radius", String(ctx.lineWidth) + "px");
+    $(lineWeightDemo).css("right", (30-(lineWeightDemo.offsetWidth-100)) + "px");
 };
 
 function showHideSMT(obj, str1, str2) {

@@ -234,6 +234,55 @@ button#save-picture-button:hover {
     bottom: 5px;
 }
 
+/*********************************************/
+/* Text input box */
+#text-content {
+    width: 220px;
+    height: 78px;
+    font-size: 18px;
+}
+
+#fontSizeBox {
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#fontSizeBox button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+#fontSizeBox button:nth-of-type(1) {font-size: 18px;}
+#fontSizeBox button:nth-of-type(2) {font-size: 26px; line-height: 20px;}
+#fontSizeBox button:nth-of-type(3) {font-size: 34px; line-height: 30px;}
+
+#fontSizeBox button:hover {
+    color: #60A6C8;
+}
+#fontSizeBox button:focus {
+    outline: none;
+}
+
+#confirm-content {
+    margin: auto 2px;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    border: 1px solid #AAAAAA;
+    border-radius: 10px;
+    top: 0;
+    bottom: 0;
+
+}
+
+#confirm-content:hover {
+    border: 2px solid #60A6C8;
+    color: #60A6C8;
+}
+
 
 /* ########################################################################## */
 /* default (PC) */
@@ -469,6 +518,16 @@ button#save-picture-button:hover {
     right: 0;
     display: none;
   }
+
+    #line_weight_display {
+        width: 100px;
+        height: 3px;
+        border-radius: 3px;
+        background-color: #000;
+        position: absolute;
+        right: 30px;
+        bottom: 25px;
+    }
 
   /*********************************************/
   /* Footer */
@@ -732,6 +791,16 @@ button#save-picture-button:hover {
     right: 0;
     display: none;
   }
+
+    #line_weight_display {
+        width: 100px;
+        height: 3px;
+        border-radius: 3px;
+        background-color: #000;
+        position: absolute;
+        right: 30px;
+        bottom: 25px;
+    }
 
   /*********************************************/
   /* Footer */
@@ -1016,6 +1085,16 @@ button#save-picture-button:hover {
     right: 0;
     display: none;
   }
+
+    #line_weight_display {
+        width: 100px;
+        height: 3px;
+        border-radius: 3px;
+        background-color: #000;
+        position: absolute;
+        right: 30px;
+        bottom: 25px;
+    }
 
   /*********************************************/
   /* Footer */
