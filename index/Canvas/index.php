@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fableous</title>
+    <title>Fabelous</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -39,8 +39,8 @@
                 <canvas id="myCanvas"></canvas>
             </div>
             <div id="re-un-button">
-                <div id="undo"><img src="icon/undo.svg" alt="undo icon"></div>
-                <div id="redo"><img src="icon/redo.svg" alt="redo icon"></div>
+                <div id="undo"><a onclick="undo()"><img src="icon/undo.svg" alt="undo icon"></a></div>
+                <div id="redo"><a onclick="redo()"><img src="icon/redo.svg" alt="redo icon"></a></div>
             </div>
             <div id="color-pad">
                 <div id="c0" class="colors"><img src="icon/tick.svg" alt="tick icon"></div>
@@ -216,5 +216,6 @@
     <script src="js/script.js"></script>
     <script src="js/sync.js"></script>
     <script src="js/addPage.js"></script>
+    <script src="js/undo.js"></script>
 </body>
 </html>

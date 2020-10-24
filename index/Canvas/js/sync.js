@@ -57,11 +57,11 @@
                 ctx.restore();
                 ctx.closePath();
         }
-        function textInputf(z,zix,ziy) {
+        function textInputf(z,x,y) {
             ctx.fillStyle = yanse; // text input sync
             ctx.textAlign = "left";
-            ctx.font = "18px Arial";
-            ctx.fillText(z, zix, ziy);
+            ctx.font = y;
+            ctx.fillText(z, x[0], x[1]);
         }
         function addpage1(x) {
             if (pagelists.length <x) { // addpage sync
@@ -78,6 +78,15 @@
         //     console.log(x);
         //     newPage.onclick();
         // }
+        // redo and undo sync.
+        function dodo(x){
+            let pppp=new Image();
+            pppp.src=x;
+            pppp.addEventListener('load',()=>{
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.drawImage(pppp,0,0);
+            });
+        }
 
         ws.onopen = function(e) { //log info about link to socket server
                 console.log('Connection to server successfully');
@@ -130,6 +139,13 @@
                 else if (data.no === 14) {
                     updateCanvas(data.y);
                     changeCanvas(data.x);
+                }
+                else if (data.no === 15) {
+                    if (step>0){
+                        history[step]=data.x;
+                } // function bug severe but no good solutions
+                else if (data.no === 20) {
+                    dodo(data.x);
                 }
             }
         // create unique id, 128-bit number rfc4122 method.

@@ -110,7 +110,7 @@ let fontGroups = [document.createElement("button"),
                     document.createElement("button"),
                     document.createElement("button")];
 let inputFontSize = 18;
-console.log(inputFontSize);
+// console.log(inputFontSize);
 fontGroups.forEach(function (item, index) {
     fontSizeBox.appendChild(item);
     item.innerText = "A";
@@ -175,7 +175,7 @@ function down(e) {
             ctx.textAlign = "left";
             ctx.font = inputFontSize + "px Arial";
             ctx.fillText(textContent.value, x, y);
-            sendMessage(duuid,11, x,textContent.value,y);
+            sendMessage(duuid,11, [x,y],textContent.value,ctx.font);
             theStoryText = theStoryText + ". " + textContent.value;
             textContent.value = "";
             textWindow.style.visibility = "hidden";
@@ -245,6 +245,7 @@ function up(e) {
         isDrawingShape = false;
         sendMessage(duuid,10,shapingVar.endP,0,0);
     }
+    saveHistory();
 }
 
 function updateCanvas(number) {
@@ -254,7 +255,7 @@ function updateCanvas(number) {
 
 // Change canvas to the page that the Texter chosen
 function changeCanvas(number) {
-  console.log("Change: " + number);
+//   console.log("Change: " + number);
   let img = new Image();
   img.src = pagesData[number].data;
   img.onload = function () {

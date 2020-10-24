@@ -460,7 +460,9 @@ button#save-picture-button:hover {
       height: 57px;
       box-shadow: -3px 3px 7px rgba(0, 0, 0, 0.5);
   }
-
+  #re-un-button a:hover{
+    cursor:pointer;
+  }
   /* Color Panel */
   #color-pad {
       position: absolute;

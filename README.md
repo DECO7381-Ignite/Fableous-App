@@ -12,14 +12,17 @@
 
 [Canvas (Writing)](https://s4523761-fableous.uqcloud.net/index/Canvas/textStory.php)
 
-### Version 2.2.1 Changelog
+### Version 2.5.0 Changelog
 
-船新的2.0版本, 船在摇晃
+为什么是这个版本号，因为我感觉我像一个“250”
 
 <i>0. 版本修正：</i>
-+ 分离writing/drawing
-+ 登录导航，较完整流程体验: 老师学生不同帐号进不同页面
-+ 多设备适配，页面大小变化
++ 主页按设计重做
++ 画画界面笔画粗细显示，redo、undo的实现(满是bug版)
+  + 单人画redo、undo，以及一人一笔画redo、undo正常
++ 文字输入界面字体大小调整，文本框换行，无redo，undo
++ 老师界面UI美化
++ 注释精简，汉译英，添加
 
 [Teacher (New)](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
 
@@ -61,6 +64,9 @@
 修复后差不多bug后，会上线Canvas最新稳定版
 
 <i>3. 上一版本：</i>
+- 分离writing/drawing
+- 登录导航，较完整流程体验: 老师学生不同帐号进不同页面
+- 多设备适配，页面大小变化
 - 新增老师页面
 - library search功能
 - teacher页面library页面添加
@@ -70,9 +76,10 @@
 - 修复textinput座标不对问题
 - 修改部分readme
 
+
 #### bug特别多，但近期没有修复计划。主力研究目前仍在‘多页面’的bug修复与新特性添加。
 
-<div align="right">Oct/08/2020</div>
+<div align="right">Oct/24/2020</div>
 
 ### 其他页面：
 
