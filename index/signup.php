@@ -58,6 +58,11 @@
             ?>
             <input type="password" name="pwd" placeholder="Password">
             <input type="password" name="pwd-repeat" placeholder="Repeat password">
+            <select>
+            <option value='student'>student</option>
+            <option value='teacher'>teacher</option>
+            </select>
+            <br><br>
             <button type="submit" name="signup-submit">Signup</button>
           </form>
         </section>

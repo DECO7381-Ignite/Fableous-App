@@ -153,6 +153,10 @@
     box-sizing: border-box;
     margin:1em 2em;
 }
+.stories >p {
+  color:white;
+  text-shadow:black 0.1em 0.1em 0.2em;
+}
 
 .stories:hover {
     border: 6px solid #60c882;

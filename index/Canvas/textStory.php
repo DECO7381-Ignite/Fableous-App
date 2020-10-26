@@ -210,6 +210,6 @@
       <script src="js/script.js"></script>
       <script src="js/sync.js"></script>
       <script src="js/addPage.js"></script>
-      <script src="js/undo.js"></script>
+      <!-- <script src="js/undo.js"></script> -->
   </body>
 </html>

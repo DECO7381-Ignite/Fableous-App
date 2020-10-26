@@ -140,13 +140,13 @@
                     updateCanvas(data.y);
                     changeCanvas(data.x);
                 }
-                else if (data.no === 15) {
-                    if (step>0){
-                        history[step]=data.x;
-                } // function bug severe but no good solutions
-                else if (data.no === 20) {
-                    dodo(data.x);
-                }
+                // else if (data.no === 15) {
+                //     if (step>0){
+                //         history[step]=data.x;
+                // } // function bug severe but no good solutions, on experiment featues
+                // else if (data.no === 20) {
+                //     dodo(data.x);
+                // }
             }
         // create unique id, 128-bit number rfc4122 method.
         function uuid(length, base) {
@@ -170,5 +170,4 @@
             }
 
 // References
-//[1]"RFC 4122 - A Universally Unique IDentifier (UUID) URN Namespace", Tools.ietf.org, 2020. 
-//[Online]. Available: https://tools.ietf.org/html/rfc4122. [Accessed: 01- Aug- 2020].
+//[1]"RFC 4122 - A Universally Unique IDentifier (UUID) URN Namespace", Tools.ietf.org, 2020. [Online]. Available: https://tools.ietf.org/html/rfc4122. [Accessed: 01- Aug- 2020].
