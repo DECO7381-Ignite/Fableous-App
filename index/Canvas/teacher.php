@@ -3,6 +3,10 @@
   session_start();
   // "require" creates an error message and stops the script. "include" creates an error and continues the script.
   require "../includes/dbh.inc.php";
+  if (!$_SESSION['id']){
+    echo "<script> {  window.alert('Please login first!');
+                      window.location.href='../index.php';  } </script>";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,16 +31,16 @@
         </section>
         <section id="main-part">
             <div id="main-part-head">
-                <div id="notification"><img src="./icon/notifications.png"></div>
-                <div id="chat"><img src="./icon/chat.png"></div>
-                <div id="name">name</div>
                 <?php
                 if (isset($_SESSION['id'])) {
                     echo '<form action="../includes/logout.inc.php" method="post">
-                    <button type="submit" name="login-submit">Logout</button>
+                    <button type="submit" name="login-submit" style="border:1px solid white;color:white;background:#60A6C8;font-size: 16px">Logout</button>
                     </form>';
                 }
                 ?>
+                <div id="notification"><img src="./icon/notifications.png"></div>
+                <div id="chat"><img src="./icon/chat.png"></div>
+                <div id="name">name</div>
                 <div id="profile"></div>
             </div>
             <div class="contents">

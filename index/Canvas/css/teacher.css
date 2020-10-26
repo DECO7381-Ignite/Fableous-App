@@ -78,6 +78,7 @@ ul li:hover {
     background-color: #6CC5DA;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 #notification, #chat {
