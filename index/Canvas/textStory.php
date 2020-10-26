@@ -78,10 +78,10 @@
       <div id="black-background"></div>
       <div id="save-picture-window">
           <form id="save-picture-form" action="upload.php" method="POST">
-              <label>Picture name:
+              <label>Storybook name:
                   <input type="text" name="pname" id="input-picture-name">
               </label>
-              <label>Your name:
+              <label>Team name:
                   <input type="text" name="user" id="input-user-name">
               </label>
               <div>

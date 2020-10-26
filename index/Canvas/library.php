@@ -287,7 +287,7 @@ $conn->close();
             }
         }
         let remindText = document.createElement("p");
-        remindText.innerHTML = "Scroll to right to see more!";
+        remindText.innerHTML = "Scroll to the right to see more!";
         remindText.style.position = "absolute";
         remindText.style.bottom = "2px";
         remindText.style.right = "2px";
