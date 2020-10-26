@@ -275,6 +275,15 @@ $conn->close();
                 libCanvas.getContext("2d").drawImage(libImage, 0, 0, libCanvas.width, libCanvas.height);
             }
         }
+        let remindText = document.createElement("p");
+        remindText.innerHTML = "Scroll to right to see more!";
+        remindText.style.position = "absolute";
+        remindText.style.bottom = "2px";
+        remindText.style.right = "2px";
+        remindText.style.color = "white";
+        remindText.style.border = "1px solid white";
+        remindText.style.padding = "3px";
+        pictures.appendChild(remindText);
     }
   }
 </script>
