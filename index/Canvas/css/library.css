@@ -1,4 +1,7 @@
 /* Library page */
+canvas {
+  image-rendering: auto;
+}
 /* Main body*/
 #main-lib {
     display: flex;

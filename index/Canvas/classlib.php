@@ -263,7 +263,8 @@ $conn->close();
             aDiv.style.width = "580px";
             aDiv.style.height = "440px";
             aDiv.style.margin = "5px";
-            let libCanvas = document.createElement("canvas");
+            // let libCanvas = document.createElement("canvas");
+            let libCanvas = document.createElement("img");
             libCanvas.className = "library-canvas";
             libCanvas.style.width = "580px";
             libCanvas.style.height = "440px";
@@ -272,7 +273,8 @@ $conn->close();
             aDiv.appendChild(libCanvas);
 
             libImage.onload = function () {
-                libCanvas.getContext("2d").drawImage(libImage, 0, 0, libCanvas.width, libCanvas.height);
+                libCanvas.src=libImage.src;
+                // libCanvas.getContext("2d").drawImage(libImage, 0, 0, libCanvas.width, libCanvas.height);
             }
         }
         let remindText = document.createElement("p");
