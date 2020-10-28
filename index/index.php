@@ -35,7 +35,7 @@
           }
           else if (isset($_SESSION['id']) && $_SESSION['id']==1) {
             // content for logged in users
-            echo "<script>alert('you are developer!')</script>";
+            echo '<br><br><br><br><br><p class="login-status">You are developer !</p><br>';
           }
           else if (isset($_SESSION['id']) && $_SESSION['id']==2) {
             // content for logged in users
