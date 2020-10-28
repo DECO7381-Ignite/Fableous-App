@@ -33,6 +33,10 @@
           </div>
           ';
           }
+          else if (isset($_SESSION['id']) && $_SESSION['id']==1) {
+            // content for logged in users
+            echo "<script>alert('you are developer!')</script>";
+          }
           else if (isset($_SESSION['id']) && $_SESSION['id']==2) {
             // content for logged in users
             header('Location: Canvas/teacher.php');
