@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Student Homepage</title>
     <link href="//db.onlinewebfonts.com/c/8df141f447c5686cf9dbae8dabb1e71a?family=AllRoundGothicW01-Bold" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -32,7 +32,7 @@
             <img src="icon/user.svg" alt="user_icon">
         </div>
         <div id="title">
-            <a href="../index.php">Fableous</a>
+            <a href="../index.php">Fabelous</a>
         </div>
         <div id="menu">
             <button id="addStory">Add New Story</button>

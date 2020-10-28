@@ -176,7 +176,7 @@ function down(e) {
             ctx.font = inputFontSize + "px Arial";
             ctx.fillText(textContent.value, x, y);
             sendMessage(duuid,11, [x,y],textContent.value,ctx.font);
-            theStoryText = theStoryText + ". " + textContent.value;
+            theStoryText = theStoryText + textContent.value + ". ";
             textContent.value = "";
             textWindow.style.visibility = "hidden";
         }

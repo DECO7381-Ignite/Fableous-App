@@ -15,9 +15,9 @@ if (!$conn) {
 // search function inner page
 if (isset($_POST["submit"]) && trim($_POST["author"]) != "") {
     $str = $_POST["author"];
-    $sql = "SELECT * FROM library WHERE user LIKE '%$str%'";
+    $sql = "SELECT * FROM library WHERE user LIKE '%$str%' AND approvalStatus != 0";
 } else {
-    $sql = "SELECT * FROM library ";
+    $sql = "SELECT * FROM library WHERE approvalStatus != 0";
     }
 $result = $conn->query($sql);
 $libraryData =array();
@@ -51,7 +51,14 @@ if (isset($_GET["id"])) {
     $deleteID=$_GET["id"];
     $dsql = "DELETE FROM library WHERE pname='$deleteID'"; 
     $conn->query($dsql);
-    header("Location:classlib.php");
+    header("Location:approved.php");
+}
+// unapprove the pictures in the database
+if (isset($_GET["unaid"])) {
+    $unaId=$_GET["unaid"];
+    $unasql = "UPDATE library SET approvalStatus=0 WHERE pname='$unaId'"; 
+    $conn->query($unasql);
+    header("Location:approved.php");
 }
 // rename the pictures in the database
 if (isset($_GET["uid"])) {
@@ -59,7 +66,7 @@ if (isset($_GET["uid"])) {
     $uname=$_GET["uname"];
     $usql = "UPDATE library SET pname='$uname' WHERE pname='$updateID'"; 
     $conn->query($usql);
-    header("Location:classlib.php");
+    header("Location:approved.php");
 }
 
 $conn->close();
@@ -123,6 +130,7 @@ $conn->close();
         <button id="rename-button">rename</button>
         <button id="delete-button">delete</button>
         <button id="close-button">close</button>
+        <button id="unapprove-button">unapprove</button>
     </div>
     <div id="picture">
     </div>
@@ -231,6 +239,13 @@ $conn->close();
             stories.parentNode.removeChild(stories);
             inputNewName.style.visibility = "hidden";
             window.location.href="?id="+stories.pname;
+        }
+        // unapprove button
+        document.getElementById("unapprove-button").onclick = function () {
+            background.style.visibility = "hidden";
+            picture.style.visibility = "hidden";
+            inputNewName.style.visibility = "hidden";
+            window.location.href="?unaid="+stories.pname;
         }
         // rename button
         renameButton.onclick = function () {

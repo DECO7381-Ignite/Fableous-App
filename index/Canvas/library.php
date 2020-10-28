@@ -15,7 +15,7 @@ if (!$conn) {
 // search function
 if (isset($_POST["submit"]) && trim($_POST["author"]) != "") {
     $str = $_POST["author"];
-    $sql = "SELECT * FROM library WHERE user = '$str'";
+    $sql = "SELECT * FROM library WHERE user LIKE '%$str%'";
 } else {
     $sql = "SELECT * FROM library ";
     }

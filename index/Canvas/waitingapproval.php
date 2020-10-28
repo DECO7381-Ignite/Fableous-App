@@ -14,7 +14,7 @@ if (!$conn) {
 }
 if (isset($_POST["submit"]) && trim($_POST["author"]) != "") {
     $str = $_POST["author"];
-    $sql = "SELECT * FROM library WHERE user = '$str'";
+    $sql = "SELECT * FROM library WHERE user LIKE '%$str%'";
 } else {
     $sql = "SELECT * FROM library ";
     }
@@ -97,11 +97,13 @@ $conn->close();
 </div>
 <div class="main-part">
     <div id="main-lib">
+    <section id="search-bar">
         <form method="POST">
             <label>Search book(s) by author's name: </label>
             <input type="text" name="author">
             <input type="submit" name="submit" value="search">
         </form>
+    </section>
         <div id="painting-box">
 <!--            <ul id="select-box">-->
 <!--                <li>Browse</li>-->

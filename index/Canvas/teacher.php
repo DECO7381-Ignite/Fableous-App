@@ -20,11 +20,11 @@
 <body>
     <div id="body-div">
         <section id="teacher-navigation">
-            <span><a style="text-decoration:none;color:white;" href="../index.php">FABLEOUS</a></span>
+            <span><a style="text-decoration:none;color:white;" href="../index.php">FABELOUS</a></span>
             <ul class="navigation">
                 <li class="active">Class Library</li>
                 <li>Waiting Approval</li>
-                <li>Not Approved</li>
+                <li>Approved</li>
                 <li>Students</li>
                 <li>Setting</li>
             </ul>
@@ -48,7 +48,7 @@
                     <section id="class-library-head" class="first-3-page-head">
                         <section id="head-1" class="first-3-page-head-1">
                             <span>Class Library</span>
-                            <button style="background-color:#2E9AB4; border:none; color:white">Download</button>
+                            <button style="background-color:#2E9AB4; border:none; color:white" onclick="window.print()">Download</button>
                         </section>
                         <section id="head-2" class="first-3-page-head-2">   
                             <button id="filter" style="background: url('./icon/filter.png') no-repeat; border:none; width:18px; height:18px"></button>
@@ -62,11 +62,10 @@
                 <div id="waiting-approval" class="first-3-page">
                     <section id="waiting-approval-head" class="first-3-page-head">
                         <section id="head-3" class="first-3-page-head-1">
-                            <span>waiting Approval</span>
-                            <button style="background-color:#2E9AB4; border:none; color:white">Download</button>
+                            <span>Waiting Approval</span>
+                            <button style="background-color:#2E9AB4; border:none; color:white" onclick="window.print()">Download</button>
                         </section>
                         <section id="head-4" class="first-3-page-head-2">
-                            <input type="text" value="search..." id="search">
                             <button id="filter" style="background: url('./icon/filter.png') no-repeat; border:none; width:18px; height:18px"></button>
                             <button id="delete" style="background: url('./icon/delete.png') no-repeat; border:none; width:18px; height:18px"></button>
                         </section>
@@ -76,15 +75,14 @@
                 <div id="not-approved" class="first-3-page">
                     <section id="not-approved-head" class="first-3-page-head">
                         <section id="head-5" class="first-3-page-head-1">
-                            <span>Not Approved</span>
-                            <button style="background-color:#2E9AB4; border:none; color:white">Download</button>
+                            <span>Approved</span>
+                            <button style="background-color:#2E9AB4; border:none; color:white" onclick="window.print()">Download</button>
                         </section>
                         <section id="head-6" class="first-3-page-head-2">
-                            <input type="text" value="search..." id="search">
                             <button id="filter" style="background: url('./icon/filter.png') no-repeat; border:none; width:18px; height:18px"></button>
                         </section>
                     </section>
-                    <section id="not-approved-body" class="first-3-page-body">Stories</section>
+                    <section id="not-approved-body" class="first-3-page-body"><embed id="classlib" src="approved.php" width=100% height=100%></section>
                 </div>
                 <div id="students">
                     <section id="students-head">
