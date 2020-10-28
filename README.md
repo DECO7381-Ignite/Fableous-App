@@ -6,17 +6,15 @@
 
 ## 主页面：
 
-[新主页 (注册，登录，导航)](https://s4523761-fableous.uqcloud.net/index/index.php)
-
-[Canvas (Drawing)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
-
-[Canvas (Writing)](https://s4523761-fableous.uqcloud.net/index/Canvas/textStory.php)
+[新主页 (注册，登录)](https://s4523761-fableous.uqcloud.net/index/index.php)
 
 ### Version 2.5.0 Changelog
 
 为什么是这个版本号，因为我感觉我像一个“250”
 
 <i>0. 版本修正：</i>
++ libray界面优化：修复一坨稀饭preview，增加作者显示，字体显示修改，搜索方式优化
++ 老师界面增加approved 和 waitng approval分离，并且可以unapprove
 + 主页按设计重做
 + 画画界面笔画粗细显示，redo、undo的实现(满是bug版)
   + 单人画redo、undo，以及一人一笔画redo、undo正常
@@ -24,7 +22,17 @@
 + 老师界面UI美化
 + 注释精简，汉译英，添加
 
-[Teacher (New)](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
+### 其他页面 (不登陆一个也上不去)：
+
+[Canvas (Drawing)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
+
+[Canvas (Writing)](https://s4523761-fableous.uqcloud.net/index/Canvas/textStory.php)
+
+[Library](https://s4523761-fableous.uqcloud.net/index/Canvas/library.php)
+
+[Homepage (for student)](https://s4523761-fableous.uqcloud.net/index/Canvas/home.php)
+
+[Teacher](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
 
 <i>1. 整体修正：</i>
 - 部分CSS美化
@@ -79,12 +87,4 @@
 
 #### bug特别多，但近期没有修复计划。主力研究目前仍在‘多页面’的bug修复与新特性添加。
 
-<div align="right">Oct/24/2020</div>
-
-### 其他页面：
-
-[Library (Stable)](https://s4523761-fableous.uqcloud.net/index/Canvas/library.php)
-
-[Homepage (for student)](https://s4523761-fableous.uqcloud.net/index/Canvas/home.php)
-
-[Teacher (New)](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
+<div align="right">Oct/28/2020</div>

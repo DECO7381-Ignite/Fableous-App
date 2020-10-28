@@ -1,9 +1,18 @@
+<?php
+  // start a session
+  session_start();
+  require "../includes/dbh.inc.php";
+  if (!$_SESSION['id']){
+    echo "<script> {  window.alert('Please login first!');
+                      window.location.href='../index.php';  } </script>";
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabelous</title>
+    <title>Fabelous-Drawing</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

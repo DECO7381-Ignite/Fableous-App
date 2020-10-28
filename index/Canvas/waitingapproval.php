@@ -49,14 +49,14 @@ if (isset($_GET["id"])) {
     $deleteID=$_GET["id"];
     $dsql = "DELETE FROM library WHERE pname='$deleteID'"; 
     $conn->query($dsql);
-    header("Location:classlib.php");
+    header("Location:waitingapproval.php");
 }
 if (isset($_GET["uid"])) {
     $updateID=$_GET["uid"];
     $uname=$_GET["uname"];
     $usql = "UPDATE library SET pname='$uname' WHERE pname='$updateID'"; 
     $conn->query($usql);
-    header("Location:classlib.php");
+    header("Location:waitingapproval.php");
 }
 if (isset($_GET["approvalStat"])) {
     $updateID2=$_GET["as"];
@@ -64,7 +64,7 @@ if (isset($_GET["approvalStat"])) {
     $uname2=$_GET["uname2"];
     $usql2 = "UPDATE library SET approvalStatus='$uname2' WHERE approvalStatus='$updateID2'"; 
     $conn->query($usql2);
-    header("Location:classlib.php");
+    header("Location:waitingapproval.php");
 }
 
 $conn->close();
@@ -152,6 +152,7 @@ $conn->close();
     function addStories(storyname) {
         let stories = document.createElement("div");
         let storyTitle = document.createElement("p");
+        let storyAuthor = document.createElement("p");
 
         storyID = storyID + 1;
         stories.className = "stories";
@@ -161,9 +162,14 @@ $conn->close();
 
         storyTitle.className = "story-name";
         storyTitle.innerHTML = storyname;
+        storyAuthor.innerHTML = '- by '+images.get(storyname)[0].user;
+        storyAuthor.style.textAlign='right';
+        storyAuthor.style.marginTop='-10px';
+        storyAuthor.style.marginRight='3%';
 
         storyTitle.id = "store-title" + storyID.toString();
         stories.appendChild(storyTitle);
+        stories.appendChild(storyAuthor);
 
         // random cover pictures for stories
         let storiesBG = ["storiesBG1", "storiesBG2", "storiesBG3"];

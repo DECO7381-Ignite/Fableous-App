@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!$_SESSION['id']){
+    echo "<script> {  window.alert('Please login first!');
+                      window.location.href='../index.php';  } </script>";
+  }
 $servername = "localhost";
 $username = "root";
 // server
@@ -195,6 +200,7 @@ $conn->close();
   function addStories(storyname) {
     let stories = document.createElement("div");
     let storyTitle = document.createElement("p");
+    let storyAuthor = document.createElement("p");
 
     storyID = storyID + 1;
     stories.className = "stories";
@@ -204,9 +210,14 @@ $conn->close();
 
     storyTitle.className = "story-name";
     storyTitle.innerHTML = storyname;
+    storyAuthor.innerHTML = '- by '+images.get(storyname)[0].user;
+    storyAuthor.style.textAlign='right';
+    storyAuthor.style.marginTop='-10px';
+    storyAuthor.style.marginRight='3%';
 
     storyTitle.id = "store-title" + storyID.toString();
     stories.appendChild(storyTitle);
+    stories.appendChild(storyAuthor);
 
     // random cover pictures for stories
     let storiesBG = ["storiesBG1", "storiesBG2", "storiesBG3"];
