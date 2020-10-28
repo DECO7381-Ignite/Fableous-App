@@ -282,13 +282,12 @@ $conn->close();
             libImage.src = arr[i].imageData;
 
             let aDiv = document.createElement("div");
-            aDiv.style.width = "580px";
+            aDiv.style.width = "auto";
             aDiv.style.height = "440px";
-            aDiv.style.margin = "5px";
+            aDiv.style.margin = "8px";
             // let libCanvas = document.createElement("canvas");
             let libCanvas = document.createElement("img");
             libCanvas.className = "library-canvas";
-            libCanvas.style.width = "580px";
             libCanvas.style.height = "440px";
 
             pictures.appendChild(aDiv);
