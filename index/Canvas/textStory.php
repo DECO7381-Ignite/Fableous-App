@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabelous-Texting</title>
+    <title>Fableous-StoryTeller</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
         <div class="header">
             <div id="temp-1">
               <section class="user"><img src="icon/user.svg" alt="user_icon"></section>
-              <section class="status"><p>TEXTING</p></section>
+              <section class="status"><p>STORYTEllER</p></section>
             </div>
             <div id="temp-2">
               <section class="comment-button"><img src="icon/comment.svg" alt="comment icon"></section>

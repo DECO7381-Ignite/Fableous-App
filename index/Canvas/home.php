@@ -32,7 +32,7 @@
             <img src="icon/user.svg" alt="user_icon">
         </div>
         <div id="title">
-            <a href="../index.php">Fabelous</a>
+            <a href="../index.php">Fableous</a>
         </div>
         <div id="menu">
             <button id="addStory">Add New Story</button>

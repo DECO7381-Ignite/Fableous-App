@@ -51,7 +51,7 @@
   - 线条粗细，颜色调整
   - 添加文字输入框
   - 把一组图片上传到数据库
-  - 同步多页面(add_page)部分，功能实现有限（仅实现‘新增页面’与‘firstpage同步点击’，未实现newpage同步点击），bug较多
+  - 同步多页面(add_page)部分
 
 + Library:
   - 删除‘新增’按钮，增加‘delte’，‘rename’弹窗操作按钮
@@ -60,12 +60,12 @@
   - 随机对library中保存的项目赋予随机封面
 
 + Home:
-  - 老主页，将来或与新主页融合（对新主页作调整，或直接‘套娃’）
+  - 老主页，已变成学生主页
   
 + Teacher：
-  - Class Library： 班级stories
-  - Waiting Approval: UNKNOWN
-  - Not Approved: UNKNOWN
+  - Class Library： 班级stories，默认all
+  - Waiting Approval: 等待approve的
+  - Approved: 已经approve的
   - Student: students list
   - Setting: UNAVAILABLE
 
@@ -85,6 +85,6 @@
 - 修改部分readme
 
 
-#### bug特别多，但近期没有修复计划。主力研究目前仍在‘多页面’的bug修复与新特性添加。
+#### bug相对减少，但近期没有修复计划。主力目前仍在Presentation部分。
 
-<div align="right">Oct/28/2020</div>
+<div align="right">Oct/29/2020</div>

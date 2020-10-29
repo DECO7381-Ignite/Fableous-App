@@ -13,7 +13,7 @@
             </div>
             <div class="header-login" style="text-align:center;float:flex; width:35%; margin-top:9%;">
             <form action="includes/login.inc.php" method="post">
-            <h2 style="color:#269bb6">F A B E L O U S</h2><br>
+            <h2 style="color:#269bb6">F A B L E O U S</h2><br>
             <p style="color:gray">Welcome back! Please login to your account.</p><br>
             <input type="text" name="mailuid" placeholder="E-mail/Username"><br>
             <input type="password" name="pwd" placeholder="Password"><br> 

@@ -20,7 +20,7 @@
 <body>
     <div id="body-div">
         <section id="teacher-navigation">
-            <span><a style="text-decoration:none;color:white;" href="../index.php">FABELOUS</a></span>
+            <span><a style="text-decoration:none;color:white;" href="../index.php">FABLEOUS</a></span>
             <ul class="navigation">
                 <li class="active">Class Library</li>
                 <li>Waiting Approval</li>
