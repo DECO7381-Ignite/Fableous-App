@@ -39,3 +39,19 @@ Account/password for the demo:
 After that, the website could be access by ['localhost/index/index.php'](localhost/index/index.php). 
 
 In the page, *test accounts/passwords and quick login portal* are on the **bottom-right** of the page (might need to scroll to the bottom). This is only used for test for developer, and should not appear in the formal product. You can delete it in the *'index/index.php'*.
+
+
+
+#### 3. Experimental features:
+
+The online demo has *"redo/undo"* functions (experimental) on **Canvas: painter**, but for stability, these functions' code are commented in the source code (as they have some bugs). 
+
+If you wanna try the features, just uncomment the related code in: 
+
++ index/Canvas/js/sync.js: line 78-85 (function *dodo*), 139-145 (sendMessage(no=15/20))
++ index/Canvas/index.php: line 188 (import 'undo.js')
++ index/Canvas/js/script.js: line 250 (execute saveHistory() function)
+
++ index/Canvas/textStory.php: line 223 (import 'undo.js'), not implement in this page, but import it to prevent alerting errors.
+
+Then refresh the whole project in browser, in the **Fableous-painter** page, you can test 'redo' or 'undo' features.
