@@ -1,17 +1,48 @@
-# 划啊，划啊，划！
+## README
 
-此项目最终解释权归 “东半球南太平洋地区大洋洲大袋鼠国 🇦🇺 澳斯吹利亚昆士兰州东南部大布里斯班地区布里斯班河边圣卢西亚区4072‘UQ’🏊🏻‍  全校大学生游泳比赛-职业组-团体赛冠军 🏆️ ” **Team Ignite** (*Dragonboat CO.*)所有.
+##### <div align="right">*Cite or git this project must have a reference*</div>
 
-##### <div align="right">*引用或git该项目须注明来源*</div>
+### Homepage：
 
-## 主页面：
+[Fableous-Homepage(index)](https://s4523761-fableous.uqcloud.net/index/index.php)
 
-[新主页 (注册，登录)](https://s4523761-fableous.uqcloud.net/index/index.php)
+#### Ohter pages (need logining)：
 
-### Version 2.5.0 Changelog
+[Canvas (Drawing)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
 
-为什么是这个版本号，因为我感觉我像一个“250”
+[Canvas (Writing)](https://s4523761-fableous.uqcloud.net/index/Canvas/textStory.php)
 
+[Class Library](https://s4523761-fableous.uqcloud.net/index/Canvas/library.php)
+
+[Homepage (for student)](https://s4523761-fableous.uqcloud.net/index/Canvas/home.php)
+
+[Teacher](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
+
+### Main features
+
+#### Homepage:
+
+- signup: inputs (email, password, confirm password).
+- login: student login to student's homepage, teacher login to teacher page.
+
+#### Student Homepage:
+
+- add story: choose role,
+  - painter: enter to the Canvas Painter page.
+  - storyteller: enter to the Canvas Story teller page.
+- library: enter to the class library exposed to all students.
+- setting: not implment.
+
+#### Canvas pages (shared):
+
+- Painter page: a shared drawing canvas.
+  - line: draw different color/size lines.
+  - eraser: erase function, can adjust size.
+  - shapes: draw different color/size shapes.
+    - rectangle: draw a rectangle
+    - triangle: draw a triangle
+    - circle: draw a circle
+    
 <i>0. 版本修正：</i>
 + libray界面优化：修复一坨稀饭preview，增加作者显示，字体显示修改，搜索方式优化
 + 老师界面增加approved 和 waitng approval分离，并且可以unapprove
@@ -22,17 +53,6 @@
 + 老师界面UI美化
 + 注释精简，汉译英，添加
 
-### 其他页面 (不登陆一个也上不去)：
-
-[Canvas (Drawing)](https://s4523761-fableous.uqcloud.net/index/Canvas/index.php)
-
-[Canvas (Writing)](https://s4523761-fableous.uqcloud.net/index/Canvas/textStory.php)
-
-[Library](https://s4523761-fableous.uqcloud.net/index/Canvas/library.php)
-
-[Homepage (for student)](https://s4523761-fableous.uqcloud.net/index/Canvas/home.php)
-
-[Teacher](https://s4523761-fableous.uqcloud.net/index/Canvas/teacher.php)
 
 <i>1. 整体修正：</i>
 - 部分CSS美化
