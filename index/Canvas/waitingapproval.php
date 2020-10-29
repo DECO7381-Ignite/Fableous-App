@@ -84,7 +84,7 @@ $conn->close();
         <button id="rename-button">rename</button>
         <button id="delete-button">delete</button>
         <button id="close-button">close</button>
-        <button id="approve-button">approve all</button>
+        <button id="approve-button">approve</button>
     </div>
     <div id="input-new-name">
         <input type="text" id="new-name">
