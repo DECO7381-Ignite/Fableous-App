@@ -73,5 +73,3 @@ In the teacher's page, teacher can also edit the book as the functions that in t
   * add students: add new student
 
 <div align="right">Oct/29/2020</div>
-
-test
