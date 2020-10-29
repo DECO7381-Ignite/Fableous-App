@@ -1,10 +1,10 @@
 <?php
 $servername = "localhost";
 $username = "root";
-// server
-$password = "dbf76fb8c7e45fe1";
+// uq server
+// $password = "dbf76fb8c7e45fe1";
 // localhost pas
-// $password = "";
+$password = "";
 $dbname = "fableous";
 
 // Create connection
@@ -12,13 +12,13 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-// search function inner page
+// search function inner page, get all approved stories
 if (isset($_POST["submit"]) && trim($_POST["author"]) != "") {
     $str = $_POST["author"];
     $sql = "SELECT * FROM library WHERE user LIKE '%$str%' AND approvalStatus != 0";
 } else {
     $sql = "SELECT * FROM library WHERE approvalStatus != 0";
-    }
+}
 $result = $conn->query($sql);
 $libraryData =array();
 $json = '';
@@ -68,7 +68,6 @@ if (isset($_GET["uid"])) {
     $conn->query($usql);
     header("Location:approved.php");
 }
-
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -85,7 +84,6 @@ $conn->close();
         <section id="text-to-speech">
           <form>
               <div class="form-group">
-
                   <input
                     type="range"
                     id="rate"
@@ -96,9 +94,7 @@ $conn->close();
                     step="0.1"
                   />
               </div>
-
               <div class="form-group">
-
                   <input
                     type="range"
                     id="pitch"
@@ -109,11 +105,9 @@ $conn->close();
                     step="0.1"
                   />
               </div>
-
               <div class="form-group">
                   <select id="voice-select" class="form-control form-control-lg"></select>
               </div>
-
               <div class="form-group">
                   <input
                     name=""
@@ -123,7 +117,6 @@ $conn->close();
                     style="display:none;"
                   ></input>
               </div>
-
               <button class="btn btn-light btn-lg btn-block">Read aloud story text</button>
           </form>
         </section>
@@ -173,17 +166,15 @@ $conn->close();
             if (libraryImages[p].user) {
                 let tempPname = libraryImages[p].pname;
                 let arr = [];
-
+                // create a image array, which contains all picture's attributes
                 if (images.get(tempPname)) {
                     arr = images.get(tempPname);
                 }
-
                 arr.push(libraryImages[p]);
-
                 images.set(tempPname, arr);
             }
         }
-
+        // add stories.
         for (let key of images.keys()) {
             addStories(key);
         }
@@ -271,9 +262,7 @@ $conn->close();
         }
 
         // load pictures data and to the groups(same picture name)
-
         let arr = images.get(storyname);
-
         let pictures = document.getElementById("picture");
         pictures.innerHTML="";
         for (let i in arr) {
@@ -298,6 +287,7 @@ $conn->close();
                 // libCanvas.getContext("2d").drawImage(libImage, 0, 0, libCanvas.width, libCanvas.height);
             }
         }
+        // reminder text
         let remindText = document.createElement("p");
         remindText.innerHTML = "Scroll to the right to see more!";
         remindText.style.position = "absolute";

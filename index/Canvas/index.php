@@ -4,7 +4,7 @@
   require "../includes/dbh.inc.php";
   if (!$_SESSION['id']){
     echo "<script> {  window.alert('Please login first!');
-                      window.location.href='../index.php';  } </script>";
+      window.location.href='../index.php';  } </script>";
   }
 ?>
 <!DOCTYPE html>
@@ -48,8 +48,11 @@
                 <canvas id="myCanvas"></canvas>
             </div>
             <div id="re-un-button">
-                <div id="undo"><a onclick="undo()"><img src="icon/undo.svg" alt="undo icon"></a></div>
-                <div id="redo"><a onclick="redo()"><img src="icon/redo.svg" alt="redo icon"></a></div>
+            <!-- redo/undo function, but have some bugs, so comment it. -->
+                <!-- <div id="undo"><a onclick="undo()"><img src="icon/undo.svg" alt="undo icon"></a></div>
+                <div id="redo"><a onclick="redo()"><img src="icon/redo.svg" alt="redo icon"></a></div> -->
+                <div id="undo"><img src="icon/undo.svg" alt="undo icon"></div>
+                <div id="redo"><img src="icon/redo.svg" alt="redo icon"></div>
             </div>
             <div id="color-pad">
                 <div id="c0" class="colors"><img src="icon/tick.svg" alt="tick icon"></div>
@@ -72,50 +75,6 @@
             </div>
           </div>
         </div>
-
-        <!-- <form>
-            <div class="form-group">
-
-                <input
-                  type="range"
-                  id="rate"
-                  class="custom-range"
-                  min="0.5"
-                  max="2"
-                  value="1"
-                  step="0.1"
-                />
-            </div>
-
-            <div class="form-group">
-
-                <input
-                  type="range"
-                  id="pitch"
-                  class="custom-range"
-                  min="0"
-                  max="2"
-                  value="1"
-                  step="0.1"
-                />
-            </div>
-
-            <div class="form-group">
-                <select id="voice-select" class="form-control form-control-lg"></select>
-            </div>
-
-            <div class="form-group">
-                <textarea
-                  name=""
-                  id="text-input"
-                  class="form-control form-control-lg"
-                  placeholder="Type your story text here..."
-                ></textarea>
-            </div>
-
-            <button class="btn btn-light btn-lg btn-block">Read aloud story text</button>
-        </form>
-        -->
 
         <div class="footer">
             <div id="back-button"><p>&lt; Previous Page</p></div>
@@ -225,6 +184,7 @@
     <script src="js/script.js"></script>
     <script src="js/sync.js"></script>
     <script src="js/addPage.js"></script>
+    <!-- redo/undo function js (comment because of some bugs) -->
     <!-- <script src="js/undo.js"></script> -->
 </body>
 </html>

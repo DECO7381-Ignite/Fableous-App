@@ -2,14 +2,14 @@
 session_start();
 if (!$_SESSION['id']){
     echo "<script> {  window.alert('Please login first!');
-                      window.location.href='../index.php';  } </script>";
-  }
+        window.location.href='../index.php';  } </script>";
+}
 $servername = "localhost";
 $username = "root";
-// server
-$password = "dbf76fb8c7e45fe1";
+// uq server
+// $password = "dbf76fb8c7e45fe1";
 // localhost pas
-// $password = "";
+$password = "";
 $dbname = "fableous";
 
 // Create connection
@@ -65,7 +65,6 @@ if (isset($_GET["uid"])) {
     $conn->query($usql);
     header("Location:library.php");
 }
-
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -82,7 +81,6 @@ $conn->close();
         <section id="text-to-speech">
           <form>
               <div class="form-group">
-
                   <input
                     type="range"
                     id="rate"
@@ -93,9 +91,7 @@ $conn->close();
                     step="0.1"
                   />
               </div>
-
               <div class="form-group">
-
                   <input
                     type="range"
                     id="pitch"
@@ -106,11 +102,9 @@ $conn->close();
                     step="0.1"
                   />
               </div>
-
               <div class="form-group">
                   <select id="voice-select" class="form-control form-control-lg"></select>
               </div>
-
               <div class="form-group">
                   <input
                     name=""
@@ -120,7 +114,6 @@ $conn->close();
                     style="display:none;"
                   ></input>
               </div>
-
               <button class="btn btn-light btn-lg btn-block">Read aloud story text</button>
           </form>
         </section>
@@ -181,17 +174,16 @@ $conn->close();
             if (libraryImages[p].user) {
                 let tempPname = libraryImages[p].pname;
                 let arr = [];
+                // create a image array, which contains all picture's attributes
 
                 if (images.get(tempPname)) {
                     arr = images.get(tempPname);
                 }
-
                 arr.push(libraryImages[p]);
-
                 images.set(tempPname, arr);
             }
         }
-
+        // add stories
         for (let key of images.keys()) {
             addStories(key);
         }
@@ -272,9 +264,7 @@ $conn->close();
         }
 
         // get pictures data and group them (same picture name)
-
         let arr = images.get(storyname);
-
         let pictures = document.getElementById("picture");
         pictures.innerHTML="";
         for (let i in arr) {
@@ -298,6 +288,7 @@ $conn->close();
                 // libCanvas.getContext("2d").drawImage(libImage, 0, 0, libCanvas.width, libCanvas.height);
             }
         }
+        // reminder text
         let remindText = document.createElement("p");
         remindText.innerHTML = "Scroll to the right to see more!";
         remindText.style.position = "absolute";

@@ -1,11 +1,11 @@
 <?php
-  // start a session which allow for us to store information as SESSION variables.
+  // start a session.
   session_start();
-  // "require" creates an error message and stops the script. "include" creates an error and continues the script.
   require "../includes/dbh.inc.php";
+  // check login
   if (!$_SESSION['id']){
-    echo "<script> {  window.alert('Please login first!');
-                      window.location.href='../index.php';  } </script>";
+      echo "<script> {  window.alert('Please login first!');
+        window.location.href='../index.php';  } </script>";
   }
 ?>
 <!DOCTYPE html>

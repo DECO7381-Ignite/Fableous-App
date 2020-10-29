@@ -4,7 +4,7 @@
   require "../includes/dbh.inc.php";
   if (!$_SESSION['id']){
     echo "<script> {  window.alert('Please login first!');
-                      window.location.href='../index.php';  } </script>";
+      window.location.href='../index.php';  } </script>";
   }
 ?>
 <!DOCTYPE html>
@@ -219,6 +219,7 @@
       <script src="js/script.js"></script>
       <script src="js/sync.js"></script>
       <script src="js/addPage.js"></script>
+      <!-- redo/undo function js (comment because of some bugs) -->
       <!-- <script src="js/undo.js"></script> -->
   </body>
 </html>

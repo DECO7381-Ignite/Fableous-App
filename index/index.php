@@ -1,11 +1,11 @@
 <?php
   require "header.php";
 ?>
-
     <main>
       <div class="wrapper-main">
         <section class="section-default">
           <?php
+          // not login page, contains login form and quick login portal (for developers to test)
           if (!isset($_SESSION['id'])) {         
             echo '
             <div style="float:left; width:60%; margin-right:0">
@@ -29,20 +29,20 @@
                 <button id="quickLogin3" name="login-submit" style="font-size: 10px; padding: 10px 3%;">developer</button>
             </div>
             </form>
-            
           </div>
           ';
           }
+          // this is a temporary solution, as it not the mvp, so if we have time, we could make it more perfect by check session['staff'] 
           else if (isset($_SESSION['id']) && $_SESSION['id']==1) {
-            // content for logged in users
+            // developers login
             echo '<br><br><br><br><br><p class="login-status">You are developer !</p><br>';
           }
           else if (isset($_SESSION['id']) && $_SESSION['id']==2) {
-            // content for logged in users
+            // teachers login
             header('Location: Canvas/teacher.php');
           }
           else if (isset($_SESSION['id']) && $_SESSION['id']==3) {
-            // content for logged in users
+            // students login
             header('Location: Canvas/home.php');
           }
           ?>

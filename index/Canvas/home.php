@@ -3,9 +3,10 @@
   session_start();
   // connect to database
   require "../includes/dbh.inc.php";
+  // check login
   if (!$_SESSION['id']){
-    echo "<script> {  window.alert('Please login first!');
-                      window.location.href='../index.php';  } </script>";
+      echo "<script> {  window.alert('Please login first!');
+        window.location.href='../index.php';  } </script>";
   }
 ?>
 <!DOCTYPE html>
@@ -18,17 +19,14 @@
 </head>
 <body>
     <div id="book">
-
         <?php
         if (isset($_SESSION['id'])) {
             echo '<form action="../includes/logout.inc.php" method="post">
-                    <button type="submit" name="login-submit">Logout</button>
-                    </form>';
+            <button type="submit" name="login-submit">Logout</button>
+            </form>';
         }
         ?>
-
         <div id="user">
-
             <img src="icon/user.svg" alt="user_icon">
         </div>
         <div id="title">
@@ -275,7 +273,7 @@
     let back = window.document.getElementById("back");
     let addStory = window.document.getElementById("addStory");
     let menu = window.document.getElementById("menu");
-
+    // create a new story
     addStory.onclick = function () {
         addStoryMenu.style.transform = "scale(1)";
         addStoryMenu.style.top = String(menu.offsetTop + menu.offsetParent.offsetTop) + "px";

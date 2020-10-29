@@ -160,7 +160,9 @@ function down(e) {
     } else if (chosenTool === toolBox[3]) { // shaping mode
         shapingVar.startP = getPoints(e);
         isDrawingShape = true;
-        // record origin canvas
+        // record origin canvas and choose this page's color and width
+        rangeValue.oninput();
+        chosenColor.onclick();
         shapingVar.originalImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
     }
     if (inputTextButton.isTexting) {
@@ -245,7 +247,7 @@ function up(e) {
         isDrawingShape = false;
         sendMessage(duuid,10,shapingVar.endP,0,0);
     }
-    saveHistory();
+    // saveHistory(); // undo/redo but have some bugs, so comment it
 }
 
 function updateCanvas(number) {
@@ -522,6 +524,7 @@ colorPanelButton.onclick = function () {
 
 // click text button
 inputTextButton.onclick = function () {
+    chosenColor.onclick();
     // change to cursor
     chosenTool = toolBox[0];
     selectTool($(".toolBox-buttons"), $(this).index());

@@ -2,9 +2,9 @@
 $servername = "localhost";
 $username = "root";
 // server
-$password = "dbf76fb8c7e45fe1";
+// $password = "dbf76fb8c7e45fe1";
 // localhost pas
-// $password = "";
+$password = "";
 $dbname = "fableous";
 
 // Create connection
@@ -17,7 +17,7 @@ if (isset($_POST["submit"]) && trim($_POST["author"]) != "") {
     $sql = "SELECT * FROM library WHERE user LIKE '%$str%'";
 } else {
     $sql = "SELECT * FROM library ";
-    }
+}
 $result = $conn->query($sql);
 $libraryData =array();
 $json = '';
@@ -44,20 +44,21 @@ if ($result->num_rows > 0) {
 } else {
     echo "<script>alert('0 result');</script>";
 }
-
+// delete story
 if (isset($_GET["id"])) {
     $deleteID=$_GET["id"];
     $dsql = "DELETE FROM library WHERE pname='$deleteID'"; 
     $conn->query($dsql);
     header("Location:waitingapproval.php");
 }
-if (isset($_GET["uid"])) {
+if (isset($_GET["uid"])) { //rename story
     $updateID=$_GET["uid"];
     $uname=$_GET["uname"];
     $usql = "UPDATE library SET pname='$uname' WHERE pname='$updateID'"; 
     $conn->query($usql);
     header("Location:waitingapproval.php");
 }
+// change approval status
 if (isset($_GET["approvalStat"])) {
     $updateID2=$_GET["as"];
     $uname3=$_GET["approvalStat"];
@@ -105,11 +106,6 @@ $conn->close();
         </form>
     </section>
         <div id="painting-box">
-<!--            <ul id="select-box">-->
-<!--                <li>Browse</li>-->
-<!--                <li>Rename</li>-->
-<!--                <li>Delete</li>-->
-<!--            </ul>-->
         </div>
     </div>
 </div>
@@ -126,24 +122,21 @@ $conn->close();
         libraryImages = <?php echo $json?>;
         for (let p in libraryImages) {
             if (libraryImages[p].user) {
-
+                // if approve status not 0, ignore it
                 if(libraryImages[p].approvalStatus != 0) {
                     continue;
                 }
-
                 let tempPname = libraryImages[p].pname;
                 let arr = [];
-
+                // create a image array, which contains all picture's attributes
                 if (images.get(tempPname)) {
                     arr = images.get(tempPname);
                 }
-
                 arr.push(libraryImages[p]);
-
                 images.set(tempPname, arr);
             }
         }
-
+        // add story
         for (let key of images.keys()) {
             addStories(key);
         }
@@ -260,15 +253,16 @@ $conn->close();
                     // libCanvas.getContext("2d").drawImage(libImage, 0, 0, libCanvas.width, libCanvas.height);
                 }
             }
+            // reminder text
             let remindText = document.createElement("p");
-        remindText.innerHTML = "Scroll to the right to see more!";
-        remindText.style.position = "absolute";
-        remindText.style.bottom = "2px";
-        remindText.style.right = "2px";
-        remindText.style.color = "white";
-        remindText.style.border = "1px solid white";
-        remindText.style.padding = "3px";
-        pictures.appendChild(remindText);
+            remindText.innerHTML = "Scroll to the right to see more!";
+            remindText.style.position = "absolute";
+            remindText.style.bottom = "2px";
+            remindText.style.right = "2px";
+            remindText.style.color = "white";
+            remindText.style.border = "1px solid white";
+            remindText.style.padding = "3px";
+            pictures.appendChild(remindText);
         }
     }
 </script>

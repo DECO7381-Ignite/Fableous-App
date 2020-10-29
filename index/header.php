@@ -1,7 +1,7 @@
 <?php
   // start a session which allow for us to store information as SESSION variables.
   session_start();
-  // "require" creates an error message and stops the script. "include" creates an error and continues the script.
+  // "require" creates an error message and stops the script.
   require "includes/dbh.inc.php";
 ?>
 <!DOCTYPE html>
@@ -14,16 +14,14 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
-    <!-- header to include the login form for this tutorial. -->
     <header>
       <nav class="nav-header-main">
         <a class="header-logo" href="index.php">
           <img src="img/logo2.png" alt="mmtuts logo2">
         </a>
         <ul>
-          <!-- Placeholder buttons -->
           <?php
+          // show all navigation in developer's page
           if (isset($_SESSION['id']) && $_SESSION['id']==1) {
             echo '<li><a href="Canvas/home.php">Home</a></li>
             <li><a href="Canvas/library.php">Library</a></li>
@@ -31,25 +29,12 @@
             <li><a href="Canvas/textStory.php">Writing</a></li>
             <li><a href="Canvas/teacher.php">Teacher</a></li>';
           }
-          else if (isset($_SESSION['id']) && $_SESSION['id']==2) {
-            echo '<li><a href="Canvas/library.php">Library</a></li>
-            <li><a href="Canvas/index.php">Canvas</a></li>
-            <li><a href="Canvas/textStory.php">Writing</a></li>
-            <li><a href="Canvas/teacher.php">Teacher</a></li>';
-          }
-          else if (isset($_SESSION['id']) && $_SESSION['id']==3) {
-            echo '<li><a href="Canvas/home.php">Home</a></li>
-            <li><a href="Canvas/library.php">Library</a></li>
-            <li><a href="Canvas/index.php">Canvas</a></li>
-            <li><a href="Canvas/textStory.php">Writing</a></li>';
-          }
           ?>
-          
         </ul>
       </nav>
       <div class="header-login">
         <!--
-        HTML login form.
+        login form.
         -->
         <?php
         if (!isset($_SESSION['id'])) {

@@ -1,9 +1,9 @@
 // websocket connection & uuid
     var duuid = uuid(8, 16);
     // localhost
-    // var ws = new WebSocket("ws://localhost:8080");
+    var ws = new WebSocket("ws://localhost:8080");
     // uq server
-    var ws = new WebSocket("wss://s4523761-fableous.uqcloud.net");
+    // var ws = new WebSocket("wss://s4523761-fableous.uqcloud.net");
 
 // other devices to sync
         var cuxi; // linewidth
@@ -74,19 +74,15 @@
                 document.getElementById("0").onclick();
             }
         }
-        // function switchpage2(x) {
-        //     console.log(x);
-        //     newPage.onclick();
+        // redo and undo sync. As it has some bugs, so comment it.
+        // function dodo(x){
+        //     let pppp=new Image();
+        //     pppp.src=x;
+        //     pppp.addEventListener('load',()=>{
+        //         ctx.clearRect(0,0,canvas.width,canvas.height);
+        //         ctx.drawImage(pppp,0,0);
+        //     });
         // }
-        // redo and undo sync.
-        function dodo(x){
-            let pppp=new Image();
-            pppp.src=x;
-            pppp.addEventListener('load',()=>{
-                ctx.clearRect(0,0,canvas.width,canvas.height);
-                ctx.drawImage(pppp,0,0);
-            });
-        }
 
         ws.onopen = function(e) { //log info about link to socket server
                 console.log('Connection to server successfully');
@@ -104,7 +100,7 @@
             }
         // select functions to sync based on # (no)
         ws.onmessage = function(e) {
-                var data = JSON.parse(e.no);
+                var data = JSON.parse(e.data);
                 if (data.no === 1) {
                     console.log("responding for debug");
                 } else if (data.no === 2) {
@@ -140,7 +136,7 @@
                     updateCanvas(data.y);
                     changeCanvas(data.x);
                 }
-                // else if (data.no === 15) {
+                // else if (data.no === 15) { // redo, undo sync.
                 //     if (step>0){
                 //         history[step]=data.x;
                 // } // function bug severe but no good solutions, on experiment featues

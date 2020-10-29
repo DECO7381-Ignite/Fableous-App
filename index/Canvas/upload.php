@@ -2,9 +2,9 @@
 $servername = "localhost";
 $username = "root";
 // server
-$password = "dbf76fb8c7e45fe1";
+// $password = "dbf76fb8c7e45fe1";
 // localhost pas
-//  $password = "";
+$password = "";
 $dbname = "fableous";
 
 // Create connection
@@ -18,7 +18,7 @@ $user = $_POST["user"];
 $data = $_POST["data"];
 $pdata1 = null;
 $story=$_POST["story"];
-//echo $data."\n";
+//echo $data."\n"; // for test
 $pages = explode("data:image/png;base64,", $data);
 $number = count($pages);
 foreach($pages as $key => $pdata) {
@@ -37,6 +37,5 @@ foreach($pages as $key => $pdata) {
         echo "<script> alert('save succeed');history.back();</script>";
     }
 }
-
 $conn->close();
 ?>

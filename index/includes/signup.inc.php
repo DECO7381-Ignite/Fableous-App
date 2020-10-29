@@ -1,18 +1,12 @@
 <?php
 // check whether the user got to this page by clicking the proper signup button.
 if (isset($_POST['signup-submit'])) {
-
-  // include the connection script
   require 'dbh.inc.php';
-
-  // grab all the data which we passed from the signup form 
+  // grab all the data which passed from the signup form 
   $username = $_POST['uid'];
   $email = $_POST['mail'];
   $password = $_POST['pwd'];
   $passwordRepeat = $_POST['pwd-repeat'];
-
-  // error handling to make sure we catch any errors made by the user.
-
   // check for any empty inputs
   if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
     header("Location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
@@ -39,21 +33,19 @@ if (isset($_POST['signup-submit'])) {
     exit();
   }
   else {
-
     // check whether or the username is already taken.
-
-    // create the statement that searches our database table to check for any identical usernames.
+    // create the statement that searches database table to check usernames.
     $sql = "SELECT uidUsers FROM users WHERE uidUsers=?;";
     // create a prepared statement.
     $stmt = mysqli_stmt_init($conn);
     // prepare our SQL statement AND check for errors
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      // If there is an error we send the user back to the signup page.
+      // If there is an error, send the user back to the signup page.
       header("Location: ../signup.php?error=sqlerror");
       exit();
     }
     else {
-      // bind the type of parameters we expect to pass into the statement, and bind the data from the user.
+      // bind the type of parameters to pass into the statement, and bind the data from the user.
       mysqli_stmt_bind_param($stmt, "s", $username);
       // execute the prepared statement and send it to the database
       mysqli_stmt_execute($stmt);
@@ -74,16 +66,14 @@ if (isset($_POST['signup-submit'])) {
         $stmt = mysqli_stmt_init($conn);
         // prepare SQL statement AND check if there are any errors with it.
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-          // If there is an error we send the user back to the signup page.
+          // If there is an error, send the user back to the signup page.
           header("Location: ../signup.php?error=sqlerror");
           exit();
         }
         else {
-
-          // hashing method 
+          // hashing method to encrypt password.
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-
-          // bind the type of parameters we expect to pass into the statement, and bind the data from the user.
+          // bind the type of parameters to pass into the statement, and bind the data from the user.
           mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
           mysqli_stmt_execute($stmt);
           // send the user back to the signup page with a success message
@@ -94,12 +84,12 @@ if (isset($_POST['signup-submit'])) {
       }
     }
   }
-  // close the prepared statement and the database connection
+  // close statement and the database connection
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
 }
 else {
-  // If the user tries to access this page an inproper way, we send them back to the signup page.
+  // If the user tries to access this page an inproper way, send them back to the signup page.
   header("Location: ../signup.php");
   exit();
 }
