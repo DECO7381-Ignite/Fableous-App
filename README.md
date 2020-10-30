@@ -22,7 +22,7 @@
 
 #### 1. Homepage:
 
-- signup: inputs (email, password, confirm password).
+- signup: inputs (email, password, confirm password, select role: teacher/student).
 - login: student login to student's homepage, teacher login to teacher page.
 
 #### 2. Student Homepage:
