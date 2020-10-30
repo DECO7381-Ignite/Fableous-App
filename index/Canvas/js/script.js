@@ -547,10 +547,12 @@ rangeValue.oninput = function () {
         ctx.lineWidth = 3;
     }
     sendMessage(duuid, 6, ctx.lineWidth, 0, 0); // send weight
-    $(lineWeightDemo).css("height", String(ctx.lineWidth) + "px");
-    $(lineWeightDemo).css("width", (((String(ctx.lineWidth)-3)/37)*25+100) + "px");
-    $(lineWeightDemo).css("border-radius", String(ctx.lineWidth) + "px");
-    $(lineWeightDemo).css("right", (30-(lineWeightDemo.offsetWidth-100)) + "px");
+    if (lineWeightDemo != null) {
+        $(lineWeightDemo).css("height", String(ctx.lineWidth) + "px");
+        $(lineWeightDemo).css("width", (((String(ctx.lineWidth)-3)/37)*25+100) + "px");
+        $(lineWeightDemo).css("border-radius", String(ctx.lineWidth) + "px");
+        $(lineWeightDemo).css("right", (30-(lineWeightDemo.offsetWidth-100)) + "px");
+    }
 };
 
 function showHideSMT(obj, str1, str2) {
