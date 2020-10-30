@@ -30,7 +30,18 @@
           // Show success message if the new user was created.
           else if (isset($_GET["signup"])) {
             if ($_GET["signup"] == "success") {
-              echo '<p class="signupsuccess">Signup successful!</p>';
+              // count to back to homepage to login
+              echo '<p class="signupsuccess">Signup successful!</p>
+              <p id="time" class="signupsuccess">3 seconds to homepage</p>
+              <script>
+              setTimeout(function () {
+                document.getElementById("time").innerHTML="2 seconds to homepage"
+              }, 1000);
+              setTimeout(function () {
+                document.getElementById("time").innerHTML="1 seconds to homepage"
+              }, 2000);
+              </script>';
+              header('refresh:3;url=index.php');
             }
           }
           ?>
@@ -53,9 +64,9 @@
             ?>
             <input type="password" name="pwd" placeholder="Password">
             <input type="password" name="pwd-repeat" placeholder="Repeat password">
-            <select>
-            <option value='student'>student</option>
-            <option value='teacher'>teacher</option>
+            <select name="staff">
+            <option value='0'>student</option>
+            <option value='1'>teacher</option>
             </select>
             <br><br>
             <button type="submit" name="signup-submit">Signup</button>

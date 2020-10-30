@@ -32,7 +32,7 @@
           </div>
           ';
           }
-          // this is a temporary solution, as it not the mvp, so if we have time, we could make it more perfect by check session['staff'] 
+          // 3 demo accounts
           else if (isset($_SESSION['id']) && $_SESSION['id']==1) {
             // developers login
             echo '<br><br><br><br><br><p class="login-status">You are developer !</p><br>';
@@ -44,6 +44,15 @@
           else if (isset($_SESSION['id']) && $_SESSION['id']==3) {
             // students login
             header('Location: Canvas/home.php');
+          }
+          // other accounts (normal users)
+          else if (isset($_SESSION['id']) && $_SESSION['id']>3 && $_SESSION['staff']==0) {
+            // students login
+            header('Location: Canvas/home.php');
+          }
+          else if (isset($_SESSION['id']) && $_SESSION['id']>3 && $_SESSION['staff']==1) {
+            // teachers login
+            header('Location: Canvas/teacher.php');
           }
           ?>
         </section>

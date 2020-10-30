@@ -7,6 +7,11 @@ if (isset($_POST['signup-submit'])) {
   $email = $_POST['mail'];
   $password = $_POST['pwd'];
   $passwordRepeat = $_POST['pwd-repeat'];
+  if ($_POST['staff']=='0'){
+    $staff=0;
+  } else if ($_POST['staff']=='1') {
+    $staff=1;
+  }
   // check for any empty inputs
   if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
     header("Location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
@@ -75,6 +80,9 @@ if (isset($_POST['signup-submit'])) {
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
           // bind the type of parameters to pass into the statement, and bind the data from the user.
           mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
+          mysqli_stmt_execute($stmt);
+          $sql1= "UPDATE users SET staff='$staff' WHERE uidUsers='$username'";
+          mysqli_stmt_prepare($stmt, $sql1);
           mysqli_stmt_execute($stmt);
           // send the user back to the signup page with a success message
           header("Location: ../signup.php?signup=success");

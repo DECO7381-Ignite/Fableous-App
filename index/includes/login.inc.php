@@ -44,6 +44,7 @@ if (isset($_POST['login-submit'])) {
           $_SESSION['id'] = $row['idUsers'];
           $_SESSION['uid'] = $row['uidUsers'];
           $_SESSION['email'] = $row['emailUsers'];
+          $_SESSION['staff'] = $row['staff'];
           // user logged in
           header("Location: ../index.php?login=success");
           exit();
