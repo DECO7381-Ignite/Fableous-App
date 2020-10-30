@@ -1,3 +1,7 @@
+/* Now, the student list is just a static list, does not connect to the database due to 
+** the limit of time. That a basic implement of static data, once it is connect to the 
+** database, we can implement that in similar way 
+*/
 function loadStudents() {
     // manage students feature
     let students = [
@@ -28,6 +32,7 @@ function loadStudents() {
     }
 }
 
+// Show the add student window
 function addWindow() {
     $("#add-student-window").css({
         "display": "flex",
@@ -37,6 +42,7 @@ function addWindow() {
     });
 }
 
+// Close the add window
 function closeAddWindow() {
     $("#add-student-window").css("visibility", "hidden");
     $("#add-window-name").val("");
@@ -46,6 +52,7 @@ function closeAddWindow() {
     $("#add-window-diet").val("");
     $("#add-window-extra").val("");
 }
+
 // add student
 function addStudent(name, id, attendence, team, dietary, extra) {
     let studentList = $("#students-list");

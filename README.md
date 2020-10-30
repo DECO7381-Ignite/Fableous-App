@@ -66,10 +66,15 @@ In the teacher's page, teacher can also edit the book as the functions that in t
 
 * class library: the story(-ies) of the class.
 * waiting approval: the story(-ies) which is/are waiting to be approved.
+  
   * approve: approve the story.
 * approved: the approved story(-ies).
+  
   * unapprove: unapprove the story. 
 * students: the list of students
+  
   * add students: add new student
+  
+  (Now, the student list is just a static list, does not connect to the database due to the limit of time. That a basic implement of static data, once it is connect to the database, we can implement that in similar way.)
 
 <div align="right">Oct/29/2020</div>

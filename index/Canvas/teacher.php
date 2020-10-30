@@ -133,6 +133,7 @@
             loadStudents();
         });
 
+        // Switch between the sections of teacher portal
         $(".navigation>li").click(function() {
             $(this).addClass("active").siblings().removeClass("active");
             var index = $(this).index();
