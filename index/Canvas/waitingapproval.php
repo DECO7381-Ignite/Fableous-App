@@ -63,7 +63,7 @@ if (isset($_GET["approvalStat"])) {
     $updateID2=$_GET["as"];
     $uname3=$_GET["approvalStat"];
     $uname2=$_GET["uname2"];
-    $usql2 = "UPDATE library SET approvalStatus='$uname2' WHERE approvalStatus='$updateID2'"; 
+    $usql2 = "UPDATE library SET approvalStatus='$uname3' WHERE pname='$uname2'"; 
     $conn->query($usql2);
     header("Location:waitingapproval.php");
 }
